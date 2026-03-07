@@ -1,55 +1,138 @@
+<!-- =========================================================
+INDEX.HTML (Role Selection) — FIXED EQUAL HEIGHT CARDS
+========================================================= -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Select Role | College Admin Portal</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Campus Portal</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <style>
+    body {
+      min-height: 100vh;
+      background: linear-gradient(135deg, #5f6bdc, #7a49c9);
+      color: #fff;
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+    }
 
-  <!-- Bootstrap CSS (optional, future-ready) -->
-  <link 
-    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" 
-    rel="stylesheet"
-  >
+    /* ⭐ CRITICAL FIX: equal height cards */
+    .role-card {
+      border-radius: 20px;
+      transition: all 0.25s ease;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .role-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+    }
+
+    .card-body-flex {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .icon-box {
+      width: 72px;
+      height: 72px;
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 16px;
+      font-size: 32px;
+      color: #fff;
+    }
+
+    .footer-links a {
+      color: #e5e7eb;
+      text-decoration: none;
+      margin: 0 12px;
+    }
+
+    .footer-links a:hover { text-decoration: underline; }
+  </style>
 </head>
-
 <body>
+  <div class="container py-5 text-center">
+    <div class="mb-4">
+      <div class="bg-white text-dark d-inline-flex align-items-center justify-content-center rounded-4" style="width:70px;height:70px;font-size:28px;">🎓</div>
+      <h1 class="fw-bold mt-3">Welcome to Campus Portal</h1>
+      <p class="text-light">Select your role to continue</p>
+    </div>
 
-  <main class="container">
+    <!-- ⭐ IMPORTANT: align-items-stretch ensures equal height -->
+    <div class="row g-4 justify-content-center align-items-stretch">
 
-    <section class="row justify-content-center">
-      <div class="col-md-6 col-lg-5">
-
-        <header class="text-center my-5">
-          <h1>College Admin Portal</h1>
-          <p>Select your role to continue</p>
-        </header>
-
-        <nav aria-label="Role selection">
-
-          <ul>
-            <li>
-              <a href="login.html?role=student">Student</a>
-            </li>
-
-            <li>
-              <a href="login.html?role=faculty">Faculty</a>
-            </li>
-
-            <li>
-              <a href="login.html?role=admission">Admission Cell</a>
-            </li>
-
-            <li>
-              <a href="login.html?role=admin">Admin</a>
-            </li>
-          </ul>
-
-        </nav>
-
+      <!-- Student -->
+      <div class="col-12 col-md-6 col-lg-3 d-flex">
+        <div class="card role-card p-4 text-center w-100">
+          <div class="card-body-flex">
+            <div>
+              <div class="icon-box" style="background:linear-gradient(135deg,#6d5dfc,#8b5cf6);">📚</div>
+              <h5 class="fw-bold">Student</h5>
+              <p class="text-muted small">Access your academic journey and progress</p>
+            </div>
+            <a href="login.html" class="btn btn-primary w-100">Continue as Student</a>
+          </div>
+        </div>
       </div>
-    </section>
 
-  </main>
+      <!-- Faculty -->
+      <div class="col-12 col-md-6 col-lg-3 d-flex">
+        <div class="card role-card p-4 text-center w-100">
+          <div class="card-body-flex">
+            <div>
+              <div class="icon-box" style="background:linear-gradient(135deg,#3b82f6,#06b6d4);">👨‍🏫</div>
+              <h5 class="fw-bold">Faculty</h5>
+              <p class="text-muted small">Manage classes and student performance</p>
+            </div>
+            <a href="login.html" class="btn btn-info text-white w-100">Continue as Faculty</a>
+          </div>
+        </div>
+      </div>
 
+      <!-- Admission -->
+      <div class="col-12 col-md-6 col-lg-3 d-flex">
+        <div class="card role-card p-4 text-center w-100">
+          <div class="card-body-flex">
+            <div>
+              <div class="icon-box" style="background:linear-gradient(135deg,#f59e0b,#f97316);">📋</div>
+              <h5 class="fw-bold">Admission</h5>
+              <p class="text-muted small">Process applications and onboarding</p>
+            </div>
+            <a href="login.html" class="btn btn-warning w-100">Continue as Admission</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Admin -->
+      <div class="col-12 col-md-6 col-lg-3 d-flex">
+        <div class="card role-card p-4 text-center w-100">
+          <div class="card-body-flex">
+            <div>
+              <div class="icon-box" style="background:linear-gradient(135deg,#10b981,#059669);">⚙️</div>
+              <h5 class="fw-bold">Admin</h5>
+              <p class="text-muted small">Full system control and analytics</p>
+            </div>
+            <a href="login.html" class="btn btn-success w-100">Continue as Admin</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="footer-links mt-5">
+      <a href="forgot-password.html">Forgot Password?</a>
+      <a href="#">Help & Support</a>
+      <a href="#">Privacy Policy</a>
+    </div>
+  </div>
 </body>
 </html>

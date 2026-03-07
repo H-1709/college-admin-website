@@ -1,139 +1,138 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Student Dashboard</title>
-
-  <!-- Bootstrap 5.3.x -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-
-  <!-- Base + Student Styles -->
-  <link rel="stylesheet" href="../assets/css/base.css">
-  <link rel="stylesheet" href="../assets/css/student.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../assets/css/base.css">
+    <link rel="stylesheet" href="../../assets/css/layout.css">
+    <link rel="stylesheet" href="../../assets/css/student.css">
 </head>
 <body>
 
-  <!-- Header -->
-  <div id="header"></div>
+    <div class="d-flex" id="wrapper">
+        <div id="sidebar-container"></div>
 
-  <div class="container-fluid">
-    <div class="row">
+        <div id="page-content-wrapper">
+            <div id="header-container"></div>
 
-      <!-- Sidebar -->
-      <aside class="col-lg-2 col-md-3 d-none d-md-block p-0">
-        <div id="sidebar-student"></div>
-      </aside>
+            <div class="container-fluid px-4 py-4">
+                <h2 class="mb-4">Welcome back, <span id="studentNameDisplay">Student</span>!</h2>
 
-      <!-- Main Content -->
-      <main class="col-lg-10 col-md-9 ms-sm-auto px-4 py-4">
+                <div class="row g-3 mb-4">
+                    <div class="col-md-3">
+                        <div class="card card-hover bg-primary text-white h-100">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <h6 class="card-subtitle mb-2">Attendance</h6>
+                                        <h2 class="card-title mb-0">87%</h2>
+                                    </div>
+                                    <i class="bi bi-calendar-check fs-1 opacity-50"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card card-hover bg-success text-white h-100">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <h6 class="card-subtitle mb-2">CGPA</h6>
+                                        <h2 class="card-title mb-0">3.8</h2>
+                                    </div>
+                                    <i class="bi bi-graph-up-arrow fs-1 opacity-50"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card card-hover bg-warning text-dark h-100">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <h6 class="card-subtitle mb-2">Assignments</h6>
+                                        <h2 class="card-title mb-0">2 Pending</h2>
+                                    </div>
+                                    <i class="bi bi-journal-text fs-1 opacity-50"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card card-hover bg-danger text-white h-100">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <h6 class="card-subtitle mb-2">Fees Due</h6>
+                                        <h2 class="card-title mb-0">$500</h2>
+                                    </div>
+                                    <i class="bi bi-cash-coin fs-1 opacity-50"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-        <!-- Page Header -->
-        <section class="mb-4">
-          <h1 class="h3 fw-semibold">Dashboard</h1>
-          <p class="text-muted mb-0">Welcome back, Student</p>
-        </section>
+                <div class="row g-4">
+                    <div class="col-lg-8">
+                        <div class="card shadow-sm h-100">
+                            <div class="card-header bg-white">
+                                <h5 class="mb-0">Today's Schedule</h5>
+                            </div>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table table-hover align-middle">
+                                        <thead class="table-light">
+                                            <tr>
+                                                <th>Time</th>
+                                                <th>Subject</th>
+                                                <th>Room</th>
+                                                <th>Status</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="scheduleTableBody">
+                                            </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
-        <!-- Stats Cards -->
-        <section class="row g-3 mb-4">
-          <div class="col-sm-6 col-xl-3">
-            <div class="card shadow-sm">
-              <div class="card-body">
-                <p class="text-muted mb-1">Attendance</p>
-                <h5 class="mb-0">85%</h5>
-              </div>
+                    <div class="col-lg-4">
+                        <div class="card shadow-sm h-100">
+                            <div class="card-header bg-white">
+                                <h5 class="mb-0">Upcoming Deadlines</h5>
+                            </div>
+                            <ul class="list-group list-group-flush" id="deadlineList">
+                                </ul>
+                        </div>
+                    </div>
+                </div>
+
             </div>
-          </div>
-
-          <div class="col-sm-6 col-xl-3">
-            <div class="card shadow-sm">
-              <div class="card-body">
-                <p class="text-muted mb-1">Current GPA</p>
-                <h5 class="mb-0">8.2</h5>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-sm-6 col-xl-3">
-            <div class="card shadow-sm">
-              <div class="card-body">
-                <p class="text-muted mb-1">Pending Fees</p>
-                <h5 class="mb-0">₹12,000</h5>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-sm-6 col-xl-3">
-            <div class="card shadow-sm">
-              <div class="card-body">
-                <p class="text-muted mb-1">Credits Earned</p>
-                <h5 class="mb-0">92</h5>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <!-- Today's Schedule -->
-        <section class="mb-4">
-          <div class="card shadow-sm">
-            <div class="card-header bg-white fw-semibold">
-              Today’s Schedule
-            </div>
-            <div class="card-body">
-              <ul class="list-group list-group-flush">
-                <li class="list-group-item d-flex justify-content-between">
-                  <span>Data Structures</span>
-                  <span class="text-muted">10:00 – 11:00</span>
-                </li>
-                <li class="list-group-item d-flex justify-content-between">
-                  <span>Operating Systems</span>
-                  <span class="text-muted">12:00 – 1:00</span>
-                </li>
-                <li class="list-group-item d-flex justify-content-between">
-                  <span>DBMS Lab</span>
-                  <span class="text-muted">2:00 – 4:00</span>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </section>
-
-        <!-- What's Due -->
-        <section>
-          <div class="card shadow-sm">
-            <div class="card-header bg-white fw-semibold">
-              What’s Due Today
-            </div>
-            <div class="card-body">
-              <ul class="list-group list-group-flush">
-                <li class="list-group-item">
-                  Assignment: Computer Networks
-                </li>
-                <li class="list-group-item">
-                  Fee Installment Reminder
-                </li>
-              </ul>
-            </div>
-          </div>
-        </section>
-
-      </main>
+        </div>
     </div>
-  </div>
 
-  <!-- Footer -->
-  <div id="footer"></div>
-
-  <!-- Bootstrap JS -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-
-  <!-- Layout Includes -->
-  <script src="../assets/js/utils/include.js"></script>
-  <script>
-    includeHTML("header", "../layouts/header.html");
-    includeHTML("sidebar-student", "../layouts/sidebar-student.html");
-    includeHTML("footer", "../layouts/footer.html");
-  </script>
-
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../../utils/helpers.js"></script>
+    <script src="../../assets/js/student.js"></script>
+    <script>
+        // Load Common Layouts
+        document.addEventListener("DOMContentLoaded", async function() {
+            await loadComponent("sidebar-container", "../../layouts/sidebar-student.html");
+            await loadComponent("header-container", "../../layouts/header.html");
+            
+            // Re-initialize sidebar toggle listener after loading HTML
+            const toggleBtn = document.getElementById("sidebarToggle");
+            if(toggleBtn) {
+                toggleBtn.addEventListener('click', function() {
+                    document.getElementById("wrapper").classList.toggle("toggled");
+                });
+            }
+        });
+    </script>
 </body>
 </html>

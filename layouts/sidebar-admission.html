@@ -1,82 +1,35 @@
-<aside role="navigation" aria-label="Admission Sidebar">
-
-  <!-- Sidebar Header -->
-  <div class="sidebar-header">
-    <span>Admission Panel</span>
-  </div>
-
-  <!-- Main Navigation -->
-  <nav>
-    <ul>
-
-      <!-- Dashboard -->
-      <li>
-        <a href="../admission/dashboard.html">
-          Dashboard
+<div class="bg-dark border-right" id="sidebar-wrapper">
+    <div class="sidebar-heading text-white">
+        <i class="bi bi-person-plus-fill me-2"></i> Admission Desk
+    </div>
+    <div class="list-group list-group-flush">
+        <a href="../admission/dashboard.html" class="list-group-item list-group-item-action bg-dark text-light">
+            <i class="bi bi-speedometer2 me-2"></i> Dashboard
         </a>
-      </li>
-
-      <!-- Notice Board -->
-      <li>
-        <span>Notice Board</span>
-        <ul>
-          <li>
-            <a href="../admission/notice-board/admission-alerts.html">
-              Admission Alerts
-            </a>
-          </li>
-          <li>
-            <a href="../admission/notice-board/hiring-desk.html">
-              Hiring Desk
-            </a>
-          </li>
-        </ul>
-      </li>
-
-      <!-- Applications -->
-      <li>
-        <span>Applications</span>
-        <ul>
-          <li>
-            <a href="../admission/applications/pipeline.html">
-              Application Pipeline
-            </a>
-          </li>
-          <li>
-            <a href="../admission/applications/document-verification.html">
-              Document Verification
-            </a>
-          </li>
-          <li>
-            <a href="../admission/applications/interviews.html">
-              Interviews
-            </a>
-          </li>
-        </ul>
-      </li>
-
-      <!-- Inquiry Manager -->
-      <li>
-        <a href="../admission/inquiry-manager.html">
-          Inquiry Manager
+        
+        <a href="#noticeSubmenu" class="list-group-item list-group-item-action bg-dark text-light dropdown-toggle" data-bs-toggle="collapse">
+            <i class="bi bi-megaphone me-2"></i> Notice Board
         </a>
-      </li>
+        <div class="collapse" id="noticeSubmenu">
+            <a href="../admission/notice-board/admission-alerts.html" class="list-group-item list-group-item-action bg-dark text-secondary ps-5">Public Alerts</a>
+            <a href="../admission/notice-board/hiring-desk.html" class="list-group-item list-group-item-action bg-dark text-secondary ps-5">Hiring Desk</a>
+        </div>
 
-      <!-- Onboarding -->
-      <li>
-        <a href="../admission/onboarding.html">
-          Onboarding
+        <a href="#appSubmenu" class="list-group-item list-group-item-action bg-dark text-light dropdown-toggle" data-bs-toggle="collapse">
+            <i class="bi bi-file-earmark-person me-2"></i> Applications
         </a>
-      </li>
+        <div class="collapse" id="appSubmenu">
+            <a href="../admission/applications/pipeline.html" class="list-group-item list-group-item-action bg-dark text-secondary ps-5">Pipeline</a>
+            <a href="../admission/applications/document-verification.html" class="list-group-item list-group-item-action bg-dark text-secondary ps-5">Docs Verification</a>
+            <a href="../admission/applications/interviews.html" class="list-group-item list-group-item-action bg-dark text-secondary ps-5">Interviews</a>
+        </div>
 
-      <!-- Profile -->
-      <li>
-        <a href="../admission/profile.html">
-          Profile
+        <a href="../admission/inquiry-manager.html" class="list-group-item list-group-item-action bg-dark text-light">
+            <i class="bi bi-chat-left-dots me-2"></i> Inquiry Manager
         </a>
-      </li>
 
-    </ul>
-  </nav>
-
-</aside>
+        <a href="../admission/onboarding.html" class="list-group-item list-group-item-action bg-dark text-light">
+            <i class="bi bi-person-check me-2"></i> Onboarding
+        </a>
+    </div>
+</div>

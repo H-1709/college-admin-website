@@ -1,97 +1,42 @@
-<aside role="navigation" aria-label="Administrator Sidebar">
-
-  <!-- Sidebar Header -->
-  <div class="sidebar-header">
-    <span>Super Admin Panel</span>
-  </div>
-
-  <!-- Main Navigation -->
-  <nav>
-    <ul>
-
-      <!-- Dashboard -->
-      <li>
-        <a href="../super-admin/dashboard.html">
-          Dashboard
+<div class="bg-dark border-right" id="sidebar-wrapper">
+    <div class="sidebar-heading text-white">
+        <i class="bi bi-shield-lock-fill me-2"></i> Super Admin
+    </div>
+    <div class="list-group list-group-flush">
+        <a href="../super-admin/dashboard.html" class="list-group-item list-group-item-action bg-dark text-light">
+            <i class="bi bi-cpu me-2"></i> System Health
         </a>
-      </li>
-
-      <!-- User Management -->
-      <li>
-        <span>User Management</span>
-        <ul>
-          <li>
-            <a href="../super-admin/users/students.html">
-              Students
-            </a>
-          </li>
-          <li>
-            <a href="../super-admin/users/faculty.html">
-              Faculty
-            </a>
-          </li>
-          <li>
-            <a href="../super-admin/users/admission-staff.html">
-              Admission Staff
-            </a>
-          </li>
-        </ul>
-      </li>
-
-      <!-- Institution -->
-      <li>
-        <span>Institution</span>
-        <ul>
-          <li>
-            <a href="../super-admin/institution/departments.html">
-              Departments
-            </a>
-          </li>
-          <li>
-            <a href="../super-admin/institution/courses.html">
-              Courses
-            </a>
-          </li>
-          <li>
-            <a href="../super-admin/institution/semesters.html">
-              Semesters
-            </a>
-          </li>
-        </ul>
-      </li>
-
-      <!-- Finance -->
-      <li>
-        <a href="../super-admin/finance/analytics.html">
-          Finance & Analytics
+        
+        <a href="#userSubmenu" class="list-group-item list-group-item-action bg-dark text-light dropdown-toggle" data-bs-toggle="collapse">
+            <i class="bi bi-people me-2"></i> User Management
         </a>
-      </li>
+        <div class="collapse" id="userSubmenu">
+            <a href="../super-admin/users/students.html" class="list-group-item list-group-item-action bg-dark text-secondary ps-5">Students</a>
+            <a href="../super-admin/users/faculty.html" class="list-group-item list-group-item-action bg-dark text-secondary ps-5">Faculty</a>
+            <a href="../super-admin/users/admission-staff.html" class="list-group-item list-group-item-action bg-dark text-secondary ps-5">Staff</a>
+        </div>
 
-      <!-- Security -->
-      <li>
-        <span>Security</span>
-        <ul>
-          <li>
-            <a href="../super-admin/security/audit-logs.html">
-              Audit Logs
-            </a>
-          </li>
-          <li>
-            <a href="../super-admin/security/password-resets.html">
-              Password Resets
-            </a>
-          </li>
-        </ul>
-      </li>
-
-      <!-- Settings -->
-      <li>
-        <a href="../super-admin/settings.html">
-          Settings
+        <a href="#instSubmenu" class="list-group-item list-group-item-action bg-dark text-light dropdown-toggle" data-bs-toggle="collapse">
+            <i class="bi bi-bank me-2"></i> Institution
         </a>
-      </li>
+        <div class="collapse" id="instSubmenu">
+            <a href="../super-admin/institution/departments.html" class="list-group-item list-group-item-action bg-dark text-secondary ps-5">Departments</a>
+            <a href="../super-admin/institution/courses.html" class="list-group-item list-group-item-action bg-dark text-secondary ps-5">Courses</a>
+        </div>
 
-    </ul>
-  </nav>
+        <a href="../super-admin/finance/analytics.html" class="list-group-item list-group-item-action bg-dark text-light">
+            <i class="bi bi-currency-dollar me-2"></i> Finance Analytics
+        </a>
 
-</aside>
+        <a href="#secSubmenu" class="list-group-item list-group-item-action bg-dark text-light dropdown-toggle" data-bs-toggle="collapse">
+            <i class="bi bi-safe me-2"></i> Security
+        </a>
+        <div class="collapse" id="secSubmenu">
+            <a href="../super-admin/security/audit-logs.html" class="list-group-item list-group-item-action bg-dark text-secondary ps-5">Audit Logs</a>
+        </div>
+
+        <a href="../super-admin/settings.html" class="list-group-item list-group-item-action bg-dark text-light">
+            <i class="bi bi-gear me-2"></i> Global Settings
+        </a>
+    </div>
+</div>

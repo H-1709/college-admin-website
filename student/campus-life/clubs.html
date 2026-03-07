@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Student Clubs</title>
+
+  <!-- Bootstrap 5.3.x -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Base + Student Styles -->
+  <link rel="stylesheet" href="../../assets/css/base.css">
+  <link rel="stylesheet" href="../../assets/css/student.css">
+</head>
+<body>
+
+  <!-- Header -->
+  <div id="header"></div>
+
+  <div class="container-fluid">
+    <div class="row">
+
+      <!-- Sidebar -->
+      <aside class="col-lg-2 col-md-3 d-none d-md-block p-0">
+        <div id="sidebar-student"></div>
+      </aside>
+
+      <!-- Main Content -->
+      <main class="col-lg-10 col-md-9 ms-sm-auto px-4 py-4">
+
+        <!-- Page Header -->
+        <section class="mb-4">
+          <h1 class="h3 fw-semibold">Student Clubs</h1>
+          <p class="text-muted mb-0">Explore student-run clubs and communities</p>
+        </section>
+
+        <!-- Clubs Grid -->
+        <section class="row g-4">
+
+          <!-- Club Card -->
+          <div class="col-sm-6 col-lg-4">
+            <div class="card h-100 shadow-sm">
+              <div class="card-body">
+                <h5 class="card-title">Coding Club</h5>
+                <p class="card-text text-muted">
+                  Focused on competitive programming, hackathons, and problem-solving sessions.
+                </p>
+              </div>
+              <div class="card-footer bg-white">
+                <span class="badge bg-primary">Technical</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Club Card -->
+          <div class="col-sm-6 col-lg-4">
+            <div class="card h-100 shadow-sm">
+              <div class="card-body">
+                <h5 class="card-title">Cultural Club</h5>
+                <p class="card-text text-muted">
+                  Organizes dance, music, drama, and cultural festivals across campus.
+                </p>
+              </div>
+              <div class="card-footer bg-white">
+                <span class="badge bg-success">Cultural</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Club Card -->
+          <div class="col-sm-6 col-lg-4">
+            <div class="card h-100 shadow-sm">
+              <div class="card-body">
+                <h5 class="card-title">Sports Club</h5>
+                <p class="card-text text-muted">
+                  Manages inter-college sports events and regular practice sessions.
+                </p>
+              </div>
+              <div class="card-footer bg-white">
+                <span class="badge bg-warning text-dark">Sports</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Club Card -->
+          <div class="col-sm-6 col-lg-4">
+            <div class="card h-100 shadow-sm">
+              <div class="card-body">
+                <h5 class="card-title">Entrepreneurship Cell</h5>
+                <p class="card-text text-muted">
+                  Encourages startup culture through workshops, talks, and mentoring.
+                </p>
+              </div>
+              <div class="card-footer bg-white">
+                <span class="badge bg-info text-dark">Professional</span>
+              </div>
+            </div>
+          </div>
+
+        </section>
+
+      </main>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div id="footer"></div>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Layout Includes -->
+  <script src="../../assets/js/utils/include.js"></script>
+  <script>
+    includeHTML("header", "../../layouts/header.html");
+    includeHTML("sidebar-student", "../../layouts/sidebar-student.html");
+    includeHTML("footer", "../../layouts/footer.html");
+  </script>
+
+</body>
+</html>

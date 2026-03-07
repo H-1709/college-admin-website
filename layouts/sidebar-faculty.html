@@ -1,74 +1,85 @@
-<aside role="navigation" aria-label="Faculty Sidebar">
 
-  <!-- Sidebar Header -->
-  <div class="sidebar-header">
-    <span>Faculty Panel</span>
+
+
+<!-- Faculty Sidebar -->
+<aside id="sidebar" class="sidebar">
+
+  <!-- Logo / Header -->
+  <div class="sidebar-header d-flex align-items-center gap-3">
+    <div class="bg-primary rounded-3 d-flex align-items-center justify-content-center"
+        style="width:44px;height:44px;font-size:22px;">
+      👨‍🏫
+    </div>
+    <div>
+      <div class="fw-bold">Campus</div>
+      <small class="text-light opacity-75">Faculty Portal</small>
+    </div>
   </div>
 
-  <!-- Main Navigation -->
-  <nav>
-    <ul>
+  <!-- Navigation -->
+  <nav class="sidebar-nav">
 
-      <!-- Dashboard -->
-      <li>
-        <a href="../faculty/dashboard.html">
-          Dashboard
-        </a>
-      </li>
+    <small class="text-uppercase text-secondary ps-3">Main</small>
 
-      <!-- Classrooms -->
-      <li>
-        <span>Classrooms</span>
-        <ul>
-          <li>
-            <a href="../faculty/classrooms/attendance.html">
-              Attendance
-            </a>
-          </li>
-          <li>
-            <a href="../faculty/classrooms/resources.html">
-              Resources
-            </a>
-          </li>
-        </ul>
-      </li>
+  <a href="/faculty/dashboard.html" data-bs-toggle="tooltip" data-bs-placement="right" title="Dashboard">
+  <i class="bi bi-speedometer2"></i> <span>Dashboard</span>
+</a>
 
-      <!-- Grading -->
-      <li>
-        <a href="../faculty/grading/grading-hub.html">
-          Grading Hub
-        </a>
-      </li>
+    <small class="text-uppercase text-secondary ps-3 mt-3 d-block">Teaching</small>
 
-      <!-- Announcements -->
-      <li>
-        <a href="../faculty/announcements.html">
-          Announcements
-        </a>
-      </li>
+    <a href="/faculty/classrooms/attendance.html" data-bs-toggle="tooltip" data-bs-placement="right" title="Attendance">
+      <i class="bi bi-people"></i> <span>Attendance</span>
+    </a>
 
-      <!-- Planner -->
-      <li>
-        <a href="../faculty/planner/faculty-planner.html">
-          Planner
-        </a>
-      </li>
+    <a href="/faculty/classrooms/resources.html" data-bs-toggle="tooltip" data-bs-placement="right" title="Resources">
+      <i class="bi bi-folder"></i> <span>Resources</span>
+    </a>
 
-      <!-- Student Connect -->
-      <li>
-        <a href="../faculty/student-connect.html">
-          Student Connect
-        </a>
-      </li>
+    <a href="/faculty/grading/grading-hub.html" data-bs-toggle="tooltip" data-bs-placement="right" title="Grading Hub">
+      <i class="bi bi-pencil-square"></i> <span>Grading Hub</span>
+      <span class="ms-auto badge bg-danger rounded-pill">12</span>
+    </a>
 
-      <!-- Profile -->
-      <li>
-        <a href="../faculty/profile.html">
-          Profile
-        </a>
-      </li>
+    <small class="text-uppercase text-secondary ps-3 mt-3 d-block">Communication</small>
 
-    </ul>
+    <a href="/faculty/announcements.html" data-bs-toggle="tooltip" data-bs-placement="right" title="Announcements">
+      <i class="bi bi-bell"></i> <span>Announcements</span>
+    </a>
+
+    <a href="/faculty/student-connect.html" data-bs-toggle="tooltip" data-bs-placement="right" title="Student Connect">
+      <i class="bi bi-chat-dots"></i> <span>Student Connect</span>
+      <span class="ms-auto badge bg-danger rounded-pill">5</span>
+    </a>
+
+    <small class="text-uppercase text-secondary ps-3 mt-3 d-block">Planning</small>
+
+    <a href="/faculty/planner/faculty-planner.html" data-bs-toggle="tooltip" data-bs-placement="right" title="My Planner">
+      <i class="bi bi-calendar3"></i> <span>My Planner</span>
+    </a>
+
+    <small class="text-uppercase text-secondary ps-3 mt-3 d-block">Account</small>
+
+    <a href="/faculty/profile.html" data-bs-toggle="tooltip" data-bs-placement="right" title="Profile">
+      <i class="bi bi-person"></i> <span>Profile</span>
+    </a>
+
   </nav>
-
 </aside>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+  const currentPage = window.location.pathname.split("/").pop();
+  const links = document.querySelectorAll(".sidebar-nav a");
+
+  links.forEach(link => {
+
+    const linkPage = link.getAttribute("href").split("/").pop();
+
+    if (currentPage === linkPage) {
+      link.classList.add("active");
+    }
+
+  });
+
+});
+</script>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Finance Analytics - UniPortal</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../assets/css/base.css">
+    <link rel="stylesheet" href="../../assets/css/layout.css">
+</head>
+<body>
+    <div class="d-flex" id="wrapper">
+        <div id="sidebar-container"></div>
+        <div id="page-content-wrapper">
+            <div id="header-container"></div>
+            <div class="container-fluid px-4 py-4">
+                <h3 class="mb-4">Finance & Revenue Analytics</h3>
+                
+                <div class="row g-4 mb-4">
+                    <div class="col-md-6">
+                        <div class="card border-0 shadow-sm p-4">
+                            <h6>Total Fees Collected (2026)</h6>
+                            <h2 class="text-success">$2.4M</h2>
+                            <div class="progress" style="height: 10px;">
+                                <div class="progress-bar bg-success" style="width: 85%"></div>
+                            </div>
+                            <small class="text-muted">85% of target reached</small>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card border-0 shadow-sm p-4">
+                            <h6>Outstanding Dues</h6>
+                            <h2 class="text-danger">$420K</h2>
+                            <div class="progress" style="height: 10px;">
+                                <div class="progress-bar bg-danger" style="width: 15%"></div>
+                            </div>
+                            <small class="text-muted">Includes 120 students in Semester 8</small>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card border-0 shadow-sm">
+                    <div class="card-header bg-white">Recent Transactions</div>
+                    <div class="table-responsive">
+                        <table class="table align-middle">
+                            <thead class="table-light">
+                                <tr>
+                                    <th>Ref ID</th>
+                                    <th>Student</th>
+                                    <th>Amount</th>
+                                    <th>Method</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>#TXN-9021</td>
+                                    <td>Alice Thompson</td>
+                                    <td>$4,500</td>
+                                    <td>Credit Card</td>
+                                    <td><span class="badge bg-success">Paid</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../../utils/helpers.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", async function() {
+            await loadComponent("sidebar-container", "../../layouts/sidebar-admin.html");
+            await loadComponent("header-container", "../../layouts/header.html");
+        });
+    </script>
+</body>
+</html>

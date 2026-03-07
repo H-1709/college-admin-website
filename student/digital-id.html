@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Digital ID - UniPortal</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/base.css">
+    <link rel="stylesheet" href="../assets/css/layout.css">
+    <style>
+        .id-card {
+            max-width: 400px;
+            border-radius: 15px;
+            overflow: hidden;
+            border: none;
+            background: linear-gradient(135deg, #ffffff 0%, #e9ecef 100%);
+        }
+        .id-card-header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        .profile-img-lg {
+            width: 120px;
+            height: 120px;
+            object-fit: cover;
+            border: 4px solid white;
+            margin-top: -60px;
+        }
+        .qr-placeholder {
+            width: 100px;
+            height: 100px;
+            background-color: #eee;
+            margin: 0 auto;
+            border: 1px solid #ccc;
+        }
+    </style>
+</head>
+<body>
+    <div class="d-flex" id="wrapper">
+        <div id="sidebar-container"></div>
+        <div id="page-content-wrapper">
+            <div id="header-container"></div>
+
+            <div class="container-fluid px-4 py-5 d-flex flex-column align-items-center">
+                <h2 class="mb-4">Digital Identity</h2>
+                
+                <div class="card id-card shadow-lg text-center">
+                    <div class="id-card-header">
+                        <h4 class="mb-0">UNIVERSITY OF TECHNOLOGY</h4>
+                        <small>Official Student Identity</small>
+                    </div>
+                    <div class="card-body">
+                        <img src="https://via.placeholder.com/150" class="rounded-circle profile-img-lg shadow-sm mb-3">
+                        <h4 class="fw-bold mb-1">Johnathan Doe</h4>
+                        <p class="text-muted mb-3">B.Tech - Computer Science</p>
+                        
+                        <div class="row text-start bg-white p-3 rounded-3 mb-3 border">
+                            <div class="col-6 mb-2">
+                                <small class="text-muted d-block">Student ID</small>
+                                <strong>STU-2024-001</strong>
+                            </div>
+                            <div class="col-6 mb-2">
+                                <small class="text-muted d-block">Batch</small>
+                                <strong>2024-2028</strong>
+                            </div>
+                            <div class="col-6">
+                                <small class="text-muted d-block">Blood Group</small>
+                                <strong>O+ Positive</strong>
+                            </div>
+                            <div class="col-6">
+                                <small class="text-muted d-block">Validity</small>
+                                <strong>June 2028</strong>
+                            </div>
+                        </div>
+
+                        <div class="qr-placeholder mb-2 d-flex align-items-center justify-content-center">
+                            <i class="bi bi-qr-code fs-1"></i>
+                        </div>
+                        <small class="text-muted">Scan at Library or Cafeteria</small>
+                    </div>
+                </div>
+                
+                <button class="btn btn-outline-dark mt-4" onclick="window.print()">
+                    <i class="bi bi-printer me-2"></i> Print Temporary ID
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../utils/helpers.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", async function() {
+            await loadComponent("sidebar-container", "../layouts/sidebar-student.html");
+            await loadComponent("header-container", "../layouts/header.html");
+        });
+    </script>
+</body>
+</html>

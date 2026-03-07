@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Super Admin - UniPortal</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../assets/css/base.css">
+    <link rel="stylesheet" href="../../assets/css/layout.css">
+</head>
+<body>
+
+    <div class="d-flex" id="wrapper">
+        <div id="sidebar-container"></div>
+
+        <div id="page-content-wrapper">
+            <div id="header-container"></div>
+
+            <div class="container-fluid px-4 py-4">
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <h2>System Control Center</h2>
+                    <span class="badge bg-success p-2"><i class="bi bi-check-circle"></i> Systems Operational</span>
+                </div>
+
+                <div class="row g-3 mb-4">
+                    <div class="col-md-3">
+                        <div class="card bg-dark text-white shadow-sm h-100">
+                            <div class="card-body text-center">
+                                <h6 class="text-uppercase small opacity-75">CPU Usage</h6>
+                                <h2 class="mb-0">24%</h2>
+                                <div class="progress mt-2" style="height: 4px;">
+                                    <div class="progress-bar bg-info" style="width: 24%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card bg-dark text-white shadow-sm h-100">
+                            <div class="card-body text-center">
+                                <h6 class="text-uppercase small opacity-75">Memory</h6>
+                                <h2 class="mb-0">4.2 GB</h2>
+                                <div class="progress mt-2" style="height: 4px;">
+                                    <div class="progress-bar bg-warning" style="width: 60%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card bg-dark text-white shadow-sm h-100">
+                            <div class="card-body text-center">
+                                <h6 class="text-uppercase small opacity-75">Active Sessions</h6>
+                                <h2 class="mb-0">1,402</h2>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card bg-dark text-white shadow-sm h-100">
+                            <div class="card-body text-center">
+                                <h6 class="text-uppercase small opacity-75">DB Uptime</h6>
+                                <h2 class="mb-0">99.9%</h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row g-4">
+                    <div class="col-lg-8">
+                        <div class="card border-0 shadow-sm">
+                            <div class="card-header bg-white py-3">
+                                <h5 class="mb-0">Critical Audit Logs</h5>
+                            </div>
+                            <div class="card-body p-0">
+                                <div class="table-responsive">
+                                    <table class="table table-hover mb-0 align-middle">
+                                        <thead class="table-light">
+                                            <tr>
+                                                <th>Timestamp</th>
+                                                <th>User</th>
+                                                <th>Action</th>
+                                                <th>Status</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="auditLogsBody">
+                                            </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4">
+                        <div class="card border-0 shadow-sm">
+                            <div class="card-header bg-white py-3">
+                                <h5 class="mb-0">System Actions</h5>
+                            </div>
+                            <div class="card-body">
+                                <button class="btn btn-outline-danger w-100 mb-2 text-start">
+                                    <i class="bi bi-arrow-repeat me-2"></i> Restart Application Server
+                                </button>
+                                <button class="btn btn-outline-warning w-100 mb-2 text-start">
+                                    <i class="bi bi-database me-2"></i> Backup Database Now
+                                </button>
+                                <button class="btn btn-outline-primary w-100 mb-2 text-start">
+                                    <i class="bi bi-envelope me-2"></i> Broadcast Global Alert
+                                </button>
+                                <button class="btn btn-outline-secondary w-100 text-start">
+                                    <i class="bi bi-shield-check me-2"></i> Run Security Scan
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../../utils/helpers.js"></script>
+    <script src="../../assets/js/admin.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", async function() {
+            await loadComponent("sidebar-container", "../../layouts/sidebar-admin.html");
+            await loadComponent("header-container", "../../layouts/header.html");
+            
+            const toggleBtn = document.getElementById("sidebarToggle");
+            if(toggleBtn) {
+                toggleBtn.addEventListener('click', () => document.getElementById("wrapper").classList.toggle("toggled"));
+            }
+        });
+    </script>
+</body>
+</html>

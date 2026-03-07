@@ -1,36 +1,74 @@
-<header>
-  <nav role="navigation" aria-label="Main Navigation">
+<!-- Top Header -->
+<header class="top-header d-flex align-items-center justify-content-between">
 
-    <!-- Left: Branding -->
-    <div class="nav-left">
-      <a href="/" class="brand">
-        <img src="../assets/images/logo/college-logo.png" alt="College Logo">
-        <span>College Admin Portal</span>
-      </a>
+  <!-- LEFT -->
+  <div class="d-flex align-items-center gap-3">
+
+    <!-- Hamburger -->
+  
+
+    <button id="menuToggle" class="btn btn-light d-lg-none">
+      <i class="bi bi-list fs-4"></i>
+</button>
+<button id="collapseSidebarBtn" class="btn btn-light d-none d-lg-inline-flex">
+<i class="bi bi-layout-sidebar"></i>
+</button>
+
+    <!-- Search -->
+    <div class="d-none d-md-block" style="width:320px;">
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Search students, courses..."
+      />
+    </div>
+  </div>
+
+  <!-- RIGHT -->
+  <div class="d-flex align-items-center gap-3">
+
+    <div class="position-relative">
+      <i class="bi bi-bell fs-5"></i>
+      <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+        7
+      </span>
     </div>
 
-    <!-- Right: Actions -->
-    <div class="nav-right">
-
-      <!-- Notifications -->
-      <button type="button" aria-label="Notifications">
-        <span>Notifications</span>
-      </button>
-
-      <!-- User Menu -->
-      <div class="user-menu">
-        <button type="button" aria-haspopup="true">
-          <img src="../assets/images/ui/user-avatar.png" alt="User Avatar">
-          <span>User Name</span>
-        </button>
-
-        <ul role="menu">
-          <li role="menuitem"><a href="#">Profile</a></li>
-          <li role="menuitem"><a href="../public/login.html">Logout</a></li>
-        </ul>
-      </div>
-
+    <div class="position-relative">
+      <i class="bi bi-envelope fs-5"></i>
+      <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+        3
+      </span>
     </div>
 
-  </nav>
+  </div>
 </header>
+
+<script>
+
+document.addEventListener("click", function(e){
+
+  /* MOBILE SIDEBAR */
+  if(e.target.closest("#menuToggle")){
+    const sidebar = document.querySelector("#sidebar");
+
+    if(sidebar){
+      sidebar.classList.toggle("show");
+    }
+  }
+
+  /* COLLAPSE SIDEBAR */
+  if(e.target.closest("#collapseSidebarBtn")){
+
+    const sidebar = document.querySelector("#sidebar");
+
+    if(!sidebar) return;
+
+    sidebar.classList.toggle("collapsed");
+    document.body.classList.toggle("sidebar-collapsed");
+
+  }
+
+});
+
+</script>

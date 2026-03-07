@@ -1,0 +1,202 @@
+/* ================= DASHBOARD CARDS ================= */
+
+.stat-card {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 6px 18px rgba(15, 23, 42, 0.06);
+  border-top: 3px solid transparent;
+  height: 100%;
+}
+
+.stat-card.purple {
+  border-top-color: #6366f1;
+}
+
+.stat-card.green {
+  border-top-color: #10b981;
+}
+
+.stat-card.orange {
+  border-top-color: #f59e0b;
+}
+
+.stat-value {
+  font-size: 28px;
+  font-weight: 700;
+  margin-top: 6px;
+}
+
+.stat-label {
+  color: #64748b;
+  font-size: 13px;
+}
+
+/* ================= CHART CARDS ================= */
+
+.chart-card {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 18px 20px 14px;
+  box-shadow: 0 6px 18px rgba(15, 23, 42, 0.05);
+}
+
+.chart-card canvas {
+  height: 260px !important;
+}
+
+/* ================= COURSE CARDS ================= */
+
+.course-card {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 18px;
+  box-shadow: 0 6px 18px rgba(15, 23, 42, 0.05);
+  border-left: 4px solid #3b82f6;
+  height: 100%;
+}
+
+.course-meta {
+  color: #64748b;
+  font-size: 13px;
+}
+
+.course-stats {
+  display: flex;
+  justify-content: space-between;
+  margin: 16px 0;
+}
+
+.course-stat-value {
+  font-weight: 700;
+  font-size: 18px;
+}
+
+.course-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.btn-course {
+  flex: 1;
+  border-radius: 10px;
+  font-size: 13px;
+  padding: 7px 10px;
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media (max-width: 768px) {
+
+  .stat-card {
+    padding: 16px;
+  }
+
+  .chart-card canvas {
+    height: 220px !important;
+  }
+
+  .course-stats {
+    flex-direction: column;
+    gap: 10px;
+  }
+}
+
+/* ===== Chat bubbles ===== */
+
+.msg {
+  max-width: 70%;
+  padding: 8px 12px;
+  border-radius: 12px;
+  font-size: 14px;
+}
+
+.msg-in {
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+}
+
+.msg-out {
+  background: #2563eb;
+  color: white;
+  margin-left: auto;
+}
+
+.summary-card:hover{
+transform: translateY(-4px);
+transition: 0.2s ease;
+}
+.summary-card {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 18px;
+  box-shadow: 0 6px 18px rgba(15, 23, 42, 0.05);
+  border-left: 4px solid #3b82f6;
+}
+.card:hover{
+  transform: translateY(-3px);
+  transition: 0.2s ease;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.06);
+}
+.card {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 18px;
+  box-shadow: 0 6px 18px rgba(15, 23, 42, 0.05);
+}
+
+.grade-chart-container{
+max-width:420px;
+margin:auto;
+}
+
+.grade-chart-container canvas{
+height:260px !important;
+}
+.grade-chart-container{
+max-width:420px;
+margin:auto;
+padding:20px;
+}
+
+.resource-meta i{
+margin-right:4px;
+opacity:0.8;
+}
+
+.resource-icon{
+width:20px;
+text-align:center;
+}
+
+.planner-grid{
+display:grid;
+grid-template-columns:repeat(7,1fr);
+gap:16px;
+}
+
+.planner-day{
+background:white;
+border-radius:14px;
+padding:16px;
+box-shadow:0 6px 16px rgba(0,0,0,0.05);
+min-height:160px;
+}
+
+.planner-day h6{
+font-weight:600;
+margin-bottom:10px;
+}
+
+.task{
+font-size:13px;
+background:#eef2ff;
+padding:6px 10px;
+border-radius:8px;
+margin-bottom:6px;
+display:block;
+}
+
+.task{
+cursor:grab;
+}

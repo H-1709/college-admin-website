@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Student Connect</title>
+
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+
+
+  <!-- Global CSS -->
+  <link rel="stylesheet" href="../assets/css/base.css" />
+  <link rel="stylesheet" href="../assets/css/layout.css" />
+  <link rel="stylesheet" href="../assets/css/faculty.css" />
+
+  <style>
+    /* ===== Chat bubbles ===== */
+    .msg {
+      max-width: 70%;
+      padding: 8px 12px;
+      border-radius: 12px;
+      font-size: 14px;
+      margin-bottom: 8px;
+    }
+
+    .msg-in {
+      background: #ffffff;
+      border: 1px solid #e5e7eb;
+    }
+
+    .msg-out {
+      background: #2563eb;
+      color: white;
+      margin-left: auto;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ================= SIDEBAR ================= -->
+  <div id="sidebarContainer"></div>
+
+  <!-- ================= MAIN CONTENT ================= -->
+  <div class="main-content">
+
+    <!-- Header -->
+    <div id="headerContainer"></div>
+
+    <!-- ================= PAGE BODY ================= -->
+    <main class="container-fluid py-4">
+
+      <div class="mb-4">
+        <h2 class="fw-bold mb-1">Student Connect</h2>
+        <p class="text-muted mb-0">Communicate with your students</p>
+      </div>
+
+      <!-- Students Table -->
+      <div class="card border-0 shadow-sm">
+        <div class="table-responsive">
+          <table class="table table-hover align-middle mb-0">
+            <thead class="table-light">
+              <tr>
+                <th>Student</th>
+                <th>Email</th>
+                <th width="140">Action</th>
+              </tr>
+            </thead>
+
+            <tbody id="studentTableBody">
+
+              <tr>
+                <td class="fw-semibold">Aarav Patel</td>
+                <td>aarav@college.edu</td>
+                <td>
+                  <button class="btn btn-primary btn-sm message-btn">
+                    Message
+                  </button>
+                </td>
+              </tr>
+
+              <tr>
+                <td class="fw-semibold">Riya Shah</td>
+                <td>riya@college.edu</td>
+                <td>
+                  <button class="btn btn-primary btn-sm message-btn">
+                    Message
+                  </button>
+                </td>
+              </tr>
+
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </main>
+
+    <!-- Footer -->
+    <div id="footerContainer"></div>
+
+  </div>
+
+  <!-- ================= CHAT MODAL ================= -->
+  <div class="modal fade" id="chatModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+      <div class="modal-content">
+
+        <div class="modal-header">
+          <h5 class="modal-title">
+            Chat with <span id="chatStudentName">Student</span>
+          </h5>
+          <button class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+
+        <div class="modal-body d-flex flex-column" style="height: 420px;">
+
+          <!-- Messages -->
+          <div id="chatMessages"
+               class="flex-grow-1 border rounded p-3 mb-3"
+               style="overflow-y:auto; background:#f8fafc;">
+
+            <div class="msg msg-in">Hello sir 👋</div>
+
+          </div>
+
+          <!-- Input -->
+          <div class="input-group">
+            <input
+              type="text"
+              id="chatInput"
+              class="form-control"
+              placeholder="Type a message..."
+              aria-label="Type a message"
+            >
+            <button id="sendChatBtn" class="btn btn-primary">
+              Send
+            </button>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= LOAD PARTIALS ================= -->
+  <script>
+    
+async function loadComponent(id, file) {
+  try {
+    const res = await fetch(file);
+    const html = await res.text();
+    document.getElementById(id).innerHTML = html;
+
+    // 🔹 highlight active sidebar link AFTER sidebar loads
+    if (id === "sidebarContainer") {
+
+      const currentPage = window.location.pathname.split("/").pop();
+      const links = document.querySelectorAll(".sidebar-nav a");
+
+      links.forEach(link => {
+
+        const linkPage = link.getAttribute("href").split("/").pop();
+
+        if (currentPage === linkPage) {
+          link.classList.add("active");
+        }
+
+      });
+
+    }
+
+  } catch (e) {
+    console.error("Component load error:", file);
+  }
+}
+
+loadComponent('sidebarContainer','../../layouts/sidebar-faculty.html');
+loadComponent('headerContainer','../../layouts/header.html');
+loadComponent('footerContainer','../../layouts/footer.html');
+
+
+
+/* ✅ HAMBURGER SIDEBAR TOGGLE */
+document.addEventListener("click", function(e) {
+
+  const sidebar = document.querySelector("#sidebar");
+
+  if (!sidebar) return;
+
+  /* MOBILE MENU */
+  if (e.target.closest("#menuToggle")) {
+    sidebar.classList.toggle("show");
+  }
+
+  /* COLLAPSE SIDEBAR */
+  if (e.target.closest("#collapseSidebarBtn")) {
+    sidebar.classList.toggle("collapsed");
+    document.body.classList.toggle("sidebar-collapsed");
+  }
+
+});
+
+    /* ================= PERMISSION MOCK ================= */
+    const facultyPermissions = {
+      messaging: { create: true }
+    };
+
+    if (!facultyPermissions.messaging.create) {
+      document.querySelectorAll('.message-btn')
+        .forEach(btn => btn.disabled = true);
+    }
+
+    /* ================= CHAT MODAL LOGIC ================= */
+    const chatModal = new bootstrap.Modal(document.getElementById('chatModal'));
+
+    document.addEventListener('click', function (e) {
+      const btn = e.target.closest('.message-btn');
+      if (!btn) return;
+
+      const row = btn.closest('tr');
+      const studentName = row.children[0].innerText;
+
+      document.getElementById('chatStudentName').textContent = studentName;
+
+      const box = document.getElementById('chatMessages');
+      box.scrollTop = box.scrollHeight;
+
+      chatModal.show();
+    });
+
+    /* ================= SEND MESSAGE ================= */
+    document.getElementById('sendChatBtn').addEventListener('click', sendMessage);
+    document.getElementById('chatInput').addEventListener('keypress', e => {
+      if (e.key === 'Enter') sendMessage();
+    });
+
+    function sendMessage() {
+      const input = document.getElementById('chatInput');
+      const text = input.value.trim();
+      if (!text) return;
+
+      const box = document.getElementById('chatMessages');
+
+      const div = document.createElement('div');
+      div.className = 'msg msg-out';
+      div.textContent = text;
+
+      box.appendChild(div);
+      input.value = '';
+      box.scrollTop = box.scrollHeight;
+
+      // 🔌 future API call here
+    }
+  </script>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <title>Faculty Planner</title>
+
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+
+
+  <!-- Your CSS -->
+  <link rel="stylesheet" href="/assets/css/base.css">
+  <link rel="stylesheet" href="/assets/css/layout.css">
+  <link rel="stylesheet" href="/assets/css/faculty.css">
+</head>
+
+<body>
+
+  <div id="sidebarContainer"></div>
+
+  <main class="main-content">
+
+    <div id="headerContainer"></div>
+
+    <div class="container-fluid py-4">
+
+      <!-- Page Header -->
+      <div class="d-flex justify-content-between align-items-center mb-4 flex-wrap gap-2">
+        <div>
+          <h2 class="fw-bold mb-1">My Planner</h2>
+          <p class="text-muted mb-0">Manage your weekly teaching plan</p>
+        </div>
+
+        <button class="btn btn-primary">
+          + Add Task
+        </button>
+      </div>
+      <div class="btn-group mb-4">
+<button class="btn btn-primary">Week</button>
+<button class="btn btn-outline-secondary">Month</button>
+</div>
+
+<span class="task"><i class="bi bi-grip-vertical"></i> ML Lab — 2:00 PM</span>
+
+      <!-- Planner Cards -->
+      <div class="planner-grid">
+<div class="planner-day">
+<h6>Monday</h6>
+<span class="task">DSA Lecture - 9:00 AM</span>
+<span class="task">ML Lab - 2:00 PM</span>
+</div>
+
+<div class="planner-day">
+<h6>Tuesday</h6>
+<span class="task">Web Dev Lecture - 11:00 AM</span>
+</div>
+
+<div class="planner-day">
+<h6>Wednesday</h6>
+</div>
+
+<div class="planner-day">
+<h6>Thursday</h6>
+</div>
+
+<div class="planner-day">
+<h6>Friday</h6>
+</div>
+
+<div class="planner-day">
+<h6>Saturday</h6>
+</div>
+
+<div class="planner-day">
+<h6>Sunday</h6>
+</div>
+
+        
+
+      </div>
+
+    </div>
+
+    <div id="footerContainer"></div>
+
+  </main>
+
+  <script>
+    
+async function loadComponent(id, file) {
+  try {
+    const res = await fetch(file);
+    const html = await res.text();
+    document.getElementById(id).innerHTML = html;
+
+    // 🔹 highlight active sidebar link AFTER sidebar loads
+    if (id === "sidebarContainer") {
+
+      const currentPage = window.location.pathname.split("/").pop();
+      const links = document.querySelectorAll(".sidebar-nav a");
+
+      links.forEach(link => {
+
+        const linkPage = link.getAttribute("href").split("/").pop();
+
+        if (currentPage === linkPage) {
+          link.classList.add("active");
+        }
+
+      });
+
+    }
+
+  } catch (e) {
+    console.error("Component load error:", file);
+  }
+}
+
+loadComponent('sidebarContainer','../../layouts/sidebar-faculty.html');
+loadComponent('headerContainer','../../layouts/header.html');
+loadComponent('footerContainer','../../layouts/footer.html');
+
+
+
+/* ✅ HAMBURGER SIDEBAR TOGGLE */
+document.addEventListener("click", function(e) {
+
+  const sidebar = document.querySelector("#sidebar");
+
+  if (!sidebar) return;
+
+  /* MOBILE MENU */
+  if (e.target.closest("#menuToggle")) {
+    sidebar.classList.toggle("show");
+  }
+
+  /* COLLAPSE SIDEBAR */
+  if (e.target.closest("#collapseSidebarBtn")) {
+    sidebar.classList.toggle("collapsed");
+    document.body.classList.toggle("sidebar-collapsed");
+  }
+
+});
+  </script>
+
+</body>
+</html>
