@@ -40,53 +40,67 @@
         <!-- GPA CARDS -->
 
         <div class="row g-4 mb-4">
-          <div class="col-lg-4">
+          <!-- GPA -->
+
+          <div class="col-lg-4 col-md-6">
             <div class="card shadow-sm border-0 result-card">
               <div class="card-body">
-                <div class="d-flex justify-content-between align-items-center">
-                  <div>
-                    <p class="text-muted mb-1">Current GPA</p>
-                    <h2 class="fw-bold text-success">8.4</h2>
+                <div class="d-flex align-items-center mb-2">
+                  <div class="result-icon bg-warning-subtle text-warning">
+                    <i class="bi bi-trophy-fill"></i>
                   </div>
 
-                  <i class="bi bi-trophy-fill text-warning fs-2"></i>
+                  <div class="ms-3">
+                    <p class="text-muted mb-0 small">Current GPA</p>
+                    <h2 class="fw-bold mb-0 text-success">8.4</h2>
+                  </div>
                 </div>
 
-                <p class="small text-muted mt-2">Semester 4</p>
+                <p class="small text-success mb-0">
+                  ⬆ +0.3 improvement from last semester
+                </p>
               </div>
             </div>
           </div>
 
-          <div class="col-lg-4">
+          <!-- Credits -->
+
+          <div class="col-lg-4 col-md-6">
             <div class="card shadow-sm border-0 result-card">
               <div class="card-body">
-                <div class="d-flex justify-content-between align-items-center">
-                  <div>
-                    <p class="text-muted mb-1">Total Credits</p>
-                    <h2 class="fw-bold">22</h2>
+                <div class="d-flex align-items-center mb-2">
+                  <div class="result-icon bg-primary-subtle text-primary">
+                    <i class="bi bi-journal-bookmark"></i>
                   </div>
 
-                  <i class="bi bi-journal-bookmark text-primary fs-2"></i>
+                  <div class="ms-3">
+                    <p class="text-muted mb-0 small">Total Credits</p>
+                    <h2 class="fw-bold mb-0">22</h2>
+                  </div>
                 </div>
 
-                <p class="small text-muted mt-2">This semester</p>
+                <p class="small text-muted mb-0">This semester</p>
               </div>
             </div>
           </div>
 
-          <div class="col-lg-4">
+          <!-- Rank -->
+
+          <div class="col-lg-4 col-md-6">
             <div class="card shadow-sm border-0 result-card">
               <div class="card-body">
-                <div class="d-flex justify-content-between align-items-center">
-                  <div>
-                    <p class="text-muted mb-1">Class Rank</p>
-                    <h2 class="fw-bold text-primary">12</h2>
+                <div class="d-flex align-items-center mb-2">
+                  <div class="result-icon bg-success-subtle text-success">
+                    <i class="bi bi-bar-chart-fill"></i>
                   </div>
 
-                  <i class="bi bi-bar-chart-fill text-success fs-2"></i>
+                  <div class="ms-3">
+                    <p class="text-muted mb-0 small">Class Rank</p>
+                    <h2 class="fw-bold mb-0 text-primary">12</h2>
+                  </div>
                 </div>
 
-                <p class="small text-muted mt-2">Out of 120 students</p>
+                <p class="small text-muted mb-0">Out of 120 students</p>
               </div>
             </div>
           </div>
@@ -96,13 +110,19 @@
 
         <div class="card shadow-sm border-0 mb-4">
           <div class="card-body">
-            <h5 class="fw-bold mb-3">Subject Grades</h5>
+            <div class="d-flex justify-content-between align-items-center mb-3">
+              <h5 class="fw-bold mb-0">Subject Grades</h5>
+
+              <button class="btn btn-sm btn-outline-primary">
+                <i class="bi bi-download"></i> Download Marksheet
+              </button>
+            </div>
 
             <div class="table-responsive">
-              <table class="table align-middle">
+              <table class="table align-middle text-center">
                 <thead>
                   <tr>
-                    <th>Subject</th>
+                    <th class="text-start">Subject</th>
                     <th>Credits</th>
                     <th>Marks</th>
                     <th>Grade</th>
@@ -112,7 +132,7 @@
 
                 <tbody>
                   <tr>
-                    <td>Data Structures</td>
+                    <td class="text-start">Data Structures</td>
                     <td>4</td>
                     <td>88</td>
 
@@ -121,12 +141,12 @@
                     </td>
 
                     <td>
-                      <span class="text-success fw-semibold"> Passed </span>
+                      <span class="text-success fw-semibold">Passed</span>
                     </td>
                   </tr>
 
                   <tr>
-                    <td>Machine Learning</td>
+                    <td class="text-start">Machine Learning</td>
                     <td>4</td>
                     <td>82</td>
 
@@ -135,12 +155,12 @@
                     </td>
 
                     <td>
-                      <span class="text-success fw-semibold"> Passed </span>
+                      <span class="text-success fw-semibold">Passed</span>
                     </td>
                   </tr>
 
                   <tr>
-                    <td>Web Development</td>
+                    <td class="text-start">Web Development</td>
                     <td>3</td>
                     <td>74</td>
 
@@ -149,7 +169,7 @@
                     </td>
 
                     <td>
-                      <span class="text-success fw-semibold"> Passed </span>
+                      <span class="text-success fw-semibold">Passed</span>
                     </td>
                   </tr>
                 </tbody>
@@ -192,9 +212,16 @@
               data: [7.5, 7.9, 8.1, 8.4],
 
               borderColor: "#2563eb",
-              backgroundColor: "rgba(37,99,235,0.15)",
-              tension: 0.4,
+
+              backgroundColor: "rgba(37,99,235,0.12)",
+
               fill: true,
+
+              tension: 0.4,
+
+              pointRadius: 5,
+
+              pointBackgroundColor: "#2563eb",
             },
           ],
         },
@@ -203,9 +230,9 @@
           plugins: {
             legend: { display: false },
           },
+
           scales: {
             y: {
-              beginAtZero: false,
               min: 6,
               max: 10,
             },
