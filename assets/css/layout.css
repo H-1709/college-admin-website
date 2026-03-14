@@ -183,3 +183,8 @@ body.sidebar-collapsed .main-content {
   font-size: 13px;
   padding: 6px 10px;
 }
+.tooltip-inner{
+  font-size:13px;
+  padding:6px 10px;
+}
+

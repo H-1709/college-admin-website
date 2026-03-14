@@ -1,35 +1,98 @@
-<div class="bg-dark border-right" id="sidebar-wrapper">
-    <div class="sidebar-heading text-white">
-        <i class="bi bi-mortarboard-fill me-2"></i> Student Portal
+<aside id="sidebar" class="sidebar">
+  <!-- Header -->
+  <div class="sidebar-header d-flex align-items-center gap-3">
+    <div
+      class="bg-primary rounded-3 d-flex align-items-center justify-content-center"
+      style="width: 44px; height: 44px; font-size: 22px"
+    >
+      <i class="bi bi-person"></i>
     </div>
-    <div class="list-group list-group-flush">
-        <a href="../student/dashboard.html" class="list-group-item list-group-item-action bg-dark text-light">
-            <i class="bi bi-speedometer2 me-2"></i> Dashboard
-        </a>
-        
-        <a href="#academicsSubmenu" class="list-group-item list-group-item-action bg-dark text-light dropdown-toggle" data-bs-toggle="collapse">
-            <i class="bi bi-book me-2"></i> Academics
-        </a>
-        <div class="collapse" id="academicsSubmenu">
-            <a href="../student/academics/attendance.html" class="list-group-item list-group-item-action bg-dark text-secondary ps-5">Attendance</a>
-            <a href="../student/academics/materials.html" class="list-group-item list-group-item-action bg-dark text-secondary ps-5">Materials</a>
-            <a href="../student/academics/results.html" class="list-group-item list-group-item-action bg-dark text-secondary ps-5">Results</a>
-        </div>
 
-        <a href="../student/timetable/timetable.html" class="list-group-item list-group-item-action bg-dark text-light">
-            <i class="bi bi-calendar-week me-2"></i> Timetable
-        </a>
-
-        <a href="../student/wallet/fees.html" class="list-group-item list-group-item-action bg-dark text-light">
-            <i class="bi bi-wallet2 me-2"></i> Fees & Wallet
-        </a>
-
-        <a href="../student/campus-life/events.html" class="list-group-item list-group-item-action bg-dark text-light">
-            <i class="bi bi-people me-2"></i> Campus Life
-        </a>
-
-        <a href="../student/digital-id.html" class="list-group-item list-group-item-action bg-dark text-light">
-            <i class="bi bi-person-badge me-2"></i> Digital ID
-        </a>
+    <div>
+      <div class="fw-bold">Campus</div>
+      <small class="text-light opacity-75">Student Portal</small>
     </div>
-</div>
+  </div>
+
+  <nav class="sidebar-nav">
+    <!-- MAIN -->
+    <small class="text-uppercase text-secondary ps-3">MAIN</small>
+
+    <a href="/student/dashboard.html" data-bs-toggle="tooltip" data-bs-placement="right" title="Dashboard" class="active">
+      <i class="bi bi-speedometer2"></i>
+      <span>Dashboard</span>
+    </a>
+
+    <!-- ACADEMICS -->
+    <small class="text-uppercase text-secondary ps-3 mt-3 d-block">
+      Academics
+    </small>
+
+    <a href="/student/timetable/timetable.html" data-bs-toggle="tooltip" data-bs-placement="right" title="Timetable">
+      <i class="bi bi-calendar3"></i>
+      <span>Timetable</span>
+    </a>
+
+    <a href="/student/academics/attendance.html" data-bs-toggle="tooltip" data-bs-placement="right" title="Attendance">
+      <i class="bi bi-bar-chart"></i>
+      <span>Attendance</span>
+    </a>
+
+    <a href="/student/academics/materials.html" data-bs-toggle="tooltip" data-bs-placement="right" title="Materials">
+      <i class="bi bi-folder"></i>
+      <span>Materials</span>
+    </a>
+
+    <a href="/student/academics/results.html" data-bs-toggle="tooltip" data-bs-placement="right" title="Results">
+      <i class="bi bi-trophy"></i>
+      <span>Results</span>
+    </a>
+
+    <!-- FINANCE -->
+    <small class="text-uppercase text-secondary ps-3 mt-3 d-block">
+      Finance
+    </small>
+
+    <a href="/student/wallet/fees.html" data-bs-toggle="tooltip" data-bs-placement="right" title="Fees">
+      <i class="bi bi-credit-card"></i>
+      <span>Fees</span>
+    </a>
+
+    <!-- CAMPUS LIFE -->
+    <small class="text-uppercase text-secondary ps-3 mt-3 d-block">
+      Campus Life
+    </small>
+
+    <a href="/student/campus-life/events.html" data-bs-toggle="tooltip" data-bs-placement="right" title="Events">
+      <i class="bi bi-calendar-event"></i>
+      <span>Events</span>
+    </a>
+
+    <a href="/student/campus-life/clubs.html" data-bs-toggle="tooltip" data-bs-placement="right" title="Clubs">
+      <i class="bi bi-people"></i>
+      <span>Clubs</span>
+    </a>
+
+    <a href="/student/campus-life/cafeteria.html" data-bs-toggle="tooltip" data-bs-placement="right" title="Cafeteria">
+      <i class="bi bi-cup-hot"></i>
+      <span>Cafeteria</span>
+    </a>
+
+    <!-- ACCOUNT -->
+    <small class="text-uppercase text-secondary ps-3 mt-3 d-block">
+      Account
+    </small>
+
+    <a href="/student/digital-id.html" data-bs-toggle="tooltip" data-bs-placement="right" title="Digital ID">
+      <i class="bi bi-person-badge" ></i>
+      <span>Digital ID</span>
+    </a>
+
+    <a href="/student/profile.html" data-bs-toggle="tooltip" data-bs-placement="right" title="Profile">
+      <i class="bi bi-person-circle"></i>
+      <span>Profile</span>
+    </a>
+  </nav>
+</aside>
+
+
