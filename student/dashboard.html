@@ -3,7 +3,6 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-
     <title>Student Dashboard</title>
 
     <!-- Bootstrap -->
@@ -12,17 +11,79 @@
       rel="stylesheet"
     />
     <link
-      rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"
+      rel="stylesheet"
     />
 
     <!-- Global CSS -->
     <link rel="stylesheet" href="../assets/css/base.css" />
     <link rel="stylesheet" href="../assets/css/layout.css" />
     <link rel="stylesheet" href="../assets/css/student.css" />
+    <style>
+      /* CARD */
+.card-modern {
+  background: #fff;
+  border-radius: 16px;
+  padding: 16px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.05);
+}
 
-    <!-- Chart.js -->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+/* SCHEDULE ITEMS */
+.schedule-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 12px 14px;
+  border-radius: 12px;
+  margin-bottom: 10px;
+
+  background: #f9fafb;
+}
+
+.schedule-item:last-child {
+  margin-bottom: 0;
+}
+
+/* STATUS COLORS */
+.done {
+  border-left: 4px solid #22c55e;
+}
+
+.now {
+  border-left: 4px solid #3b82f6;
+}
+
+.next {
+  border-left: 4px solid #9ca3af;
+}
+
+/* STATUS TEXT */
+.done-text {
+  color: #16a34a;
+  font-weight: 500;
+}
+
+.now-text {
+  color: #2563eb;
+  font-weight: 500;
+}
+
+.next-text {
+  color: #6b7280;
+  font-weight: 500;
+}
+
+/* ANNOUNCEMENTS */
+.announcement-item {
+  padding: 8px 0;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.announcement-item:last-child {
+  border-bottom: none;
+}
+    </style>
   </head>
 
   <body>
@@ -34,287 +95,160 @@
       <div id="headerContainer"></div>
 
       <main class="container-fluid py-4">
-        <!-- Page Title -->
-        <div class="mb-4">
-          <h2 class="fw-bold">Welcome back, Student</h2>
-          <p class="text-muted mb-0">Here's your academic overview</p>
+        <!-- HEADER -->
+        <div class="d-flex justify-content-between align-items-center mb-4">
+          <div>
+            <h2 class="fw-bold mb-0">Dashboard</h2>
+            <p class="text-muted mb-0">Today • 21 March</p>
+          </div>
+
+          <div class="d-flex gap-2">
+            <button class="btn btn-light btn-sm">
+              <i class="bi bi-calendar3"></i>
+            </button>
+            <button class="btn btn-light btn-sm">
+              <i class="bi bi-bell"></i>
+            </button>
+          </div>
         </div>
 
-        <!-- Stats -->
-        <div class="row g-4">
-          <!-- Attendance -->
-          <div class="col-md-4">
-            <div class="card student-stat stat-green">
-              <div class="stat-icon bg-success">
-                <i class="bi bi-check-circle"></i>
-              </div>
-
+        <!-- TOP CARDS -->
+        <div class="row g-3 mb-4">
+          <div class="col-md-6 col-lg-4">
+            <div class="card-modern d-flex justify-content-between">
               <div>
-                <div class="stat-title">Attendance</div>
-                <div class="stat-value">88%</div>
-                <small class="text-muted">Above class average</small>
+                <div class="card-label">Next Class</div>
+                <div class="card-title">Machine Learning</div>
+                <small class="text-muted">11:00 AM • Room 302</small>
               </div>
+              <button class="btn btn-sm btn-primary">View Notes</button>
             </div>
           </div>
 
-          <!-- Assignments -->
-          <div class="col-md-4">
-            <div class="card student-stat stat-orange">
-              <div class="stat-icon bg-warning">
-                <i class="bi bi-journal-text"></i>
-              </div>
-
+          <div class="col-md-6 col-lg-4">
+            <div class="card-modern d-flex justify-content-between">
               <div>
-                <div class="stat-title">Assignments Due</div>
-                <div class="stat-value">3</div>
-                <small class="text-muted">Next due tomorrow</small>
+                <div class="card-label">Pending Work</div>
+                <div class="card-title">2 Tasks</div>
+                <small class="text-muted">Assignments & submissions</small>
               </div>
+              <button class="btn btn-sm btn-danger">Open</button>
             </div>
           </div>
 
-          <!-- GPA -->
-          <div class="col-md-4">
-            <div class="card student-stat stat-blue">
-              <div class="stat-icon bg-primary">
-                <i class="bi bi-trophy"></i>
-              </div>
-
-              <div>
-                <div class="stat-title">Current GPA</div>
-                <div class="stat-value">8.4</div>
-                <small class="text-muted">Semester 4</small>
-              </div>
+          <div class="col-md-6 col-lg-4">
+            <div class="card-modern">
+              <div class="card-label">Attendance</div>
+              <div class="card-title">88%</div>
+              <small class="text-success">Above class average</small>
             </div>
           </div>
         </div>
 
-        <h4 class="fw-bold mt-5 mb-3">Today's Schedule</h4>
+        <div class="row g-3 align-items-start">
 
-        <div class="row g-4">
-          <div class="col-md-4">
-            <div class="schedule-card">
-              <div class="schedule-time">9:00 AM</div>
-              <div class="schedule-course">Data Structures</div>
-              <small class="text-muted">Lab 204</small>
-            </div>
-          </div>
+  <!-- LEFT SIDE -->
+  <div class="col-lg-8">
 
-          <div class="col-md-4">
-            <div class="schedule-card">
-              <div class="schedule-time">11:00 AM</div>
-              <div class="schedule-course">Machine Learning</div>
-              <small class="text-muted">Room 302</small>
-            </div>
-          </div>
+    <div class="card-modern">
+      <h6 class="fw-bold mb-3">Today's Schedule</h6>
 
-          <div class="col-md-4">
-            <div class="schedule-card">
-              <div class="schedule-time">2:00 PM</div>
-              <div class="schedule-course">Web Development</div>
-              <small class="text-muted">Lab 105</small>
-            </div>
-          </div>
+      <!-- ITEM -->
+      <div class="schedule-item done">
+        <div>
+          <div class="fw-semibold">9:00 AM</div>
+          <div>Data Structures</div>
+          <small class="text-muted">Lab 204</small>
         </div>
+        <span class="status done-text">Done</span>
+      </div>
 
-        <!-- Charts + Schedule -->
-        <div class="row g-4 mt-4">
-          <!-- Attendance Chart -->
-          <div class="col-lg-6">
-            <div class="card shadow-sm border-0 p-3">
-              <h5 class="fw-bold mb-3">Attendance Overview</h5>
-              <canvas id="attendanceChart"></canvas>
-            </div>
-          </div>
-
-          <!-- Today's Classes -->
-          <div class="col-lg-6">
-            <div class="card shadow-sm border-0 p-3">
-              <h5 class="fw-bold mb-3">Today's Classes</h5>
-
-              <table class="table table-hover">
-                <thead>
-                  <tr>
-                    <th>Course</th>
-                    <th>Time</th>
-                    <th>Room</th>
-                  </tr>
-                </thead>
-
-                <tbody>
-                  <tr>
-                    <td>Data Structures</td>
-                    <td>9:00 AM</td>
-                    <td>Lab 204</td>
-                  </tr>
-
-                  <tr>
-                    <td>Machine Learning</td>
-                    <td>11:00 AM</td>
-                    <td>Room 302</td>
-                  </tr>
-
-                  <tr>
-                    <td>Web Development</td>
-                    <td>2:00 PM</td>
-                    <td>Lab 105</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
+      <!-- ITEM -->
+      <div class="schedule-item now">
+        <div>
+          <div class="fw-semibold">11:00 AM</div>
+          <div>Machine Learning</div>
+          <small class="text-muted">Room 302</small>
         </div>
+        <span class="status now-text">Now</span>
+      </div>
 
-        <div class="card shadow-sm border-0 mt-4">
-          <div class="card-body">
-            <div class="d-flex justify-content-between align-items-center mb-3">
-              <h5 class="fw-bold mb-0">Upcoming Deadlines</h5>
-              <a href="#" class="btn btn-sm btn-outline-primary">View All</a>
-            </div>
-
-            <table class="table align-middle">
-              <thead>
-                <tr>
-                  <th>Task</th>
-                  <th>Subject</th>
-                  <th>Due Date</th>
-                  <th>Status</th>
-                </tr>
-              </thead>
-
-              <tbody>
-                <tr>
-                  <td>Assignment 3</td>
-                  <td>Data Structures</td>
-                  <td>Tomorrow</td>
-                  <td><span class="badge bg-warning">Pending</span></td>
-                </tr>
-
-                <tr>
-                  <td>Mini Project</td>
-                  <td>Machine Learning</td>
-                  <td>18 May</td>
-                  <td><span class="badge bg-warning">Pending</span></td>
-                </tr>
-
-                <tr>
-                  <td>Lab Report</td>
-                  <td>Web Development</td>
-                  <td>20 May</td>
-                  <td><span class="badge bg-success">Submitted</span></td>
-                </tr>
-
-                <tr>
-                  <td>Semester Fees</td>
-                  <td>Accounts</td>
-                  <td>25 May</td>
-                  <td><span class="badge bg-danger">Due Soon</span></td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
+      <!-- ITEM -->
+      <div class="schedule-item next">
+        <div>
+          <div class="fw-semibold">2:00 PM</div>
+          <div>Web Development</div>
+          <small class="text-muted">Lab 105</small>
         </div>
+        <span class="status next-text">Next</span>
+      </div>
 
-        <!-- Announcements -->
-        <div class="card shadow-sm border-0 mt-4">
-          <div class="card-body">
-            <div class="d-flex justify-content-between align-items-center mb-3">
-              <h5 class="fw-bold mb-0">Recent Announcements</h5>
-              <a
-                href="../student/campus-life/events.html"
-                class="btn btn-sm btn-outline-primary"
-              >
-                View All
-              </a>
-            </div>
+    </div>
 
-            <ul class="list-group list-group-flush">
-              <li class="list-group-item">
-                <i class="bi bi-bell"></i> Mid semester exams begin from 15th
-                May
-              </li>
+  </div>
 
-              <li class="list-group-item">
-                <i class="bi bi-bell"></i> College fest registrations open
-              </li>
+  <!-- RIGHT SIDE -->
+  <div class="col-lg-4 d-flex flex-column gap-3">
 
-              <li class="list-group-item">
-                <i class="bi bi-bell"></i> Cafeteria menu updated for this week
-              </li>
-            </ul>
-          </div>
-        </div>
+    <!-- ANNOUNCEMENTS -->
+    <div class="card-modern">
+      <div class="d-flex justify-content-between align-items-center mb-3">
+        <h6 class="fw-bold mb-0">Announcements</h6>
+        <button class="btn btn-sm btn-outline-primary">View All</button>
+      </div>
 
-        <h4 class="fw-bold mt-5 mb-3">Quick Access</h4>
+      <div class="announcement-item">
+        <p class="mb-1 fw-semibold">
+          Mid semester exams begin from 15th May
+          <span class="badge bg-danger ms-2">New</span>
+        </p>
+        <small class="text-muted">Faculty • 2h ago</small>
+      </div>
 
-        <div class="row g-4">
-          <div class="col-md-3">
-            <a href="/student/academics/materials.html" class="quick-card">
-              <i class="bi bi-folder"></i>
-              Materials
-            </a>
-          </div>
+      <div class="announcement-item">
+        <p class="mb-1 fw-semibold">Fest registrations are now open</p>
+        <small class="text-muted">Admin • 1 day ago</small>
+      </div>
 
-          <div class="col-md-3">
-            <a href="/student/academics/results.html" class="quick-card">
-              <i class="bi bi-trophy"></i>
-              Results
-            </a>
-          </div>
+      <div class="announcement-item">
+        <p class="mb-1 fw-semibold">Cafeteria menu updated</p>
+        <small class="text-muted">Admin • 3 days ago</small>
+      </div>
+    </div>
 
-          <div class="col-md-3">
-            <a href="/student/wallet/fees.html" class="quick-card">
-              <i class="bi bi-credit-card"></i>
-              Fees
-            </a>
-          </div>
+    <!-- QUICK INFO -->
+    <div class="card-modern">
+      <h6 class="fw-bold mb-3">Quick Info</h6>
 
-          <div class="col-md-3">
-            <a href="/student/profile.html" class="quick-card">
-              <i class="bi bi-person"></i>
-              Profile
-            </a>
-          </div>
-        </div>
+      <div class="d-flex justify-content-between mb-2">
+        <span class="text-muted">Assignments</span>
+        <span class="text-danger fw-semibold">2 pending</span>
+      </div>
+
+      <div class="d-flex justify-content-between mb-2">
+        <span class="text-muted">DSA</span>
+        <span class="text-danger fw-semibold">Due tomorrow</span>
+      </div>
+
+      <div class="d-flex justify-content-between">
+        <span class="text-muted">Web Dev</span>
+        <span class="fw-semibold">Due next week</span>
+      </div>
+    </div>
+
+  </div>
+
+</div>
       </main>
 
       <!-- Footer -->
       <div id="footerContainer"></div>
     </div>
 
-    <!-- COMPONENT LOADER -->
+    <!-- Layout Loader -->
     <script src="../../assets/js/student.js"></script>
     <script>
       initLayout("../../");
-    </script>
-
-    <!-- Charts -->
-    <script>
-      const ctx = document.getElementById("attendanceChart");
-
-      new Chart(ctx, {
-        type: "line",
-
-        data: {
-          labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun"],
-
-          datasets: [
-            {
-              label: "Attendance %",
-              data: [92, 88, 90, 86, 89, 91],
-              tension: 0.4,
-              fill: true,
-            },
-          ],
-        },
-
-        options: {
-          responsive: true,
-          plugins: {
-            legend: { display: false },
-          },
-        },
-      });
-
     </script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>

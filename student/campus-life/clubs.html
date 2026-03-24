@@ -1,121 +1,386 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Student Clubs</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Clubs</title>
 
-  <!-- Bootstrap 5.3.x -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
 
-  <!-- Base + Student Styles -->
-  <link rel="stylesheet" href="../../assets/css/base.css">
-  <link rel="stylesheet" href="../../assets/css/student.css">
-</head>
-<body>
+    <!-- Your CSS -->
+    <link rel="stylesheet" href="../../assets/css/base.css" />
+    <link rel="stylesheet" href="../../assets/css/layout.css" />
 
-  <!-- Header -->
-  <div id="header"></div>
+    <style>
 
-  <div class="container-fluid">
-    <div class="row">
+      
+      /* ===== CLUB CARD ===== */
+      .club-card {
+        background: #ffffff;
+        border-radius: 16px;
+        padding: 18px;
+        box-shadow: 0 6px 18px rgba(15, 23, 42, 0.06);
+        border-left: 4px solid #3b82f6;
+        transition: all 0.2s ease;
+        height: 100%;
+      }
 
-      <!-- Sidebar -->
-      <aside class="col-lg-2 col-md-3 d-none d-md-block p-0">
-        <div id="sidebar-student"></div>
-      </aside>
+      .club-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 10px 24px rgba(15, 23, 42, 0.1);
+      }
 
-      <!-- Main Content -->
-      <main class="col-lg-10 col-md-9 ms-sm-auto px-4 py-4">
+      .club-meta {
+        font-size: 13px;
+        color: #64748b;
+      }
 
-        <!-- Page Header -->
-        <section class="mb-4">
-          <h1 class="h3 fw-semibold">Student Clubs</h1>
-          <p class="text-muted mb-0">Explore student-run clubs and communities</p>
-        </section>
+      /* ===== MY CLUBS ===== */
+      .my-clubs-scroll {
+        display: flex;
+        gap: 16px;
+        overflow-x: auto;
+        padding-bottom: 6px;
+      }
 
-        <!-- Clubs Grid -->
-        <section class="row g-4">
+      .my-club-card {
+        min-width: 240px;
+        background: #ffffff;
+        border-radius: 14px;
+        padding: 14px;
+        box-shadow: 0 4px 14px rgba(0, 0, 0, 0.05);
+        border-left: 4px solid #10b981;
+      }
 
-          <!-- Club Card -->
-          <div class="col-sm-6 col-lg-4">
-            <div class="card h-100 shadow-sm">
-              <div class="card-body">
-                <h5 class="card-title">Coding Club</h5>
-                <p class="card-text text-muted">
-                  Focused on competitive programming, hackathons, and problem-solving sessions.
-                </p>
+      /* ===== FILTERS ===== */
+      .filter-btn {
+        border-radius: 20px;
+        font-size: 13px;
+        padding: 6px 14px;
+        border: 1px solid #e5e7eb;
+        background: white;
+      }
+
+      .filter-btn.active {
+        background: #2563eb;
+        color: white;
+        border-color: #2563eb;
+      }
+
+
+      /* ===== FADE IN ANIMATION ===== */
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeUp 0.6s ease forwards;
+}
+
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* stagger effect */
+.club-item {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+/* ===== HOVER MICRO-INTERACTION ===== */
+.club-card:hover {
+  transform: translateY(-6px) scale(1.01);
+}
+
+/* ===== BUTTON PRESS EFFECT ===== */
+.btn {
+  transition: all 0.15s ease;
+}
+
+.btn:active {
+  transform: scale(0.96);
+}
+
+
+
+    </style>
+  </head>
+
+  <body>
+    <!-- SIDEBAR -->
+    <div id="sidebarContainer"></div>
+
+    <div class="main-content">
+      <!-- HEADER -->
+      <div id="headerContainer"></div>
+
+      <main class="container-fluid py-4">
+        <!-- ===== HEADER ===== -->
+        <div class="mb-4">
+          <h2 class="fw-bold mb-1">Clubs</h2>
+          <p class="text-muted mb-0">
+            Join clubs, participate & grow beyond academics
+          </p>
+        </div>
+
+        <!-- ===== SEARCH + FILTER ===== -->
+        <div class="card border-0 shadow-sm mb-4">
+          <div class="card-body">
+            <div class="row g-3 align-items-center">
+              <div class="col-md-6">
+                <input
+                  type="text"
+                  id="clubSearch"
+                  class="form-control"
+                  placeholder="Search clubs..."
+                />
               </div>
-              <div class="card-footer bg-white">
-                <span class="badge bg-primary">Technical</span>
+
+              <div class="col-md-6 d-flex gap-2 flex-wrap">
+                <button class="filter-btn active">All</button>
+                <button class="filter-btn">Technical</button>
+                <button class="filter-btn">Cultural</button>
+                <button class="filter-btn">Sports</button>
               </div>
             </div>
           </div>
+        </div>
 
-          <!-- Club Card -->
-          <div class="col-sm-6 col-lg-4">
-            <div class="card h-100 shadow-sm">
-              <div class="card-body">
-                <h5 class="card-title">Cultural Club</h5>
-                <p class="card-text text-muted">
-                  Organizes dance, music, drama, and cultural festivals across campus.
-                </p>
+        <!-- ===== MY CLUBS ===== -->
+        <div class="mb-4">
+          <h5 class="fw-bold mb-3">My Clubs</h5>
+
+          <div class="my-clubs-scroll" id="myClubs">
+            <!-- Dynamic -->
+          </div>
+        </div>
+
+        <!-- ===== ALL CLUBS ===== -->
+        <div>
+          <h5 class="fw-bold mb-3">Explore Clubs</h5>
+
+          <div class="row g-4" id="clubGrid">
+            <!-- CLUB -->
+            <div
+              class="club-card"
+              data-name="Coding Club 💻"
+              data-desc="Learn DSA, build projects, participate in hackathons"
+              data-members="120 Members"
+              data-event="Hackathon - 25 Feb"
+            >
+              <h5 class="fw-bold">Coding Club 💻</h5>
+              <p class="club-meta">DSA, Hackathons & Projects</p>
+
+              <div class="mt-3">
+                <div class="club-meta">👥 120 members</div>
+                <div class="club-meta">📅 Hackathon (25 Feb)</div>
               </div>
-              <div class="card-footer bg-white">
-                <span class="badge bg-success">Cultural</span>
+
+              <div class="d-flex gap-2 mt-3">
+                <button class="btn btn-outline-secondary btn-sm w-100 view-btn">
+                  View
+                </button>
+                <button class="btn btn-primary btn-sm w-100 join-btn">
+                  Join
+                </button>
+              </div>
+            </div>
+
+            <!-- CLUB -->
+            <div
+              class="club-card"
+              data-name="Coding Club 💻"
+              data-desc="Learn DSA, build projects, participate in hackathons"
+              data-members="120 Members"
+              data-event="Hackathon - 25 Feb"
+            >
+              <h5 class="fw-bold">Sports Club ⚽</h5>
+              <p class="club-meta">Fitness & Competitions</p>
+
+              <div class="mt-3">
+                <div class="club-meta">👥 100 members</div>
+                <div class="club-meta">📅 Tournament (15 Mar)</div>
+              </div>
+
+              <div class="d-flex gap-2 mt-3">
+                <button class="btn btn-outline-secondary btn-sm w-100 view-btn">
+                  View
+                </button>
+                <button class="btn btn-primary btn-sm w-100 join-btn">
+                  Join
+                </button>
+              </div>
+            </div>
+
+            <!-- CLUB -->
+            <div
+              class="club-card"
+              data-name="Drama Club 🎭"
+              data-desc="Learn DSA, build projects, participate in hackathons"
+              data-members="120 Members"
+              data-event="Hackathon - 25 Feb"
+            >
+              <h5 class="fw-bold">Drama Club 🎭</h5>
+              <p class="club-meta">Acting, Directing & Performance</p>
+
+              <div class="mt-3">
+                <div class="club-meta">👥 80 members</div>
+                <div class="club-meta">📅 Play Practice</div>
+              </div>
+
+              <div class="d-flex gap-2 mt-3">
+                <button class="btn btn-outline-secondary btn-sm w-100 view-btn">
+                  View
+                </button>
+                <button class="btn btn-primary btn-sm w-100 join-btn">
+                  Join
+                </button>
               </div>
             </div>
           </div>
-
-          <!-- Club Card -->
-          <div class="col-sm-6 col-lg-4">
-            <div class="card h-100 shadow-sm">
-              <div class="card-body">
-                <h5 class="card-title">Sports Club</h5>
-                <p class="card-text text-muted">
-                  Manages inter-college sports events and regular practice sessions.
-                </p>
-              </div>
-              <div class="card-footer bg-white">
-                <span class="badge bg-warning text-dark">Sports</span>
-              </div>
-            </div>
-          </div>
-
-          <!-- Club Card -->
-          <div class="col-sm-6 col-lg-4">
-            <div class="card h-100 shadow-sm">
-              <div class="card-body">
-                <h5 class="card-title">Entrepreneurship Cell</h5>
-                <p class="card-text text-muted">
-                  Encourages startup culture through workshops, talks, and mentoring.
-                </p>
-              </div>
-              <div class="card-footer bg-white">
-                <span class="badge bg-info text-dark">Professional</span>
-              </div>
-            </div>
-          </div>
-
-        </section>
-
+        </div>
       </main>
+
+      <!-- FOOTER -->
+      <div id="footerContainer"></div>
+
+      <!-- ===== CLUB DETAILS MODAL ===== -->
+      <div class="modal fade" id="clubModal" tabindex="-1">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title fw-bold" id="clubModalTitle">Club</h5>
+              <button class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+
+            <div class="modal-body">
+              <p id="clubModalDesc" class="text-muted mb-3"></p>
+
+              <div class="row g-3">
+                <div class="col-md-6">
+                  <div class="p-3 bg-light rounded">
+                    <strong>Members</strong>
+                    <p id="clubModalMembers" class="mb-0 text-muted"></p>
+                  </div>
+                </div>
+
+                <div class="col-md-6">
+                  <div class="p-3 bg-light rounded">
+                    <strong>Upcoming Event</strong>
+                    <p id="clubModalEvent" class="mb-0 text-muted"></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="modal-footer">
+              <button id="modalJoinBtn" class="btn btn-primary">
+                Join Club
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-  </div>
 
-  <!-- Footer -->
-  <div id="footer"></div>
+    <!-- ===== LOAD COMPONENTS ===== -->
+    <script>
+      async function loadComponent(id, file) {
+        try {
+          const res = await fetch(file);
+          const html = await res.text();
+          document.getElementById(id).innerHTML = html;
+        } catch (e) {
+          console.error("Error loading:", file);
+        }
+      }
 
-  <!-- Bootstrap JS -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+      loadComponent("sidebarContainer", "../../layouts/sidebar-faculty.html");
+      loadComponent("headerContainer", "../../layouts/header.html");
+      loadComponent("footerContainer", "../../layouts/footer.html");
+    </script>
 
-  <!-- Layout Includes -->
-  <script src="../../assets/js/utils/include.js"></script>
-  <script>
-    includeHTML("header", "../../layouts/header.html");
-    includeHTML("sidebar-student", "../../layouts/sidebar-student.html");
-    includeHTML("footer", "../../layouts/footer.html");
-  </script>
+    <!-- ===== LOGIC ===== -->
+    <script>
+      const clubModal = new bootstrap.Modal(document.getElementById('clubModal'));
+let currentCard = null;
 
-</body>
+// OPEN MODAL
+document.addEventListener("click", function(e) {
+  const btn = e.target.closest(".view-btn");
+  if (!btn) return;
+
+  const card = btn.closest(".club-card");
+  currentCard = card;
+
+  document.getElementById("clubModalTitle").textContent = card.dataset.name;
+  document.getElementById("clubModalDesc").textContent = card.dataset.desc;
+  document.getElementById("clubModalMembers").textContent = card.dataset.members;
+  document.getElementById("clubModalEvent").textContent = card.dataset.event;
+
+  clubModal.show();
+});
+
+// JOIN FROM MODAL
+document.getElementById("modalJoinBtn").addEventListener("click", function() {
+
+  if (!currentCard) return;
+
+  const joinBtn = currentCard.querySelector(".join-btn");
+
+  if (!joinBtn.classList.contains("joined")) {
+    joinBtn.click(); // reuse your existing logic
+  }
+
+  this.textContent = "Joined ✓";
+  this.classList.remove("btn-primary");
+  this.classList.add("btn-success");
+});
+      const myClubsContainer = document.getElementById("myClubs");
+
+      // JOIN BUTTON
+      document.addEventListener("click", function (e) {
+        const btn = e.target.closest(".join-btn");
+        if (!btn) return;
+
+        const card = btn.closest(".club-card");
+        const name = card.querySelector("h5").innerText;
+
+        // prevent duplicate
+        if (btn.classList.contains("joined")) return;
+
+        btn.textContent = "Joined ✓";
+        btn.classList.add("btn-success", "joined");
+        btn.classList.remove("btn-primary");
+
+        // add to My Clubs
+        const div = document.createElement("div");
+        div.className = "my-club-card";
+
+        div.innerHTML = `
+        <h6 class="fw-bold">${name}</h6>
+        <small class="text-muted">Member</small>
+      `;
+
+        myClubsContainer.appendChild(div);
+      });
+
+      // FILTER ACTIVE UI
+      document.querySelectorAll(".filter-btn").forEach((btn) => {
+        btn.addEventListener("click", function () {
+          document
+            .querySelectorAll(".filter-btn")
+            .forEach((b) => b.classList.remove("active"));
+          this.classList.add("active");
+        });
+      });
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
 </html>

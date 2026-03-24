@@ -188,3 +188,21 @@ body.sidebar-collapsed .main-content {
   padding:6px 10px;
 }
 
+.sidebar i {
+  font-size: 18px;
+  width: 22px;
+}
+
+.sidebar-nav a {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.sidebar-nav i {
+  font-size: 18px;
+  width: 22px;
+  display: flex;
+  justify-content: center;
+}
+

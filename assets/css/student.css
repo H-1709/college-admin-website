@@ -540,3 +540,166 @@
   vertical-align: middle;
 
 }
+
+
+/* ===== CLEAN MODERN CARDS ===== */
+
+.card-modern {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 18px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+  transition: all 0.25s ease;
+}
+
+/* hover animation */
+.card-modern:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.08);
+}
+
+/* text */
+.card-label {
+  font-size: 13px;
+  color: #64748b;
+}
+
+.card-title {
+  font-size: 20px;
+  font-weight: 700;
+}
+
+/* ===== SCHEDULE ===== */
+
+.schedule-card {
+  background: #fff;
+  border-radius: 14px;
+  padding: 14px;
+  border-left: 4px solid #e5e7eb;
+  transition: all 0.25s ease;
+}
+
+.schedule-card:hover {
+  transform: translateY(-3px);
+}
+
+.schedule-card.done {
+  border-left-color: #16a34a;
+}
+
+.schedule-card.live {
+  border-left-color: #2563eb;
+}
+
+.schedule-card.upcoming {
+  border-left-color: #64748b;
+}
+
+.schedule-card .time {
+  font-weight: 600;
+}
+
+.schedule-card .title {
+  font-weight: 600;
+}
+
+/* status */
+.status {
+  font-size: 12px;
+  margin-top: 6px;
+}
+
+.status.done {
+  color: #16a34a;
+}
+
+.status.live {
+  color: #2563eb;
+}
+
+.status.upcoming {
+  color: #64748b;
+}
+
+/* ===== MOBILE RESPONSIVE ===== */
+
+@media (max-width: 768px) {
+
+  .card-title {
+    font-size: 18px;
+  }
+
+  .schedule-card {
+    padding: 12px;
+  }
+
+
+}
+
+.card-title {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 2px;
+}
+
+.card-modern {
+  background: #fff;
+  border-radius: 16px;
+  padding: 16px;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.04);
+  transition: 0.2s ease;
+}
+
+.card-modern:hover {
+  transform: translateY(-3px);
+}
+
+.card-title {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.card-label {
+  font-size: 12px;
+  color: #64748b;
+}
+
+.btn-sm {
+  padding: 4px 10px;
+  font-size: 12px;
+  border-radius: 8px;
+}
+
+.card-modern .btn {
+  align-self: flex-start;
+}
+.fee-card{
+transition:0.25s;
+border-radius:12px;
+}
+
+.fee-card:hover{
+transform:translateY(-4px);
+box-shadow:0 12px 30px rgba(0,0,0,0.08);
+}
+
+.main-content {
+padding-left: 20px;
+padding-right: 20px;
+}
+
+.container-fluid {
+max-width: 1200px;
+margin: auto;
+}
+
+.main-content {
+padding-left: 20px;
+padding-right: 20px;
+}
+
+.container-fluid {
+max-width: 1200px;
+margin: auto;
+}
