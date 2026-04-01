@@ -7,7 +7,7 @@ async function loadComponent(id, file) {
 function setActiveSidebar() {
   const currentPage = window.location.pathname.split("/").pop();
 
-  const links = document.querySelectorAll("#sidebar a");
+  const links = document.querySelectorAll("#sidebarContainer a");
 
   links.forEach((link) => {
     const linkPage = link.getAttribute("href")?.split("/").pop();
@@ -49,4 +49,6 @@ async function initLayout(basePath) {
 
   setActiveSidebar();
   initSidebarControls();
+
+  
 }

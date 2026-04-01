@@ -3,248 +3,110 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Fees & Payments | Student Portal</title>
 
-    <title>Fees</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet" />
 
     <link rel="stylesheet" href="../../assets/css/base.css" />
     <link rel="stylesheet" href="../../assets/css/layout.css" />
-
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"
-    />
+    <link rel="stylesheet" href="../../assets/css/student.css" />
 
     <style>
-      /* ===== GLOBAL ===== */
+      :root {
+        --accent-blue: #2563eb;
+        --success-green: #10b981;
+        --warning-amber: #f59e0b;
+        --glass-bg: rgba(255, 255, 255, 0.9);
+      }
+
       body {
-        background: #f5f7fb;
+        background: #f8fafc;
       }
 
-      /* ===== HEADER ===== */
-      .page-header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin-bottom: 30px;
-        animation: fadeSlide 0.5s cubic-bezier(0.22, 1, 0.36, 1);
-      }
-
-      .page-header h2 {
-        font-weight: 700;
-      }
-      .page-header p {
-        margin: 0;
-        color: #6c757d;
-      }
-
-      /* ===== DROPDOWN ===== */
-      .form-select {
-        border-radius: 10px;
-        padding: 6px 12px;
-        border: 1px solid #d1d5db;
-      }
-
-      .form-select:focus {
-        border-color: #3b82f6;
-        box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.15);
-      }
-
-      /* ===== CARD ===== */
       .card-modern {
-        background: #fff;
-        border-radius: 18px;
-        padding: 22px;
-        border: 1px solid #e5e7eb;
-        border-left: 5px solid transparent;
-
-        display: flex;
-        justify-content: space-between;
-        align-items: flex-start;
-
-        transition: all 0.25s cubic-bezier(0.22, 1, 0.36, 1);
-        opacity: 0;
-        transform: translateY(20px);
-        animation: fadeUp 0.5s cubic-bezier(0.22, 1, 0.36, 1) forwards;
-
-        will-change: transform;
+        background: var(--glass-bg);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(226, 232, 240, 0.8);
+        border-radius: 20px;
+        padding: 24px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
       }
 
-      /* COLORS */
-      .border-green {
-        border-left-color: #22c55e;
-      }
-      .border-yellow {
-        border-left-color: #f59e0b;
-      }
-
-      /* HOVER */
-      .card-modern:hover {
-        transform: translateY(-4px);
-        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
-      }
-
-      /* ===== LEFT CONTENT ===== */
-      .card-left {
-        max-width: 70%;
-      }
-
-      .fee-label {
-        font-size: 13px;
-        color: #6c757d;
-      }
-
-      .fee-amount {
-        font-size: 30px;
-        font-weight: 700;
-        margin: 6px 0;
-      }
-
-      .fee-sub {
-        font-size: 13px;
-        color: #6c757d;
-      }
-
-      /* ===== RIGHT CONTENT ===== */
-      .card-right {
-        text-align: right;
-        display: flex;
-        flex-direction: column;
-        align-items: flex-end;
-        gap: 8px;
-      }
-
-      /* ===== SECTION ===== */
-      .section-card {
-        background: #fff;
+      /* Summary Stats */
+      .stat-card {
         border-radius: 16px;
-        padding: 22px;
-        margin-top: 25px;
-        border: 1px solid #e5e7eb;
-        box-shadow: 0 6px 18px rgba(0, 0, 0, 0.04);
-        animation: fadeUp 0.5s ease forwards;
+        padding: 20px;
+        border: 1px solid rgba(226, 232, 240, 0.8);
+        background: white;
       }
 
-      .section-title {
-        font-weight: 600;
+      .stat-icon {
+        width: 48px;
+        height: 48px;
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
         margin-bottom: 15px;
       }
 
-      /* ===== BREAKDOWN ===== */
-      .fee-row {
-        display: flex;
-        justify-content: space-between;
-        padding: 14px 0;
-        border-bottom: 1px solid #eee;
-        transition: 0.2s;
+      /* Fee Breakdown Table */
+      .fee-table {
+        margin-bottom: 0;
+      }
+      .fee-table th {
+        font-size: 0.75rem;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        color: #64748b;
+        border-top: none;
+        padding: 15px;
+      }
+      .fee-table td {
+        padding: 15px;
+        vertical-align: middle;
       }
 
-      .fee-row:hover {
-        background: #f9fafb;
-        padding: 0 8px;
-        border-radius: 8px;
+      /* Status Badges */
+      .status-pill {
+        padding: 6px 12px;
+        border-radius: 50px;
+        font-size: 0.75rem;
+        font-weight: 600;
       }
 
-      .fee-row.total {
-        font-weight: 700;
-        font-size: 16px;
-        border-top: 2px solid #ddd;
+      .btn-pay {
+        background: var(--accent-blue);
+        color: white;
+        border-radius: 10px;
+        font-weight: 600;
+        transition: all 0.3s ease;
+      }
+      .btn-pay:hover {
+        background: #1d4ed8;
+        transform: translateY(-2px);
+        color: white;
       }
 
-      /* ===== PAYMENT ===== */
-      .payment-item {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 16px 0;
-        border-bottom: 1px solid #eee;
-        transition: 0.2s;
+      /* Timeline/History specific */
+      .history-item {
+        border-left: 2px solid #e2e8f0;
+        padding-left: 20px;
+        position: relative;
+        margin-bottom: 20px;
       }
-
-      .payment-item:hover {
-        background: #f9fafb;
-        padding: 0 8px;
-        border-radius: 8px;
+      .history-item::before {
+        content: "";
+        position: absolute;
+        left: -7px;
+        top: 0;
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background: var(--success-green);
       }
-
-      .payment-right {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-      }
-      
-      .semester-select {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-
-  background: #fff;
-  padding: 6px 12px;
-  border-radius: 10px;
-  border: 1px solid #e5e7eb;
-
-  box-shadow: 0 2px 6px rgba(0,0,0,0.04);
-}
-
-.semester-select i {
-  color: #3b82f6;
-  font-size: 16px;
-}
-
-.semester-select .form-select {
-  border: none;
-  box-shadow: none;
-  padding: 4px;
-  font-weight: 500;
-  background: transparent;
-}
-
-.semester-select .form-select:focus {
-  box-shadow: none;
-}
-      /* ===== ANIMATION ===== */
-      @keyframes fadeUp {
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
-      }
-
-      @keyframes fadeSlide {
-        from {
-          opacity: 0;
-          transform: translateY(-10px);
-        }
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
-      }
-
-      /* ===== RESPONSIVE ===== */
-      @media (max-width: 768px) {
-        .card-modern {
-          flex-direction: column;
-          gap: 12px;
-        }
-
-        .card-right {
-          align-items: flex-start;
-          text-align: left;
-        }
-
-        .page-header {
-          flex-direction: column;
-          align-items: flex-start;
-          gap: 12px;
-        }
-      }
-      .semester-select:hover {
-  border-color: #3b82f6;
-}
     </style>
   </head>
 
@@ -255,106 +117,144 @@
       <div id="headerContainer"></div>
 
       <main class="container-fluid py-4">
-        <!-- HEADER -->
-        <div class="page-header">
-          <div>
-            <h2>Fees</h2>
-            <p>Semester-wise fee details</p>
-          </div>
-<div class="semester-select">
-  <i class="bi bi-calendar3"></i>
-          <select class="form-select">
-    <option>Sem 1</option>
-    <option>Sem 2</option>
-    <option>Sem 3</option>
-    <option selected>Sem 4</option>
-    <option>Sem 5</option>
-    <option>Sem 6</option>
-    <option>Sem 7</option>
-    <option>Sem 8</option>
-  </select>
-    </div>
+        <div class="mb-4">
+          <h2 class="fw-bold mb-1">Financial Overview</h2>
+          <p class="text-muted">Manage your tuition fees, lab charges, and payment history.</p>
         </div>
 
-        <!-- CARDS -->
+        <div class="row g-4 mb-4">
+          <div class="col-md-4">
+            <div class="stat-card shadow-sm h-100">
+              <div class="stat-icon bg-primary-subtle text-primary">
+                <i class="bi bi-wallet2"></i>
+              </div>
+              <h6 class="text-muted small fw-bold text-uppercase">Total Payable</h6>
+              <h3 class="fw-bold mb-0">₹61,500</h3>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="stat-card shadow-sm h-100">
+              <div class="stat-icon bg-success-subtle text-success">
+                <i class="bi bi-check-circle"></i>
+              </div>
+              <h6 class="text-muted small fw-bold text-uppercase">Paid Amount</h6>
+              <h3 class="fw-bold mb-0">₹60,000</h3>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="stat-card shadow-sm h-100 border-warning">
+              <div class="stat-icon bg-warning-subtle text-warning">
+                <i class="bi bi-exclamation-triangle"></i>
+              </div>
+              <h6 class="text-muted small fw-bold text-uppercase">Outstanding</h6>
+              <h3 class="fw-bold mb-0 text-warning">₹1,500</h3>
+            </div>
+          </div>
+        </div>
+
         <div class="row g-4">
-          <div class="col-lg-6">
-            <div class="card-modern border-green">
-              <div class="card-left">
-                <p class="fee-label">Semester Fee</p>
-                <p class="fee-amount">₹60,000</p>
-                <p class="fee-sub">Paid on 10 Jan 2026</p>
+          <div class="col-lg-7">
+            <div class="card-modern h-100">
+              <div class="d-flex justify-content-between align-items-center mb-4">
+                <h5 class="fw-bold mb-0">Fee Breakdown (Sem 4)</h5>
+                <span class="badge bg-light text-dark">Academic Year 2025-26</span>
+              </div>
+              
+              <div class="table-responsive">
+                <table class="table fee-table">
+                  <thead>
+                    <tr>
+                      <th>Description</th>
+                      <th>Amount</th>
+                      <th class="text-end">Status</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <div class="fw-600">Tuition Fee</div>
+                        <small class="text-muted">Core Academic Charges</small>
+                      </td>
+                      <td class="fw-bold">₹55,000</td>
+                      <td class="text-end"><span class="status-pill bg-success-subtle text-success">Paid</span></td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <div class="fw-600">Lab & Technology Fee</div>
+                        <small class="text-muted">CS/IT Specialized Labs</small>
+                      </td>
+                      <td class="fw-bold">₹5,000</td>
+                      <td class="text-end"><span class="status-pill bg-success-subtle text-success">Paid</span></td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <div class="fw-600">Examination Fee</div>
+                        <small class="text-muted">End-Sem Exams March 2026</small>
+                      </td>
+                      <td class="fw-bold">₹1,500</td>
+                      <td class="text-end"><span class="status-pill bg-warning-subtle text-warning">Pending</span></td>
+                    </tr>
+                  </tbody>
+                  <tfoot>
+                    <tr class="table-light">
+                      <td class="fw-bold">Total Pending</td>
+                      <td class="fw-bold text-primary" colspan="2">₹1,500</td>
+                    </tr>
+                  </tfoot>
+                </table>
               </div>
 
-              <div class="card-right">
-                <span class="badge bg-success">Paid</span>
-                <button class="btn btn-sm btn-outline-primary">
-                  <i class="bi bi-download"></i> Receipt
+              <div class="mt-4">
+                <button class="btn btn-pay w-100 py-3">
+                  <i class="bi bi-shield-lock me-2"></i>Proceed to Secure Payment
                 </button>
               </div>
             </div>
           </div>
 
-          <div class="col-lg-6">
-            <div class="card-modern border-yellow">
-              <div class="card-left">
-                <p class="fee-label">Exam Form Fee</p>
-                <p class="fee-amount">₹1,500</p>
-                <p class="text-danger small">Deadline: 25 Apr 2026</p>
+          <div class="col-lg-5">
+            <div class="card-modern mb-4">
+              <h5 class="fw-bold mb-4">Recent Transactions</h5>
+              
+              <div class="history-item">
+                <div class="d-flex justify-content-between">
+                  <div>
+                    <h6 class="fw-bold mb-0">Semester Fee Paid</h6>
+                    <small class="text-muted">Transaction ID: #LNX99201</small>
+                  </div>
+                  <div class="text-end">
+                    <div class="fw-bold text-success">+ ₹60,000</div>
+                    <small class="text-muted">Jan 10, 2026</small>
+                  </div>
+                </div>
+                <button class="btn btn-sm btn-link text-primary p-0 mt-2 small text-decoration-none">
+                  <i class="bi bi-download me-1"></i>Receipt
+                </button>
               </div>
 
-              <div class="card-right">
-                <span class="badge bg-warning text-dark">Pending</span>
-                <button class="btn btn-danger btn-sm">Pay Now</button>
+              <div class="history-item" style="border-left-color: #cbd5e1;">
+                <div class="d-flex justify-content-between">
+                  <div>
+                    <h6 class="fw-bold mb-0">Library Fine</h6>
+                    <small class="text-muted">Transaction ID: #LNX98450</small>
+                  </div>
+                  <div class="text-end">
+                    <div class="fw-bold text-success">+ ₹250</div>
+                    <small class="text-muted">Nov 15, 2025</small>
+                  </div>
+                </div>
               </div>
             </div>
-          </div>
-        </div>
 
-        <!-- BREAKDOWN -->
-        <div class="section-card">
-          <h5 class="section-title">Fee Breakdown</h5>
-
-          <div class="fee-row">
-            <span>Material Fee</span><span>₹500</span>
-          </div>
-          <div class="fee-row"><span>Lab Fee</span><span>₹500</span></div>
-          <div class="fee-row"><span>Library Fee</span><span>₹500</span></div>
-
-          <div class="fee-row total">
-            <span>Total</span>
-            <span>₹1,500</span>
-          </div>
-        </div>
-
-        <!-- PAYMENT HISTORY -->
-        <div class="section-card">
-          <h5 class="section-title">Payment History</h5>
-
-          <div class="payment-item">
-            <div>
-              <p class="mb-0">Semester Fee</p>
-              <small class="text-muted">10 Jan 2026</small>
-            </div>
-
-            <div class="payment-right">
-              <strong>₹60,000</strong>
-              <span class="badge bg-success">Paid</span>
-              <button class="btn btn-sm btn-outline-primary">
-                <i class="bi bi-download"></i>
-              </button>
-            </div>
-          </div>
-
-          <div class="payment-item">
-            <div>
-              <p class="mb-0">Exam Fee</p>
-              <small class="text-muted">--</small>
-            </div>
-
-            <div class="payment-right">
-              <strong>₹1,500</strong>
-              <span class="badge bg-warning text-dark">Pending</span>
+            <div class="card-modern bg-dark text-white border-0">
+              <h6 class="fw-bold mb-2">Need Financial Assistance?</h6>
+              <p class="small opacity-75 mb-3">Contact the accounts office for scholarship queries or installment plans.</p>
+              <div class="d-flex align-items-center gap-3">
+                <div class="bg-white bg-opacity-10 p-2 rounded">
+                  <i class="bi bi-telephone"></i>
+                </div>
+                <span class="small fw-bold">Ext: 402 (Accounts)</span>
+              </div>
             </div>
           </div>
         </div>
@@ -363,9 +263,24 @@
       <div id="footerContainer"></div>
     </div>
 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="../../assets/js/student.js"></script>
     <script>
-      initLayout("../../");
+      document.addEventListener("DOMContentLoaded", function () {
+        initLayout("../../");
+
+        // --- SIDEBAR HIGHLIGHT FIX ---
+        setTimeout(() => {
+          const sidebarLinks = document.querySelectorAll(".sidebar a, #sidebarContainer a");
+          sidebarLinks.forEach(link => {
+            link.classList.remove("active");
+            // Highlight precisely the Fees link
+            if (link.innerText.trim() === "Fees" || link.href.includes("fees.html")) {
+              link.classList.add("active");
+            }
+          });
+        }, 150);
+      });
     </script>
   </body>
 </html>
