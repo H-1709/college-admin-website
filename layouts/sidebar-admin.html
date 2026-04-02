@@ -1,42 +1,87 @@
 <div class="bg-dark border-right" id="sidebar-wrapper">
-    <div class="sidebar-heading text-white">
-        <i class="bi bi-shield-lock-fill me-2"></i> Super Admin
+  <div class="sidebar-heading text-white">
+    <i class="bi bi-shield-lock-fill me-2"></i> Super Admin
+  </div>
+  <div class="list-group list-group-flush">
+    <a
+      href="../super-admin/dashboard.html"
+      class="list-group-item list-group-item-action bg-dark text-light"
+    >
+      <i class="bi bi-cpu me-2"></i> System Health
+    </a>
+
+    <a
+      href="#userSubmenu"
+      class="list-group-item list-group-item-action bg-dark text-light dropdown-toggle"
+      data-bs-toggle="collapse"
+    >
+      <i class="bi bi-people me-2"></i> User Management
+    </a>
+    <div class="collapse" id="userSubmenu">
+      <a
+        href="../super-admin/users/students.html"
+        class="list-group-item list-group-item-action bg-dark text-secondary ps-5"
+        >Students</a
+      >
+      <a
+        href="../super-admin/users/faculty.html"
+        class="list-group-item list-group-item-action bg-dark text-secondary ps-5"
+        >Faculty</a
+      >
+      <a
+        href="../super-admin/users/admission-staff.html"
+        class="list-group-item list-group-item-action bg-dark text-secondary ps-5"
+        >Staff</a
+      >
     </div>
-    <div class="list-group list-group-flush">
-        <a href="../super-admin/dashboard.html" class="list-group-item list-group-item-action bg-dark text-light">
-            <i class="bi bi-cpu me-2"></i> System Health
-        </a>
-        
-        <a href="#userSubmenu" class="list-group-item list-group-item-action bg-dark text-light dropdown-toggle" data-bs-toggle="collapse">
-            <i class="bi bi-people me-2"></i> User Management
-        </a>
-        <div class="collapse" id="userSubmenu">
-            <a href="../super-admin/users/students.html" class="list-group-item list-group-item-action bg-dark text-secondary ps-5">Students</a>
-            <a href="../super-admin/users/faculty.html" class="list-group-item list-group-item-action bg-dark text-secondary ps-5">Faculty</a>
-            <a href="../super-admin/users/admission-staff.html" class="list-group-item list-group-item-action bg-dark text-secondary ps-5">Staff</a>
-        </div>
 
-        <a href="#instSubmenu" class="list-group-item list-group-item-action bg-dark text-light dropdown-toggle" data-bs-toggle="collapse">
-            <i class="bi bi-bank me-2"></i> Institution
-        </a>
-        <div class="collapse" id="instSubmenu">
-            <a href="../super-admin/institution/departments.html" class="list-group-item list-group-item-action bg-dark text-secondary ps-5">Departments</a>
-            <a href="../super-admin/institution/courses.html" class="list-group-item list-group-item-action bg-dark text-secondary ps-5">Courses</a>
-        </div>
-
-        <a href="../super-admin/finance/analytics.html" class="list-group-item list-group-item-action bg-dark text-light">
-            <i class="bi bi-currency-dollar me-2"></i> Finance Analytics
-        </a>
-
-        <a href="#secSubmenu" class="list-group-item list-group-item-action bg-dark text-light dropdown-toggle" data-bs-toggle="collapse">
-            <i class="bi bi-safe me-2"></i> Security
-        </a>
-        <div class="collapse" id="secSubmenu">
-            <a href="../super-admin/security/audit-logs.html" class="list-group-item list-group-item-action bg-dark text-secondary ps-5">Audit Logs</a>
-        </div>
-
-        <a href="../super-admin/settings.html" class="list-group-item list-group-item-action bg-dark text-light">
-            <i class="bi bi-gear me-2"></i> Global Settings
-        </a>
+    <a
+      href="#instSubmenu"
+      class="list-group-item list-group-item-action bg-dark text-light dropdown-toggle"
+      data-bs-toggle="collapse"
+    >
+      <i class="bi bi-bank me-2"></i> Institution
+    </a>
+    <div class="collapse" id="instSubmenu">
+      <a
+        href="../super-admin/institution/departments.html"
+        class="list-group-item list-group-item-action bg-dark text-secondary ps-5"
+        >Departments</a
+      >
+      <a
+        href="../super-admin/institution/courses.html"
+        class="list-group-item list-group-item-action bg-dark text-secondary ps-5"
+        >Courses</a
+      >
     </div>
+
+    <a
+      href="../super-admin/finance/analytics.html"
+      class="list-group-item list-group-item-action bg-dark text-light"
+    >
+      <i class="bi bi-currency-dollar me-2"></i> Finance Analytics
+    </a>
+
+    <a
+      href="#secSubmenu"
+      class="list-group-item list-group-item-action bg-dark text-light dropdown-toggle"
+      data-bs-toggle="collapse"
+    >
+      <i class="bi bi-safe me-2"></i> Security
+    </a>
+    <div class="collapse" id="secSubmenu">
+      <a
+        href="../super-admin/security/audit-logs.html"
+        class="list-group-item list-group-item-action bg-dark text-secondary ps-5"
+        >Audit Logs</a
+      >
+    </div>
+
+    <a
+      href="../super-admin/settings.html"
+      class="list-group-item list-group-item-action bg-dark text-light"
+    >
+      <i class="bi bi-gear me-2"></i> Global Settings
+    </a>
+  </div>
 </div>

@@ -5,8 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Dashboard | Student Portal</title>
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"
+      rel="stylesheet"
+    />
 
     <link rel="stylesheet" href="../assets/css/base.css" />
     <link rel="stylesheet" href="../assets/css/layout.css" />
@@ -24,7 +30,6 @@
         color: #1e293b;
       }
 
-      /* Modern Card Styling */
       .card-modern {
         background: var(--glass-bg);
         backdrop-filter: blur(10px);
@@ -32,10 +37,8 @@
         border-radius: 20px;
         padding: 24px;
         box-shadow: 0 10px 25px rgba(0, 0, 0, 0.03);
-        transition: transform 0.2s ease;
       }
 
-      /* Hero Welcome Section */
       .welcome-banner {
         background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
         border-radius: 24px;
@@ -46,16 +49,30 @@
         overflow: hidden;
       }
 
-      .welcome-banner::after {
-        content: "🎓";
-        position: absolute;
-        right: 40px;
-        bottom: -10px;
-        font-size: 120px;
-        opacity: 0.1;
+      .timeline-item {
+        position: relative;
+        padding-left: 32px;
+        padding-bottom: 20px;
+        border-left: 2px solid #e2e8f0;
       }
 
-      /* Progress Ring for Attendance */
+      .timeline-item::before {
+        content: "";
+        position: absolute;
+        left: -9px;
+        top: 4px;
+        width: 16px;
+        height: 16px;
+        border-radius: 50%;
+        background: white;
+        border: 3px solid var(--accent-blue);
+      }
+
+      .timeline-item:last-child {
+        border-left: 2px solid transparent;
+        padding-bottom: 0;
+      }
+
       .progress-ring {
         width: 60px;
         height: 60px;
@@ -81,45 +98,79 @@
         font-weight: 700;
       }
 
-      /* Schedule Timeline */
-      .timeline-item {
-        position: relative;
-        padding-left: 32px;
-        padding-bottom: 24px;
-        border-left: 2px solid #e2e8f0;
-      }
-
-      .timeline-item::before {
-        content: "";
-        position: absolute;
-        left: -9px;
-        top: 0;
-        width: 16px;
-        height: 16px;
-        border-radius: 50%;
-        background: white;
-        border: 3px solid var(--accent-blue);
-      }
-
-      .timeline-item.past { border-left-color: #cbd5e1; }
-      .timeline-item.past::before { border-color: #cbd5e1; background: #cbd5e1; }
-
-      .active-class-indicator {
-        background: #eff6ff;
-        border: 1px solid #bfdbfe;
+      .schedule-row {
+        background: #f8fafc;
         border-radius: 12px;
-        padding: 4px 12px;
-        color: var(--accent-blue);
-        font-size: 0.75rem;
-        font-weight: 600;
+        padding: 16px 20px;
+        transition: all 0.2s ease;
       }
 
-      /* Metric Badges */
-      .metric-box {
-        text-align: center;
-        padding: 15px;
-        border-radius: 16px;
+      .schedule-row:hover {
         background: #f1f5f9;
+      }
+
+      .pulse-text {
+        animation: textPulse 2s infinite;
+      }
+
+      @keyframes textPulse {
+        0% {
+          opacity: 1;
+        }
+        50% {
+          opacity: 0.6;
+        }
+        100% {
+          opacity: 1;
+        }
+      }
+
+      /* Compact Schedule Styles */
+      .schedule-row.compact {
+        background: #f8fafc;
+        border-radius: 10px;
+        padding: 10px 16px; /* Reduced padding */
+      }
+
+      .time-label {
+        font-size: 0.85rem;
+        font-weight: 700;
+      }
+
+      .subject-label {
+        font-size: 0.9rem;
+        margin-top: 1px;
+      }
+
+      .location-label {
+        font-size: 0.75rem;
+      }
+
+      .status-label {
+        font-size: 0.75rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+      }
+
+      .tiny-link {
+        font-size: 0.8rem;
+      }
+
+      .pulse-text {
+        animation: textPulse 2s infinite;
+      }
+
+      @keyframes textPulse {
+        0% {
+          opacity: 1;
+        }
+        50% {
+          opacity: 0.6;
+        }
+        100% {
+          opacity: 1;
+        }
       }
     </style>
   </head>
@@ -134,93 +185,171 @@
         <div class="welcome-banner shadow-sm">
           <div class="row align-items-center">
             <div class="col-md-8">
-              <span class="badge bg-primary mb-2 px-3 py-2 rounded-pill">Semester 4 • B.Tech IT</span>
-              <h1 class="fw-bold mb-1">Good Morning, Aarav!</h1>
-              <p class="opacity-75 mb-0">You have 2 classes and 1 assignment submission today.</p>
+              <span class="badge bg-primary mb-2 px-3 py-2 rounded-pill"
+                >Semester 4 • B.E. IT</span
+              >
+              <h1 class="fw-bold mb-1">Good Morning, Hir!</h1>
+              <p class="opacity-75 mb-0">
+                You have 3 lectures and 1 assignment scheduled for today.
+              </p>
             </div>
-            <div class="col-md-4 text-md-end mt-3 mt-md-0">
-              <button class="btn btn-light rounded-pill px-4 fw-600">View Schedule</button>
+
+            <div class="col-md-4 text-md-end mt-4 mt-md-0">
+              <div
+                class="d-inline-flex align-items-center bg-white bg-opacity-10 rounded-pill px-4 py-2 border border-white border-opacity-25"
+              >
+                <i class="bi bi-calendar3 fs-5 me-3 opacity-75"></i>
+                <div class="text-start">
+                  <div class="fw-bold small" id="bannerDateDisplay">
+                    Loading date...
+                  </div>
+                  <div class="opacity-75" style="font-size: 0.75rem">
+                    Academic Year 2025-26
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
 
         <div class="row g-4">
-          <div class="col-lg-8">
+          <div class="col-12 col-lg-8">
             <div class="card-modern mb-4">
-              <div class="d-flex justify-content-between align-items-center mb-4">
-                <h5 class="fw-bold mb-0">Today's Timeline</h5>
-                <span class="text-muted small">March 21, 2026</span>
+              <div class="mb-3">
+                <h6 class="fw-bold mb-0">Today's Schedule</h6>
               </div>
 
-              <div class="timeline-item past">
-                <div class="d-flex justify-content-between">
-                  <div>
-                    <h6 class="fw-bold mb-0">Data Structures Lab</h6>
-                    <small class="text-muted">09:00 AM - 10:30 AM • Lab 204</small>
-                  </div>
-                  <span class="badge bg-light text-muted rounded-pill h-100 py-2">Completed</span>
-                </div>
-              </div>
-
-              <div class="timeline-item">
-                <div class="d-flex justify-content-between">
-                  <div>
-                    <div class="d-flex align-items-center gap-2 mb-1">
-                      <h6 class="fw-bold mb-0">Machine Learning</h6>
-                      <span class="active-class-indicator">Ongoing</span>
+              <div class="d-flex flex-column gap-2">
+                <div
+                  class="schedule-row compact border-start border-4 border-success"
+                >
+                  <div
+                    class="d-flex justify-content-between align-items-center"
+                  >
+                    <div>
+                      <div class="time-label text-dark">09:00 AM</div>
+                      <div class="subject-label text-secondary">
+                        Data Structures
+                      </div>
+                      <div class="location-label text-muted">Lab 204</div>
                     </div>
-                    <small class="text-muted">11:00 AM - 12:30 PM • Room 302</small>
+                    <div class="status-label text-success">Done</div>
                   </div>
-                  <button class="btn btn-sm btn-primary px-3 rounded-pill">Join Live</button>
+                </div>
+
+                <div
+                  class="schedule-row compact border-start border-4 border-primary shadow-sm bg-white"
+                >
+                  <div
+                    class="d-flex justify-content-between align-items-center"
+                  >
+                    <div>
+                      <div class="time-label text-primary">11:00 AM</div>
+                      <div class="subject-label fw-bold text-dark">
+                        Java Programming
+                      </div>
+                      <div class="location-label text-muted">Room 302</div>
+                    </div>
+                    <div class="status-label text-primary pulse-text">Now</div>
+                  </div>
+                </div>
+
+                <div
+                  class="schedule-row compact border-start border-4 border-secondary"
+                >
+                  <div
+                    class="d-flex justify-content-between align-items-center"
+                  >
+                    <div>
+                      <div class="time-label text-dark">02:00 PM</div>
+                      <div class="subject-label text-secondary">
+                        Software Engineering
+                      </div>
+                      <div class="location-label text-muted">Lab 105</div>
+                    </div>
+                    <div class="status-label text-muted">Next</div>
+                  </div>
                 </div>
               </div>
 
-              <div class="timeline-item pb-0 border-0">
-                <div class="d-flex justify-content-between">
-                  <div>
-                    <h6 class="fw-bold mb-0">Web Development</h6>
-                    <small class="text-muted">02:00 PM - 03:30 PM • Lab 105</small>
-                  </div>
-                  <span class="text-muted small">Upcoming</span>
-                </div>
+              <div class="mt-3 pt-2 border-top">
+                <a
+                  href="./timetable/timetable.html"
+                  class="text-primary fw-bold text-decoration-none tiny-link"
+                >
+                  Open Full Timetable <i class="bi bi-arrow-right ms-1"></i>
+                </a>
               </div>
             </div>
 
-            <div class="row g-3">
-              <div class="col-md-6">
-                <div class="card-modern">
-                  <h6 class="fw-bold mb-3"><i class="bi bi-journal-check me-2 text-primary"></i>Recent Assignments</h6>
-                  <div class="d-flex align-items-start gap-3 mb-3">
-                    <div class="p-2 bg-danger-subtle text-danger rounded">
-                      <i class="bi bi-clock-history"></i>
-                    </div>
-                    <div>
-                      <p class="mb-0 fw-600 small">DSA: Binary Trees</p>
-                      <small class="text-danger">Due in 4 hours</small>
+            <div class="row g-4">
+              <div class="col-12 col-md-6">
+                <div class="card-modern h-100">
+                  <h6 class="fw-bold mb-3">
+                    <i class="bi bi-journal-check me-2 text-primary"></i>Recent
+                    Assignments
+                  </h6>
+
+                  <div class="mb-3">
+                    <p class="mb-0 fw-bold small">Core Java: Logic Building</p>
+                    <div
+                      class="d-flex justify-content-between align-items-center mt-1"
+                    >
+                      <small class="text-danger fw-semibold">Due Today.</small>
+                      <a
+                        href="./academics/materials.html"
+                        class="btn btn-sm btn-outline-primary py-0 px-2 rounded-pill"
+                        style="font-size: 11px"
+                        >View Materials</a
+                      >
                     </div>
                   </div>
-                  <div class="d-flex align-items-start gap-3">
-                    <div class="p-2 bg-primary-subtle text-primary rounded">
-                      <i class="bi bi-file-earmark-code"></i>
-                    </div>
-                    <div>
-                      <p class="mb-0 fw-600 small">Web Dev: Portfolio</p>
-                      <small class="text-muted">Due March 28</small>
+
+                  <div class="mb-0">
+                    <p class="mb-0 fw-bold small">Frontend: Component UI</p>
+                    <div
+                      class="d-flex justify-content-between align-items-center mt-1"
+                    >
+                      <small class="text-muted">Due Tomorrow</small>
+                      <a
+                        href="./academics/materials.html"
+                        class="btn btn-sm btn-outline-primary py-0 px-2 rounded-pill"
+                        style="font-size: 11px"
+                        >View Materials</a
+                      >
                     </div>
                   </div>
                 </div>
               </div>
-              <div class="col-md-6">
+
+              <div class="col-12 col-md-6">
                 <div class="card-modern h-100">
-                  <h6 class="fw-bold mb-3"><i class="bi bi-megaphone me-2 text-warning"></i>Announcements</h6>
+                  <div
+                    class="d-flex justify-content-between align-items-center mb-3"
+                  >
+                    <h6 class="fw-bold mb-0">
+                      <i class="bi bi-megaphone me-2 text-warning"></i
+                      >Announcements
+                    </h6>
+                    <a
+                      href="announcements.html"
+                      class="text-primary small text-decoration-none fw-bold"
+                      >View All</a
+                    >
+                  </div>
+
                   <ul class="list-unstyled small mb-0">
-                    <li class="mb-2 pb-2 border-bottom">
-                      <a href="#" class="text-decoration-none text-dark">Mid-sem dates announced...</a>
-                      <div class="text-muted" style="font-size: 11px;">Admin • 2h ago</div>
+                    <li class="mb-3 pb-2 border-bottom">
+                      <div class="fw-bold">AI Internship Drive 2026</div>
+                      <div class="text-muted" style="font-size: 0.75rem">
+                        Placement Cell • 2h ago
+                      </div>
                     </li>
                     <li>
-                      <a href="#" class="text-decoration-none text-dark">Hackathon registrations...</a>
-                      <div class="text-muted" style="font-size: 11px;">Club • 1d ago</div>
+                      <div class="fw-bold">Hackathon Registrations Open</div>
+                      <div class="text-muted" style="font-size: 0.75rem">
+                        Tech Club • 1d ago
+                      </div>
                     </li>
                   </ul>
                 </div>
@@ -228,41 +357,56 @@
             </div>
           </div>
 
-          <div class="col-lg-4">
+          <div class="col-12 col-lg-4">
             <div class="card-modern mb-4 text-center">
               <div class="d-flex justify-content-center mb-3">
                 <div class="progress-ring"></div>
               </div>
               <h5 class="fw-bold mb-1">Overall Attendance</h5>
-              <p class="text-muted small">You've missed 4 classes this month.</p>
-              <hr class="my-3">
-              <div class="row g-2">
-                <div class="col-6">
-                  <div class="metric-box">
-                    <div class="fw-bold">8.4</div>
-                    <small class="text-muted">Current CGPA</small>
-                  </div>
-                </div>
-                <div class="col-6">
-                  <div class="metric-box">
-                    <div class="fw-bold">12</div>
-                    <small class="text-muted">Active Credits</small>
-                  </div>
-                </div>
+              <p class="text-muted small">
+                Great job, you are above the 85% requirement.
+              </p>
+
+              <hr class="my-3 border-secondary opacity-10" />
+
+              <div
+                class="p-3 bg-light rounded-3 text-start border-start border-4 border-primary shadow-sm"
+              >
+                <small
+                  class="text-muted text-uppercase fw-bold"
+                  style="font-size: 0.7rem; letter-spacing: 0.5px"
+                  >Quote of the Day</small
+                >
+                <p
+                  class="mb-0 mt-2 small fst-italic text-secondary"
+                  id="dailyQuote"
+                >
+                  "First, solve the problem. Then, write the code."
+                </p>
               </div>
             </div>
 
             <div class="card-modern">
               <h6 class="fw-bold mb-3">Quick Links</h6>
               <div class="list-group list-group-flush gap-1">
-                <a href="digital-id.html" class="list-group-item list-group-item-action border-0 rounded-3 small">
-                  <i class="bi bi-person-badge me-2"></i> View Digital ID
+                <a
+                  href="digital-id.html"
+                  class="list-group-item list-group-item-action border-0 rounded-3 small fw-medium"
+                >
+                  <i class="bi bi-person-badge me-2 text-primary"></i> View
+                  Digital ID
                 </a>
-                <a href="cafeteria.html" class="list-group-item list-group-item-action border-0 rounded-3 small">
-                  <i class="bi bi-cup-hot me-2"></i> Today's Menu
+                <a
+                  href="cafeteria.html"
+                  class="list-group-item list-group-item-action border-0 rounded-3 small fw-medium"
+                >
+                  <i class="bi bi-cup-hot me-2 text-warning"></i> Today's Menu
                 </a>
-                <a href="fees.html" class="list-group-item list-group-item-action border-0 rounded-3 small">
-                  <i class="bi bi-wallet2 me-2"></i> Fee Payment
+                <a
+                  href="fees.html"
+                  class="list-group-item list-group-item-action border-0 rounded-3 small fw-medium"
+                >
+                  <i class="bi bi-wallet2 me-2 text-success"></i> Fee Payment
                 </a>
               </div>
             </div>
@@ -275,14 +419,34 @@
 
     <script src="../../assets/js/student.js"></script>
     <script>
-      initLayout("../../");
-      // Add active class to Dashboard link in sidebar
+      // Make sure initLayout exists in your student.js before calling it
+      if (typeof initLayout === "function") {
+        initLayout("../../");
+      }
+
+      // Sidebar highlighting
       setTimeout(() => {
-        const sidebarLinks = document.querySelectorAll(".sidebar a, #sidebarContainer a");
-        sidebarLinks.forEach(link => {
-          if (link.innerText.trim() === "Dashboard") link.classList.add("active");
+        const sidebarLinks = document.querySelectorAll(
+          ".sidebar a, #sidebarContainer a",
+        );
+        sidebarLinks.forEach((link) => {
+          if (link.innerText.trim() === "Dashboard")
+            link.classList.add("active");
         });
       }, 150);
+
+      // Current Date displays
+      const dateOptions = { weekday: "long", month: "long", day: "numeric" };
+      const fullDate = new Date().toLocaleDateString("en-US", {
+        ...dateOptions,
+        year: "numeric",
+      });
+      const shortDate = new Date().toLocaleDateString("en-US", dateOptions);
+
+      // Update the new banner date
+      document.getElementById("bannerDateDisplay").textContent = shortDate;
+      // Update the lectures card date
+      document.getElementById("currentDateDisplay").textContent = fullDate;
     </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   </body>

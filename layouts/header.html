@@ -1,22 +1,26 @@
 <!-- Top Header -->
 <header class="top-header d-flex align-items-center justify-content-between">
-<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
-  
-<!-- LEFT -->
-  <div class="d-flex align-items-center gap-3">
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"
+    rel="stylesheet"
+  />
 
+  <!-- LEFT -->
+  <div class="d-flex align-items-center gap-3">
     <!-- Hamburger -->
-  
 
     <button id="menuToggle" class="btn btn-light d-lg-none">
       <i class="bi bi-list fs-4"></i>
-</button>
-<button id="collapseSidebarBtn" class="btn btn-light d-none d-lg-inline-flex">
-<i class="bi bi-layout-sidebar"></i>
-</button>
+    </button>
+    <button
+      id="collapseSidebarBtn"
+      class="btn btn-light d-none d-lg-inline-flex"
+    >
+      <i class="bi bi-layout-sidebar"></i>
+    </button>
 
     <!-- Search -->
-    <div class="d-none d-md-block" style="width:320px;">
+    <div class="d-none d-md-block" style="width: 320px">
       <input
         type="text"
         class="form-control"
@@ -27,11 +31,15 @@
 
   <!-- RIGHT -->
   <div class="d-flex align-items-center gap-3">
-
     <div class="position-relative">
       <i class="bi bi-bell fs-5"></i>
-      <button class="btn btn-link text-decoration-none p-0" data-bs-toggle="dropdown">
-        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+      <button
+        class="btn btn-link text-decoration-none p-0"
+        data-bs-toggle="dropdown"
+      >
+        <span
+          class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
+        >
           7
         </span>
       </button>
@@ -39,42 +47,39 @@
 
     <div class="position-relative">
       <i class="bi bi-envelope fs-5"></i>
-      <button class="btn btn-link text-decoration-none p-0" data-bs-toggle="dropdown">
-       
-      <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-        3
-      </span>
+      <button
+        class="btn btn-link text-decoration-none p-0"
+        data-bs-toggle="dropdown"
+      >
+        <span
+          class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
+        >
+          3
+        </span>
       </button>
     </div>
-
   </div>
 </header>
 
 <script>
+  document.addEventListener("click", function (e) {
+    /* MOBILE SIDEBAR */
+    if (e.target.closest("#menuToggle")) {
+      const sidebar = document.querySelector("#sidebar");
 
-document.addEventListener("click", function(e){
-
-  /* MOBILE SIDEBAR */
-  if(e.target.closest("#menuToggle")){
-    const sidebar = document.querySelector("#sidebar");
-
-    if(sidebar){
-      sidebar.classList.toggle("show");
+      if (sidebar) {
+        sidebar.classList.toggle("show");
+      }
     }
-  }
 
-  /* COLLAPSE SIDEBAR */
-  if(e.target.closest("#collapseSidebarBtn")){
+    /* COLLAPSE SIDEBAR */
+    if (e.target.closest("#collapseSidebarBtn")) {
+      const sidebar = document.querySelector("#sidebar");
 
-    const sidebar = document.querySelector("#sidebar");
+      if (!sidebar) return;
 
-    if(!sidebar) return;
-
-    sidebar.classList.toggle("collapsed");
-    document.body.classList.toggle("sidebar-collapsed");
-
-  }
-
-});
-
+      sidebar.classList.toggle("collapsed");
+      document.body.classList.toggle("sidebar-collapsed");
+    }
+  });
 </script>

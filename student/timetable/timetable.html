@@ -19,6 +19,52 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"
     />
+
+    <style>
+      /* Responsive Sticky Grid Styles */
+      .table-responsive {
+        /* Prevents the table from stretching endlessly downward on mobile */
+        max-height: 75vh; 
+        overflow: auto;
+        border-radius: 0.5rem;
+      }
+
+      /* Make the top day headers sticky */
+      .timetable-table th {
+        position: sticky;
+        top: 0;
+        background-color: #fff; /* Match your preferred header background */
+        z-index: 2;
+        border-bottom: 2px solid #dee2e6;
+      }
+
+      /* Make the left time column sticky */
+      .timetable-table .time-slot {
+        position: sticky;
+        left: 0;
+        background-color: #f8f9fa; /* Slight off-white to distinguish the column */
+        z-index: 1;
+        font-weight: 600;
+        border-right: 2px solid #dee2e6;
+        white-space: nowrap; /* Prevents time from wrapping */
+      }
+
+      /* The top-left corner (Time header) needs the highest z-index so it doesn't get overlapped */
+      .timetable-table th:first-child {
+        position: sticky;
+        left: 0;
+        z-index: 3;
+        background-color: #fff;
+        border-right: 2px solid #dee2e6;
+      }
+
+      /* Ensure the cards don't crush into unreadable slivers on mobile */
+      .class-card {
+        min-width: 140px; 
+        padding: 12px 8px;
+        margin: 0 auto;
+      }
+    </style>
   </head>
 
   <body>
@@ -35,7 +81,7 @@
 
         <div class="card shadow-sm border-0">
           <div class="table-responsive">
-            <table class="table timetable-table text-center align-middle">
+            <table class="table timetable-table text-center align-middle mb-0">
               <thead>
                 <tr>
                   <th>Time</th>
@@ -48,125 +94,104 @@
               </thead>
 
               <tbody>
-                <!-- Row 1 -->
-
                 <tr>
                   <td class="time-slot">9:00 - 10:00</td>
-
                   <td>
                     <div class="class-card dsa">
                       Data Structures
-                      <small>Lab 204</small>
+                      <small class="d-block mt-1 opacity-75">Lab 204</small>
                     </div>
                   </td>
-
                   <td>
                     <div class="class-card ml">
                       Machine Learning
-                      <small>Room 302</small>
+                      <small class="d-block mt-1 opacity-75">Room 302</small>
                     </div>
                   </td>
-
                   <td>
                     <div class="class-card dsa">
                       Data Structures
-                      <small>Lab 204</small>
+                      <small class="d-block mt-1 opacity-75">Lab 204</small>
                     </div>
                   </td>
-
                   <td>
                     <div class="class-card web">
                       Web Development
-                      <small>Lab 105</small>
+                      <small class="d-block mt-1 opacity-75">Lab 105</small>
                     </div>
                   </td>
-
                   <td>
                     <div class="class-card ml">
                       Machine Learning
-                      <small>Room 302</small>
+                      <small class="d-block mt-1 opacity-75">Room 302</small>
                     </div>
                   </td>
                 </tr>
-
-                <!-- Row 2 -->
 
                 <tr>
                   <td class="time-slot">10:00 - 11:00</td>
-
                   <td>
                     <div class="class-card web">
                       Web Development
-                      <small>Lab 105</small>
+                      <small class="d-block mt-1 opacity-75">Lab 105</small>
                     </div>
                   </td>
-
                   <td>
                     <div class="class-card dsa">
                       Data Structures
-                      <small>Lab 204</small>
+                      <small class="d-block mt-1 opacity-75">Lab 204</small>
                     </div>
                   </td>
-
                   <td>
                     <div class="class-card ml">
                       Machine Learning
-                      <small>Room 302</small>
+                      <small class="d-block mt-1 opacity-75">Room 302</small>
                     </div>
                   </td>
-
                   <td>
                     <div class="class-card web">
                       Web Development
-                      <small>Lab 105</small>
+                      <small class="d-block mt-1 opacity-75">Lab 105</small>
                     </div>
                   </td>
-
                   <td>
                     <div class="class-card dsa">
                       Data Structures
-                      <small>Lab 204</small>
+                      <small class="d-block mt-1 opacity-75">Lab 204</small>
                     </div>
                   </td>
                 </tr>
 
-                <!-- Row 3 -->
-
                 <tr>
                   <td class="time-slot">11:00 - 12:00</td>
-
                   <td>
                     <div class="class-card ml">
                       Machine Learning
-                      <small>Room 302</small>
+                      <small class="d-block mt-1 opacity-75">Room 302</small>
                     </div>
                   </td>
-
                   <td>
                     <div class="class-card web">
                       Web Development
-                      <small>Lab 105</small>
+                      <small class="d-block mt-1 opacity-75">Lab 105</small>
                     </div>
                   </td>
-
                   <td>
                     <div class="class-card dsa">
                       Data Structures
-                      <small>Lab 204</small>
+                      <small class="d-block mt-1 opacity-75">Lab 204</small>
                     </div>
                   </td>
-
                   <td>
                     <div class="class-card ml">
                       Machine Learning
-                      <small>Room 302</small>
+                      <small class="d-block mt-1 opacity-75">Room 302</small>
                     </div>
                   </td>
-
                   <td>
                     <div class="class-card web">
                       Web Development
-                      <small>Lab 105</small>
+                      <small class="d-block mt-1 opacity-75">Lab 105</small>
                     </div>
                   </td>
                 </tr>
@@ -181,8 +206,8 @@
 
     <script src="../../assets/js/student.js"></script>
 
-<script>
-initLayout("../../");
-</script>
+    <script>
+      initLayout("../../");
+    </script>
   </body>
 </html>

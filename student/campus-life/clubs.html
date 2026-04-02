@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Clubs | Student Portal</title>
+    <title>Clubs</title>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet" />
@@ -157,7 +157,7 @@
           <div class="col-md-6 col-xl-4 club-item" data-category="Sports">
             <div class="club-card-container" style="border-left-color: #f59e0b;">
               <div class="club-badge">SPORTS</div>
-              <h5 class="fw-bold">Sports Club ⚽</h5>
+              <h5 class="fw-bold">Sports Club <i class="bi bi-basketball"></i></h5>
               <p class="text-secondary small flex-grow-1">Inter-college tournaments and daily practice sessions for multiple sports.</p>
               
               <div class="mt-3 border-top pt-3">
@@ -167,7 +167,7 @@
 
               <div class="d-flex gap-2 mt-4">
                 <button class="btn btn-light btn-sm flex-grow-1 view-btn" 
-                        data-name="Sports Club ⚽" 
+                        data-name="Sports Club <i class='bi bi-basketball'></i>" 
                         data-desc="Promoting fitness and team spirit through football, cricket, and badminton."
                         data-members="100"
                         data-event="Inter-College Football Cup">Details</button>
@@ -179,7 +179,7 @@
           <div class="col-md-6 col-xl-4 club-item" data-category="Cultural">
             <div class="club-card-container" style="border-left-color: #ec4899;">
               <div class="club-badge">CULTURAL</div>
-              <h5 class="fw-bold">Drama Club 🎭</h5>
+              <h5 class="fw-bold">Drama Club <i class="bi bi-theater"></i></h5>
               <p class="text-secondary small flex-grow-1">Expression through acting, stage plays, and street performances (Nukkad Natak).</p>
               
               <div class="mt-3 border-top pt-3">
@@ -188,8 +188,8 @@
               </div>
 
               <div class="d-flex gap-2 mt-4">
-                <button class="btn btn-light btn-sm flex-grow-1 view-btn" 
-                        data-name="Drama Club 🎭" 
+                 <button class="btn btn-light btn-sm flex-grow-1 view-btn" 
+                        data-name="Drama Club <i class='bi bi-theater'></i>" 
                         data-desc="Developing public speaking and acting skills while celebrating theater arts."
                         data-members="80"
                         data-event="Street Play Auditions">Details</button>
@@ -237,34 +237,25 @@
     <script src="../../assets/js/student.js"></script>
 
     <script>
+      // FIXED: Combined the duplicate DOMContentLoaded listeners into one clean block
       document.addEventListener("DOMContentLoaded", function () {
-        // 1. Initialize modular layout
+        
+        // 1. Initialize layout
         initLayout("../../");
 
         // 2. SIDEBAR HIGHLIGHT FIX
-        document.addEventListener("DOMContentLoaded", function () {
-  // Initialize layout
-  initLayout("../../");
-
-  // --- PRECISE SIDEBAR HIGHLIGHT FIX ---
-  setTimeout(() => {
-    // 1. Select all potential sidebar links
-    const sidebarLinks = document.querySelectorAll(".sidebar a, #sidebarContainer a");
-    
-    sidebarLinks.forEach(link => {
-      // 2. Remove 'active' from everything first to clear defaults
-      link.classList.remove("active");
-      
-      // 3. Only highlight if the text is exactly "Clubs" 
-      // (Trim whitespace to avoid matching issues)
-      const linkText = link.innerText.trim();
-      
-      if (linkText === "Clubs") {
-        link.classList.add("active");
-      }
-    });
-  }, 200); // Increased timeout slightly to ensure DOM injection is complete
-});
+        setTimeout(() => {
+          const sidebarLinks = document.querySelectorAll(".sidebar a, #sidebarContainer a");
+          
+          sidebarLinks.forEach(link => {
+            link.classList.remove("active");
+            
+            const linkText = link.innerText.trim();
+            if (linkText === "Clubs") {
+              link.classList.add("active");
+            }
+          });
+        }, 200);
 
         // 3. JOIN LOGIC
         const myClubsContainer = document.getElementById("myClubs");
@@ -303,7 +294,8 @@
 
           activeJoinBtn = btn.closest(".club-card-container").querySelector(".join-btn");
           
-          document.getElementById("m-name").innerText = btn.dataset.name;
+          // FIXED: Changed innerText to innerHTML so icons inside the data-name render properly
+          document.getElementById("m-name").innerHTML = btn.dataset.name;
           document.getElementById("m-desc").innerText = btn.dataset.desc;
           document.getElementById("m-members").innerText = btn.dataset.members;
           document.getElementById("m-event").innerText = btn.dataset.event;

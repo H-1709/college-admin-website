@@ -35,13 +35,19 @@
       .event-hero {
         background: linear-gradient(135deg, rgba(37, 99, 235, 0.9) 0%, rgba(79, 70, 229, 0.9) 100%), url('https://images.unsplash.com/photo-1540575467063-178a50c2df87?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80') center/cover;
         border-radius: 24px;
-        padding: 40px;
+        padding: 40px 20px; /* Adjusted padding for mobile */
         color: white;
         position: relative;
         overflow: hidden;
         box-shadow: 0 10px 30px rgba(37, 99, 235, 0.2);
       }
       
+      @media (min-width: 768px) {
+        .event-hero {
+          padding: 40px;
+        }
+      }
+
       .event-hero .badge {
         background: rgba(255, 255, 255, 0.2);
         backdrop-filter: blur(5px);
@@ -58,13 +64,13 @@
         background: white;
         color: #64748b;
         transition: all 0.2s;
+        white-space: nowrap; /* Prevents text wrapping inside pills */
       }
       .filter-pill:hover { background: #f1f5f9; color: #1e293b; }
       .filter-pill.active { background: var(--accent-blue); color: white; border-color: var(--accent-blue); }
 
       /* Event List Card */
       .event-card {
-        display: flex;
         background: white;
         border-radius: 16px;
         border: 1px solid #e2e8f0;
@@ -72,12 +78,23 @@
         transition: all 0.2s;
         text-decoration: none;
         color: inherit;
-        gap: 20px;
       }
       .event-card:hover {
         transform: translateY(-3px);
         box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
         border-color: #cbd5e1;
+      }
+
+      /* RSVP Button Responsive Container */
+      .rsvp-container {
+        width: 100%;
+        margin-top: 1rem;
+      }
+      @media (min-width: 768px) {
+        .rsvp-container {
+          width: auto;
+          margin-top: 0;
+        }
       }
 
       /* Date Box */
@@ -96,9 +113,8 @@
       .date-day { font-size: 1.8rem; font-weight: 800; color: #1e293b; line-height: 1; }
 
       /* Event Details */
-      .event-details { flex-grow: 1; }
       .event-title { font-size: 1.1rem; font-weight: 700; color: #0f172a; margin-bottom: 4px; }
-      .event-meta { font-size: 0.85rem; color: #64748b; display: flex; align-items: center; gap: 15px; margin-bottom: 8px; }
+      .event-meta { font-size: 0.85rem; color: #64748b; display: flex; align-items: center; gap: 10px 15px; margin-bottom: 8px; }
       .event-meta i { color: #94a3b8; }
 
       /* My Schedule Mini Items */
@@ -129,23 +145,23 @@
           </button>
         </div>
 
-        <div class="event-hero mb-5">
+        <div class="event-hero mb-5 text-center text-md-start">
           <div class="row align-items-center">
             <div class="col-md-8">
-              <span class="badge rounded-pill px-3 py-2 mb-3"><i class="bi bi-star-fill text-warning me-2"></i>Featured Festival</span>
+              <span class="badge rounded-pill px-3 py-2 mb-3"><i class="bi bi-star-fill text-warning me-2"></i>Featured Event</span>
               <h1 class="fw-bold display-5 mb-2">Google TechFest 2026</h1>
               <p class="fs-5 opacity-75 mb-4">Join India's largest student-run hackathon and tech symposium. Over 50+ colleges participating.</p>
               
-              <div class="d-flex gap-3 flex-wrap">
-                <div class="d-flex align-items-center bg-dark bg-opacity-25 rounded px-3 py-2">
+              <div class="d-flex gap-2 flex-wrap justify-content-center justify-content-md-start">
+                <div class="d-flex align-items-center bg-dark bg-opacity-25 rounded px-3 py-2 small">
                   <i class="bi bi-calendar-event me-2"></i> April 10 - 12, 2026
                 </div>
-                <div class="d-flex align-items-center bg-dark bg-opacity-25 rounded px-3 py-2">
+                <div class="d-flex align-items-center bg-dark bg-opacity-25 rounded px-3 py-2 small">
                   <i class="bi bi-geo-alt me-2"></i> Main Campus Ground
                 </div>
               </div>
             </div>
-            <div class="col-md-4 text-md-end mt-4 mt-md-0">
+            <div class="col-md-4 text-center text-md-end mt-4 mt-md-0 d-grid d-md-block">
               <button class="btn btn-light btn-lg rounded-pill fw-bold px-5 text-primary shadow">Register Now</button>
               <p class="small text-white opacity-75 mt-2 mb-0">Registrations close in 5 days</p>
             </div>
@@ -164,72 +180,66 @@
             </div>
 
             <div class="d-flex flex-column gap-3">
-              <a href="#" class="event-card">
-                <div class="date-box">
-                  <span class="date-month">Mar</span>
-                  <span class="date-day">28</span>
-                </div>
-                <div class="event-details">
-                  <div class="d-flex justify-content-between align-items-start">
-                    <div>
-                      <span class="badge bg-primary-subtle text-primary mb-2">Technical</span>
-                      <h3 class="event-title">AI & Data Science Workshop</h3>
-                      <div class="event-meta">
-                        <span><i class="bi bi-clock me-1"></i> 10:00 AM - 02:00 PM</span>
-                        <span><i class="bi bi-geo-alt me-1"></i> Seminar Hall A</span>
-                      </div>
-                      <p class="text-muted small mb-0 d-none d-md-block">Hands-on session on building neural networks from scratch. Bring your laptops.</p>
+              <a href="#" class="event-card d-flex flex-column flex-md-row align-items-start align-items-md-center">
+                <div class="d-flex gap-3 flex-grow-1 w-100">
+                  <div class="date-box flex-shrink-0">
+                    <span class="date-month">Mar</span>
+                    <span class="date-day">28</span>
+                  </div>
+                  <div class="event-details">
+                    <span class="badge bg-primary-subtle text-primary mb-2">Technical</span>
+                    <h3 class="event-title">AI & Data Science Workshop</h3>
+                    <div class="event-meta flex-wrap">
+                      <span><i class="bi bi-clock me-1"></i> 10:00 AM - 02:00 PM</span>
+                      <span><i class="bi bi-geo-alt me-1"></i> Seminar Hall A</span>
                     </div>
+                    <p class="text-muted small mb-0">Hands-on session on building neural networks from scratch. Bring your laptops.</p>
                   </div>
                 </div>
-                <div class="d-flex align-items-center">
-                  <button class="btn btn-outline-primary rounded-pill px-4">RSVP</button>
+                <div class="rsvp-container">
+                  <button class="btn btn-outline-primary rounded-pill px-4 w-100">RSVP</button>
                 </div>
               </a>
 
-              <a href="#" class="event-card">
-                <div class="date-box">
-                  <span class="date-month">Apr</span>
-                  <span class="date-day">04</span>
-                </div>
-                <div class="event-details">
-                  <div class="d-flex justify-content-between align-items-start">
-                    <div>
-                      <span class="badge bg-danger-subtle text-danger mb-2">Cultural</span>
-                      <h3 class="event-title">Open Mic Night: Unplugged</h3>
-                      <div class="event-meta">
-                        <span><i class="bi bi-clock me-1"></i> 06:30 PM - 09:00 PM</span>
-                        <span><i class="bi bi-geo-alt me-1"></i> Student Cafeteria</span>
-                      </div>
-                      <p class="text-muted small mb-0 d-none d-md-block">Poetry, stand-up comedy, and acoustic music performances by students.</p>
+              <a href="#" class="event-card d-flex flex-column flex-md-row align-items-start align-items-md-center">
+                <div class="d-flex gap-3 flex-grow-1 w-100">
+                  <div class="date-box flex-shrink-0">
+                    <span class="date-month">Apr</span>
+                    <span class="date-day">04</span>
+                  </div>
+                  <div class="event-details">
+                    <span class="badge bg-danger-subtle text-danger mb-2">Cultural</span>
+                    <h3 class="event-title">Open Mic Night: Unplugged</h3>
+                    <div class="event-meta flex-wrap">
+                      <span><i class="bi bi-clock me-1"></i> 06:30 PM - 09:00 PM</span>
+                      <span><i class="bi bi-geo-alt me-1"></i> Student Cafeteria</span>
                     </div>
+                    <p class="text-muted small mb-0">Poetry, stand-up comedy, and acoustic music performances by students.</p>
                   </div>
                 </div>
-                <div class="d-flex align-items-center">
-                  <button class="btn btn-outline-primary rounded-pill px-4">RSVP</button>
+                <div class="rsvp-container">
+                  <button class="btn btn-outline-primary rounded-pill px-4 w-100">RSVP</button>
                 </div>
               </a>
 
-              <a href="#" class="event-card">
-                <div class="date-box">
-                  <span class="date-month">Apr</span>
-                  <span class="date-day">15</span>
-                </div>
-                <div class="event-details">
-                  <div class="d-flex justify-content-between align-items-start">
-                    <div>
-                      <span class="badge bg-success-subtle text-success mb-2">Sports</span>
-                      <h3 class="event-title">Inter-Department Cricket Cup</h3>
-                      <div class="event-meta">
-                        <span><i class="bi bi-clock me-1"></i> 08:00 AM Onwards</span>
-                        <span><i class="bi bi-geo-alt me-1"></i> College Sports Ground</span>
-                      </div>
-                      <p class="text-muted small mb-0 d-none d-md-block">The annual rivalry begins. IT vs CS in the opening match!</p>
+              <a href="#" class="event-card d-flex flex-column flex-md-row align-items-start align-items-md-center">
+                <div class="d-flex gap-3 flex-grow-1 w-100">
+                  <div class="date-box flex-shrink-0">
+                    <span class="date-month">Apr</span>
+                    <span class="date-day">15</span>
+                  </div>
+                  <div class="event-details">
+                    <span class="badge bg-success-subtle text-success mb-2">Sports</span>
+                    <h3 class="event-title">Inter-Department Cricket Cup</h3>
+                    <div class="event-meta flex-wrap">
+                      <span><i class="bi bi-clock me-1"></i> 08:00 AM Onwards</span>
+                      <span><i class="bi bi-geo-alt me-1"></i> College Sports Ground</span>
                     </div>
+                    <p class="text-muted small mb-0">The annual rivalry begins. IT vs CS in the opening match!</p>
                   </div>
                 </div>
-                <div class="d-flex align-items-center">
-                  <button class="btn btn-outline-primary rounded-pill px-4">RSVP</button>
+                <div class="rsvp-container">
+                  <button class="btn btn-outline-primary rounded-pill px-4 w-100">RSVP</button>
                 </div>
               </a>
             </div>
@@ -281,7 +291,6 @@
       document.addEventListener("DOMContentLoaded", function () {
         initLayout("../../");
 
-        // --- SIDEBAR HIGHLIGHT FIX ---
         setTimeout(() => {
           const sidebarLinks = document.querySelectorAll(".sidebar a, #sidebarContainer a");
           sidebarLinks.forEach(link => {
@@ -297,7 +306,6 @@
           pill.addEventListener('click', function() {
             document.querySelectorAll('.filter-pill').forEach(p => p.classList.remove('active'));
             this.classList.add('active');
-            // Logic to filter events would go here
           });
         });
       });

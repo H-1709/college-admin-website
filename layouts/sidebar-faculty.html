@@ -1,10 +1,11 @@
 <!-- Faculty Sidebar -->
 <aside id="sidebar" class="sidebar">
-
   <!-- Logo / Header -->
   <div class="sidebar-header d-flex align-items-center gap-3">
-    <div class="bg-primary rounded-3 d-flex align-items-center justify-content-center"
-        style="width:44px;height:44px;font-size:22px;">
+    <div
+      class="bg-primary rounded-3 d-flex align-items-center justify-content-center"
+      style="width: 44px; height: 44px; font-size: 22px"
+    >
       <i class="bi bi-person"></i>
     </div>
     <div>
@@ -15,68 +16,110 @@
 
   <!-- Navigation -->
   <nav class="sidebar-nav">
-
     <small class="text-uppercase text-secondary ps-3">Main</small>
 
-  <a href="/faculty/dashboard.html" data-bs-toggle="tooltip" data-bs-placement="right" title="Dashboard">
-  <i class="bi bi-speedometer2"></i> <span>Dashboard</span>
-</a>
+    <a
+      href="/faculty/dashboard.html"
+      data-bs-toggle="tooltip"
+      data-bs-placement="right"
+      title="Dashboard"
+    >
+      <i class="bi bi-speedometer2"></i> <span>Dashboard</span>
+    </a>
 
-    <small class="text-uppercase text-secondary ps-3 mt-3 d-block">Teaching</small>
+    <small class="text-uppercase text-secondary ps-3 mt-3 d-block"
+      >Teaching</small
+    >
 
-    <a href="/faculty/classrooms/attendance.html" data-bs-toggle="tooltip" data-bs-placement="right" title="Attendance">
+    <a
+      href="/faculty/classrooms/attendance.html"
+      data-bs-toggle="tooltip"
+      data-bs-placement="right"
+      title="Attendance"
+    >
       <i class="bi bi-people"></i> <span>Attendance</span>
     </a>
 
-    <a href="/faculty/classrooms/resources.html" data-bs-toggle="tooltip" data-bs-placement="right" title="Resources">
+    <a
+      href="/faculty/classrooms/resources.html"
+      data-bs-toggle="tooltip"
+      data-bs-placement="right"
+      title="Resources"
+    >
       <i class="bi bi-folder"></i> <span>Resources</span>
     </a>
 
-    <a href="/faculty/grading/grading-hub.html" data-bs-toggle="tooltip" data-bs-placement="right" title="Grading Hub">
+    <a
+      href="/faculty/grading/grading-hub.html"
+      data-bs-toggle="tooltip"
+      data-bs-placement="right"
+      title="Grading Hub"
+    >
       <i class="bi bi-pencil-square"></i> <span>Grading Hub</span>
       <span class="ms-auto badge bg-danger rounded-pill">12</span>
     </a>
 
-    <small class="text-uppercase text-secondary ps-3 mt-3 d-block">Communication</small>
+    <small class="text-uppercase text-secondary ps-3 mt-3 d-block"
+      >Communication</small
+    >
 
-    <a href="/faculty/announcements.html" data-bs-toggle="tooltip" data-bs-placement="right" title="Announcements">
+    <a
+      href="/faculty/announcements.html"
+      data-bs-toggle="tooltip"
+      data-bs-placement="right"
+      title="Announcements"
+    >
       <i class="bi bi-bell"></i> <span>Announcements</span>
     </a>
 
-    <a href="/faculty/student-connect.html" data-bs-toggle="tooltip" data-bs-placement="right" title="Student Connect">
+    <a
+      href="/faculty/student-connect.html"
+      data-bs-toggle="tooltip"
+      data-bs-placement="right"
+      title="Student Connect"
+    >
       <i class="bi bi-chat-dots"></i> <span>Student Connect</span>
       <span class="ms-auto badge bg-danger rounded-pill">5</span>
     </a>
 
-    <small class="text-uppercase text-secondary ps-3 mt-3 d-block">Planning</small>
+    <small class="text-uppercase text-secondary ps-3 mt-3 d-block"
+      >Planning</small
+    >
 
-    <a href="/faculty/planner/faculty-planner.html" data-bs-toggle="tooltip" data-bs-placement="right" title="My Planner">
+    <a
+      href="/faculty/planner/faculty-planner.html"
+      data-bs-toggle="tooltip"
+      data-bs-placement="right"
+      title="My Planner"
+    >
       <i class="bi bi-calendar3"></i> <span>My Planner</span>
     </a>
 
-    <small class="text-uppercase text-secondary ps-3 mt-3 d-block">Account</small>
+    <small class="text-uppercase text-secondary ps-3 mt-3 d-block"
+      >Account</small
+    >
 
-    <a href="/faculty/profile.html" data-bs-toggle="tooltip" data-bs-placement="right" title="Profile">
+    <a
+      href="/faculty/profile.html"
+      data-bs-toggle="tooltip"
+      data-bs-placement="right"
+      title="Profile"
+    >
       <i class="bi bi-person"></i> <span>Profile</span>
     </a>
-
   </nav>
 </aside>
 <script>
-document.addEventListener("DOMContentLoaded", function () {
+  document.addEventListener("DOMContentLoaded", function () {
+    const currentPage = window.location.pathname.split("/").pop();
+    const links = document.querySelectorAll(".sidebar-nav a");
 
-  const currentPage = window.location.pathname.split("/").pop();
-  const links = document.querySelectorAll(".sidebar-nav a");
+    links.forEach((link) => {
+      const linkPage = link.getAttribute("href").split("/").pop();
 
-  links.forEach(link => {
-
-    const linkPage = link.getAttribute("href").split("/").pop();
-
-    if (currentPage === linkPage) {
-      link.classList.add("active");
-    }
-
+      if (currentPage === linkPage) {
+        link.classList.add("active");
+      }
+    });
   });
-
-});
 </script>
