@@ -188,7 +188,7 @@
               </div>
 
               <div class="d-flex gap-2 mt-4">
-                 <button class="btn btn-light btn-sm flex-grow-1 view-btn" 
+                <button class="btn btn-light btn-sm flex-grow-1 view-btn" 
                         data-name="Drama Club <i class='bi bi-theater'></i>" 
                         data-desc="Developing public speaking and acting skills while celebrating theater arts."
                         data-members="80"
@@ -294,7 +294,6 @@
 
           activeJoinBtn = btn.closest(".club-card-container").querySelector(".join-btn");
           
-          // FIXED: Changed innerText to innerHTML so icons inside the data-name render properly
           document.getElementById("m-name").innerHTML = btn.dataset.name;
           document.getElementById("m-desc").innerText = btn.dataset.desc;
           document.getElementById("m-members").innerText = btn.dataset.members;
