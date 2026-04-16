@@ -3,22 +3,31 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <script src="/assets/js/auth/session.js"></script>
-    <title>Faculty Dashboard</title>
+  <title>Faculty Dashboard</title>
 
+  <!-- Bootstrap -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Global CSS -->
+  <link rel="stylesheet" href="../assets/css/base.css" />
+  <link rel="stylesheet" href="../assets/css/layout.css" />
+  <link rel="stylesheet" href="../assets/css/faculty.css" />
+
+  <!-- Chart.js -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-  <link rel="stylesheet" href="/assets/css/base.css" />
-  <link rel="stylesheet" href="/assets/css/layout.css" />
-  <link rel="stylesheet" href="/assets/css/faculty.css" />
-
   <style>
-    .chart-card { height: 320px; }
-    .chart-card canvas { height: 240px !important; }
+    /* Fix chart height */
+    .chart-card {
+      height: 320px;
+    }
+    .chart-card canvas {
+      height: 240px !important;
+    }
 
+    /* Course buttons */
     .course-actions .btn {
       border-radius: 10px;
       font-weight: 500;
@@ -30,22 +39,100 @@
       background: #f3f4f6;
       border: 1px solid #e5e7eb;
     }
-
-    .btn-soft:hover { background: #e5e7eb; }
+    .btn-soft:hover {
+      background: #e5e7eb;
+    }
   </style>
 </head>
+
 <body>
+
+  <!-- ================= SIDEBAR ================= -->
   <div id="sidebarContainer"></div>
 
+  <!-- ================= MAIN CONTENT ================= -->
   <div class="main-content">
+
+    <!-- Header -->
     <div id="headerContainer"></div>
 
+    <!-- ================= PAGE BODY ================= -->
     <main class="container-fluid py-4">
-      <h2 class="fw-bold">Welcome back Sir!</h2>
+
+      <!-- Welcome -->
+      <h2 class="fw-bold">Welcome back Sir! </h2>
       <p class="text-muted">Here's your teaching overview for today</p>
 
-      <div id="facultyStatsRow" class="row g-4 mt-3"></div>
+      <!-- ===== QUICK SUMMARY ===== -->
+<div class="row g-4 mt-3">
 
+  <!-- Total Students -->
+  <div class="col-lg-3 col-md-6">
+    <div class="card shadow-sm border-0 h-100">
+      <div class="card-body d-flex align-items-center gap-3">
+        <div class="bg-primary text-white rounded-3 d-flex align-items-center justify-content-center"
+             style="width:48px;height:48px;">
+          <i class="bi bi-people fs-4"></i>
+        </div>
+        <div>
+          <small class="text-muted">Total Students</small>
+          <h3 class="mb-0 fw-bold">156</h3>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Today's Attendance -->
+  <div class="col-lg-3 col-md-6">
+    <div class="card shadow-sm border-0 h-100">
+      <div class="card-body d-flex align-items-center gap-3">
+        <div class="bg-success text-white rounded-3 d-flex align-items-center justify-content-center"
+            style="width:48px;height:48px;">
+          <i class="bi bi-check2-circle fs-4"></i>
+        </div>
+        <div>
+          <small class="text-muted">Today's Attendance</small>
+          <h4 class="mb-0 fw-bold">89%</h4>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Pending Grades -->
+  <div class="col-lg-3 col-md-6">
+    <div class="card shadow-sm border-0 h-100">
+      <div class="card-body d-flex align-items-center gap-3">
+        <div class="bg-warning text-white rounded-3 d-flex align-items-center justify-content-center"
+            style="width:48px;height:48px;">
+          <i class="bi bi-pencil-square fs-4"></i>
+        </div>
+        <div>
+          <small class="text-muted">Pending Grades</small>
+          <h4 class="mb-0 fw-bold">12</h4>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Messages -->
+  <div class="col-lg-3 col-md-6">
+    <div class="card shadow-sm border-0 h-100">
+      <div class="card-body d-flex align-items-center gap-3">
+        <div class="bg-danger text-white rounded-3 d-flex align-items-center justify-content-center"
+            style="width:48px;height:48px;">
+          <i class="bi bi-chat-dots fs-4"></i>
+        </div>
+        <div>
+          <small class="text-muted">Messages</small>
+          <h4 class="mb-0 fw-bold">5</h4>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+      <!-- Charts -->
       <div class="row g-4 mt-4">
         <div class="col-lg-8">
           <div class="card chart-card p-3">
@@ -65,23 +152,166 @@
         </div>
       </div>
 
+      <!-- Courses Header -->
       <div class="d-flex justify-content-between align-items-center mt-5">
         <h4 class="fw-bold">My Courses</h4>
         <button class="btn btn-primary">+ Add Material</button>
       </div>
 
-      <div id="facultyCoursesRow" class="row g-4 mt-2"></div>
+      <!-- Courses -->
+      <div class="row g-4 mt-2">
+
+        <!-- Course 1 -->
+        <div class="col-lg-6">
+          <div class="card course-card p-3 h-100">
+            <h5 class="fw-bold">Data Structures & Algorithms</h5>
+            <small class="text-muted">CS-301 • Section A</small>
+
+            <div class="course-stats mt-3">
+              <div><strong>42</strong><br><small>Students</small></div>
+              <div><strong>89%</strong><br><small>Attendance</small></div>
+              <div><strong>4.7</strong><br><small>Rating</small></div>
+            </div>
+
+            <div class="d-flex gap-2 course-actions mt-3">
+              <button class="btn btn-soft w-100"><i class="bi bi-people"></i> Attendance</button>
+              <button class="btn btn-primary w-100"><i class="bi bi-pencil-square"></i> Grade</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Course 2 -->
+        <div class="col-lg-6">
+          <div class="card course-card p-3 h-100">
+            <h5 class="fw-bold">Machine Learning</h5>
+            <small class="text-muted">CS-402 • Section B</small>
+
+            <div class="course-stats mt-3">
+              <div><strong>38</strong><br><small>Students</small></div>
+              <div><strong>92%</strong><br><small>Attendance</small></div>
+              <div><strong>4.9</strong><br><small>Rating</small></div>
+            </div>
+
+            <div class="d-flex gap-2 course-actions mt-3">
+              <button class="btn btn-soft w-100"><i class="bi bi-people"></i> Attendance</button>
+              <button class="btn btn-primary w-100"><i class="bi bi-pencil-square"></i> Grade</button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
     </main>
 
+    <!-- Footer -->
     <div id="footerContainer"></div>
+
   </div>
 
-  <script src="/utils/helpers.js"></script>
-  <script src="/assets/js/faculty.js"></script>
+  <!-- ================= LOAD PARTIALS ================= -->
   <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      bootstrapFacultyDashboard();
-    });
+async function loadComponent(id, file) {
+  try {
+    const res = await fetch(file);
+    const html = await res.text();
+    document.getElementById(id).innerHTML = html;
+
+    // 🔹 highlight active sidebar link AFTER sidebar loads
+    if (id === "sidebarContainer") {
+
+      const currentPage = window.location.pathname.split("/").pop();
+      const links = document.querySelectorAll(".sidebar-nav a");
+
+      links.forEach(link => {
+
+        const linkPage = link.getAttribute("href").split("/").pop();
+
+        if (currentPage === linkPage) {
+          link.classList.add("active");
+        }
+
+      });
+
+    }
+
+  } catch (e) {
+    console.error("Component load error:", file);
+  }
+}
+loadComponent('sidebarContainer','../../layouts/sidebar-faculty.html');
+loadComponent('headerContainer','../../layouts/header.html');
+loadComponent('footerContainer','../../layouts/footer.html');
+/* ENABLE BOOTSTRAP TOOLTIPS */
+setTimeout(() => {
+  const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]');
+  tooltipTriggerList.forEach(el => new bootstrap.Tooltip(el));
+}, 300);
+
+
+
+/* ✅ HAMBURGER SIDEBAR TOGGLE */
+document.addEventListener("click", function(e) {
+
+  const sidebar = document.querySelector("#sidebar");
+
+  if (!sidebar) return;
+
+  /* MOBILE MENU */
+  if (e.target.closest("#menuToggle")) {
+    sidebar.classList.toggle("show");
+  }
+
+  /* COLLAPSE SIDEBAR */
+  if (e.target.closest("#collapseSidebarBtn")) {
+    sidebar.classList.toggle("collapsed");
+    document.body.classList.toggle("sidebar-collapsed");
+  }
+
+});
   </script>
+
+  <!-- ================= CHARTS ================= -->
+  <script>
+    // Weekly chart
+    const weeklyCtx = document.getElementById('weeklyClassesChart');
+    if (weeklyCtx) {
+      new Chart(weeklyCtx, {
+        type: 'line',
+        data: {
+          labels: ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'],
+          datasets: [{
+            data: [3,4,2,5,4,1,0],
+            tension: 0.4,
+            fill: true
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: { legend: { display: false } }
+        }
+      });
+    }
+
+    // Doughnut
+    const distCtx = document.getElementById('courseDistributionChart');
+    if (distCtx) {
+      new Chart(distCtx, {
+        type: 'doughnut',
+        data: {
+          labels: ['DSA','ML','Web Dev','DBMS'],
+          datasets: [{ data: [40,30,25,31] }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: { legend: { position: 'bottom' } }
+        }
+      });
+    }
+
+    
+  </script>
+
 </body>
 </html>

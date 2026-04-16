@@ -1,110 +1,47 @@
 /* assets/js/auth/login.js */
 
-const mockUsers = [
-  {
-    email: "student@college.edu",
-    password: "student123",
-    role: "student",
-    redirect: "/student/dashboard.html",
-  },
-  {
-    email: "faculty@college.edu",
-    password: "faculty123",
-    role: "faculty",
-    redirect: "/faculty/dashboard.html",
-  },
-  {
-    email: "admission@college.edu",
-    password: "admission123",
-    role: "admission",
-    redirect: "/admission/dashboard.html",
-  },
-  {
-    email: "admin@college.edu",
-    password: "admin123",
-    role: "admin",
-    redirect: "/super-admin/dashboard.html",
-  },
-];
+document.addEventListener('DOMContentLoaded', function() {
+    // 1. Get role from URL query params (e.g., login.html?role=student)
+    const urlParams = new URLSearchParams(window.location.search);
+    const role = urlParams.get('role') || 'student'; // default to student
 
-function setRoleDefaults(role) {
-  const roleInput = document.getElementById("role");
-  const title = document.getElementById("loginTitle");
+    // 2. Update UI based on role
+    const title = document.getElementById('loginTitle');
+    title.innerText = `${role.charAt(0).toUpperCase() + role.slice(1)} Login`;
 
-  if (roleInput) {
-    roleInput.value = role;
-  }
+    // 3. Handle Form Submission
+    const loginForm = document.getElementById('loginForm');
+    
+    loginForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        const email = document.getElementById('email').value;
+        const password = document.getElementById('password').value;
 
-  if (title) {
-    title.textContent = `${role.charAt(0).toUpperCase() + role.slice(1)} Login`;
-  }
-}
+        // --- MOCK BACKEND LOGIC ---
+        // In a real app, you would fetch() to an API here.
+        // For now, we accept any password longer than 3 chars.
+        
+        if(password.length > 3) {
+            // Create a session object
+            const sessionData = {
+                email: email,
+                role: role,
+                token: 'mock-jwt-token-12345',
+                isLoggedIn: true
+            };
 
-function setLoginMessage(text, tone = "muted") {
-  const message = document.getElementById("loginMessage");
-  if (!message) {
-    return;
-  }
+            // Save to LocalStorage
+            localStorage.setItem('currentUser', JSON.stringify(sessionData));
 
-  message.className = `small mb-3 text-${tone}`;
-  message.textContent = text;
-}
-
-function getRoleFromUrl() {
-  const params = new URLSearchParams(window.location.search);
-  const role = params.get("role") || "student";
-  const allowedRoles = ["student", "faculty", "admission", "admin"];
-  return allowedRoles.includes(role) ? role : "student";
-}
-
-function handleDemoLogin(event) {
-  event.preventDefault();
-
-  const role = document.getElementById("role")?.value;
-  const email = document.getElementById("email")?.value.trim().toLowerCase();
-  const password = document.getElementById("password")?.value;
-
-  const matchedUser = mockUsers.find(
-    (user) => user.role === role && user.email === email && user.password === password,
-  );
-
-  if (!matchedUser) {
-    setLoginMessage(
-      "Invalid demo credentials for selected role. Try configured mock users only.",
-      "danger",
-    );
-    return;
-  }
-
-  localStorage.setItem(
-    "currentUser",
-    JSON.stringify({
-      email: matchedUser.email,
-      role: matchedUser.role,
-      isLoggedIn: true,
-      isDemo: true,
-    }),
-  );
-
-  setLoginMessage("Demo login successful. Redirecting...", "success");
-  window.location.href = matchedUser.redirect;
-}
-
-document.addEventListener("DOMContentLoaded", () => {
-  const initialRole = getRoleFromUrl();
-  setRoleDefaults(initialRole);
-
-  const roleInput = document.getElementById("role");
-  if (roleInput) {
-    roleInput.addEventListener("change", (event) => {
-      setRoleDefaults(event.target.value);
+            // Redirect based on role
+            if(role === 'student') window.location.href = '../student/dashboard.html';
+            else if(role === 'faculty') window.location.href = '../faculty/dashboard.html';
+            else if(role === 'admission') window.location.href = '../admission/dashboard.html';
+            else if(role === 'admin') window.location.href = '../super-admin/dashboard.html';
+        
+        } else {
+            alert("Invalid credentials! (Try password length > 3)");
+        }
     });
-  }
-
-  setLoginMessage("Demo access only: use configured role-based mock credentials.");
-
-  const loginForm = document.getElementById("loginForm");
-  if (loginForm) {
-    loginForm.addEventListener("submit", handleDemoLogin);
-  }
 });
