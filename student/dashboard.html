@@ -3,20 +3,15 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script src="/assets/js/auth/session.js"></script>
     <title>Dashboard | Student Portal</title>
 
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-    />
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"
-      rel="stylesheet"
-    />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet" />
 
-    <link rel="stylesheet" href="../assets/css/base.css" />
-    <link rel="stylesheet" href="../assets/css/layout.css" />
-    <link rel="stylesheet" href="../assets/css/student.css" />
+    <link rel="stylesheet" href="/assets/css/base.css" />
+    <link rel="stylesheet" href="/assets/css/layout.css" />
+    <link rel="stylesheet" href="/assets/css/student.css" />
 
     <style>
       :root {
@@ -45,32 +40,6 @@
         padding: 40px;
         color: white;
         margin-bottom: 2rem;
-        position: relative;
-        overflow: hidden;
-      }
-
-      .timeline-item {
-        position: relative;
-        padding-left: 32px;
-        padding-bottom: 20px;
-        border-left: 2px solid #e2e8f0;
-      }
-
-      .timeline-item::before {
-        content: "";
-        position: absolute;
-        left: -9px;
-        top: 4px;
-        width: 16px;
-        height: 16px;
-        border-radius: 50%;
-        background: white;
-        border: 3px solid var(--accent-blue);
-      }
-
-      .timeline-item:last-child {
-        border-left: 2px solid transparent;
-        padding-bottom: 0;
       }
 
       .progress-ring {
@@ -98,54 +67,15 @@
         font-weight: 700;
       }
 
-      .schedule-row {
-        background: #f8fafc;
-        border-radius: 12px;
-        padding: 16px 20px;
-        transition: all 0.2s ease;
-      }
-
-      .schedule-row:hover {
-        background: #f1f5f9;
-      }
-
-      .pulse-text {
-        animation: textPulse 2s infinite;
-      }
-
-      @keyframes textPulse {
-        0% {
-          opacity: 1;
-        }
-        50% {
-          opacity: 0.6;
-        }
-        100% {
-          opacity: 1;
-        }
-      }
-
-      /* Compact Schedule Styles */
       .schedule-row.compact {
         background: #f8fafc;
         border-radius: 10px;
-        padding: 10px 16px; /* Reduced padding */
+        padding: 10px 16px;
       }
 
-      .time-label {
-        font-size: 0.85rem;
-        font-weight: 700;
-      }
-
-      .subject-label {
-        font-size: 0.9rem;
-        margin-top: 1px;
-      }
-
-      .location-label {
-        font-size: 0.75rem;
-      }
-
+      .time-label { font-size: 0.85rem; font-weight: 700; }
+      .subject-label { font-size: 0.9rem; margin-top: 1px; }
+      .location-label { font-size: 0.75rem; }
       .status-label {
         font-size: 0.75rem;
         font-weight: 700;
@@ -153,24 +83,13 @@
         letter-spacing: 0.5px;
       }
 
-      .tiny-link {
-        font-size: 0.8rem;
-      }
+      .tiny-link { font-size: 0.8rem; }
 
-      .pulse-text {
-        animation: textPulse 2s infinite;
-      }
-
+      .pulse-text { animation: textPulse 2s infinite; }
       @keyframes textPulse {
-        0% {
-          opacity: 1;
-        }
-        50% {
-          opacity: 0.6;
-        }
-        100% {
-          opacity: 1;
-        }
+        0% { opacity: 1; }
+        50% { opacity: 0.6; }
+        100% { opacity: 1; }
       }
     </style>
   </head>
@@ -185,27 +104,17 @@
         <div class="welcome-banner shadow-sm">
           <div class="row align-items-center">
             <div class="col-md-8">
-              <span class="badge bg-primary mb-2 px-3 py-2 rounded-pill"
-                >Semester 4 • B.E. IT</span
-              >
+              <span class="badge bg-primary mb-2 px-3 py-2 rounded-pill">Semester 4 • B.E. IT</span>
               <h1 class="fw-bold mb-1">Good Morning, Hir!</h1>
-              <p class="opacity-75 mb-0">
-                You have 3 lectures and 1 assignment scheduled for today.
-              </p>
+              <p class="opacity-75 mb-0">You have 3 lectures and 1 assignment scheduled for today.</p>
             </div>
 
             <div class="col-md-4 text-md-end mt-4 mt-md-0">
-              <div
-                class="d-inline-flex align-items-center bg-white bg-opacity-10 rounded-pill px-4 py-2 border border-white border-opacity-25"
-              >
+              <div class="d-inline-flex align-items-center bg-white bg-opacity-10 rounded-pill px-4 py-2 border border-white border-opacity-25">
                 <i class="bi bi-calendar3 fs-5 me-3 opacity-75"></i>
                 <div class="text-start">
-                  <div class="fw-bold small" id="bannerDateDisplay">
-                    Loading date...
-                  </div>
-                  <div class="opacity-75" style="font-size: 0.75rem">
-                    Academic Year 2025-26
-                  </div>
+                  <div class="fw-bold small" id="bannerDateDisplay">Loading date...</div>
+                  <div class="opacity-75" style="font-size: 0.75rem">Academic Year 2025-26</div>
                 </div>
               </div>
             </div>
@@ -219,64 +128,10 @@
                 <h6 class="fw-bold mb-0">Today's Schedule</h6>
               </div>
 
-              <div class="d-flex flex-column gap-2">
-                <div
-                  class="schedule-row compact border-start border-4 border-success"
-                >
-                  <div
-                    class="d-flex justify-content-between align-items-center"
-                  >
-                    <div>
-                      <div class="time-label text-dark">09:00 AM</div>
-                      <div class="subject-label text-secondary">
-                        Data Structures
-                      </div>
-                      <div class="location-label text-muted">Lab 204</div>
-                    </div>
-                    <div class="status-label text-success">Done</div>
-                  </div>
-                </div>
-
-                <div
-                  class="schedule-row compact border-start border-4 border-primary shadow-sm bg-white"
-                >
-                  <div
-                    class="d-flex justify-content-between align-items-center"
-                  >
-                    <div>
-                      <div class="time-label text-primary">11:00 AM</div>
-                      <div class="subject-label fw-bold text-dark">
-                        Java Programming
-                      </div>
-                      <div class="location-label text-muted">Room 302</div>
-                    </div>
-                    <div class="status-label text-primary pulse-text">Now</div>
-                  </div>
-                </div>
-
-                <div
-                  class="schedule-row compact border-start border-4 border-secondary"
-                >
-                  <div
-                    class="d-flex justify-content-between align-items-center"
-                  >
-                    <div>
-                      <div class="time-label text-dark">02:00 PM</div>
-                      <div class="subject-label text-secondary">
-                        Software Engineering
-                      </div>
-                      <div class="location-label text-muted">Lab 105</div>
-                    </div>
-                    <div class="status-label text-muted">Next</div>
-                  </div>
-                </div>
-              </div>
+              <div id="todaySchedule" class="d-flex flex-column gap-2"></div>
 
               <div class="mt-3 pt-2 border-top">
-                <a
-                  href="./timetable/timetable.html"
-                  class="text-primary fw-bold text-decoration-none tiny-link"
-                >
+                <a href="/student/timetable/timetable.html" class="text-primary fw-bold text-decoration-none tiny-link">
                   Open Full Timetable <i class="bi bi-arrow-right ms-1"></i>
                 </a>
               </div>
@@ -286,70 +141,30 @@
               <div class="col-12 col-md-6">
                 <div class="card-modern h-100">
                   <h6 class="fw-bold mb-3">
-                    <i class="bi bi-journal-check me-2 text-primary"></i>Recent
-                    Assignments
+                    <i class="bi bi-journal-check me-2 text-primary"></i>Recent Assignments
                   </h6>
 
-                  <div class="mb-3">
-                    <p class="mb-0 fw-bold small">Core Java: Logic Building</p>
-                    <div
-                      class="d-flex justify-content-between align-items-center mt-1"
-                    >
-                      <small class="text-danger fw-semibold">Due Today.</small>
-                      <a
-                        href="./academics/materials.html"
-                        class="btn btn-sm btn-outline-primary py-0 px-2 rounded-pill"
-                        style="font-size: 11px"
-                        >View Materials</a
-                      >
-                    </div>
-                  </div>
-
-                  <div class="mb-0">
-                    <p class="mb-0 fw-bold small">Frontend: Component UI</p>
-                    <div
-                      class="d-flex justify-content-between align-items-center mt-1"
-                    >
-                      <small class="text-muted">Due Tomorrow</small>
-                      <a
-                        href="./academics/materials.html"
-                        class="btn btn-sm btn-outline-primary py-0 px-2 rounded-pill"
-                        style="font-size: 11px"
-                        >View Materials</a
-                      >
-                    </div>
-                  </div>
+                  <div id="recentAssignments"></div>
                 </div>
               </div>
 
               <div class="col-12 col-md-6">
                 <div class="card-modern h-100">
-                  <div
-                    class="d-flex justify-content-between align-items-center mb-3"
-                  >
+                  <div class="d-flex justify-content-between align-items-center mb-3">
                     <h6 class="fw-bold mb-0">
-                      <i class="bi bi-megaphone me-2 text-warning"></i
-                      >Announcements
+                      <i class="bi bi-megaphone me-2 text-warning"></i>Announcements
                     </h6>
-                    <a
-                      href="announcements.html"
-                      class="text-primary small text-decoration-none fw-bold"
-                      >View All</a
-                    >
+                    <a href="/student/announcements.html" class="text-primary small text-decoration-none fw-bold">View All</a>
                   </div>
 
                   <ul class="list-unstyled small mb-0">
                     <li class="mb-3 pb-2 border-bottom">
                       <div class="fw-bold">AI Internship Drive 2026</div>
-                      <div class="text-muted" style="font-size: 0.75rem">
-                        Placement Cell • 2h ago
-                      </div>
+                      <div class="text-muted" style="font-size: 0.75rem">Placement Cell • 2h ago</div>
                     </li>
                     <li>
                       <div class="fw-bold">Hackathon Registrations Open</div>
-                      <div class="text-muted" style="font-size: 0.75rem">
-                        Tech Club • 1d ago
-                      </div>
+                      <div class="text-muted" style="font-size: 0.75rem">Tech Club • 1d ago</div>
                     </li>
                   </ul>
                 </div>
@@ -363,49 +178,26 @@
                 <div class="progress-ring"></div>
               </div>
               <h5 class="fw-bold mb-1">Overall Attendance</h5>
-              <p class="text-muted small">
-                Great job, you are above the 85% requirement.
-              </p>
+              <p class="text-muted small">Great job, you are above the 85% requirement.</p>
 
               <hr class="my-3 border-secondary opacity-10" />
 
-              <div
-                class="p-3 bg-light rounded-3 text-start border-start border-4 border-primary shadow-sm"
-              >
-                <small
-                  class="text-muted text-uppercase fw-bold"
-                  style="font-size: 0.7rem; letter-spacing: 0.5px"
-                  >Quote of the Day</small
-                >
-                <p
-                  class="mb-0 mt-2 small fst-italic text-secondary"
-                  id="dailyQuote"
-                >
-                  "First, solve the problem. Then, write the code."
-                </p>
+              <div class="p-3 bg-light rounded-3 text-start border-start border-4 border-primary shadow-sm">
+                <small class="text-muted text-uppercase fw-bold" style="font-size: 0.7rem; letter-spacing: 0.5px">Quote of the Day</small>
+                <p class="mb-0 mt-2 small fst-italic text-secondary" id="dailyQuote">"First, solve the problem. Then, write the code."</p>
               </div>
             </div>
 
             <div class="card-modern">
               <h6 class="fw-bold mb-3">Quick Links</h6>
               <div class="list-group list-group-flush gap-1">
-                <a
-                  href="digital-id.html"
-                  class="list-group-item list-group-item-action border-0 rounded-3 small fw-medium"
-                >
-                  <i class="bi bi-person-badge me-2 text-primary"></i> View
-                  Digital ID
+                <a href="/student/digital-id.html" class="list-group-item list-group-item-action border-0 rounded-3 small fw-medium">
+                  <i class="bi bi-person-badge me-2 text-primary"></i> View Digital ID
                 </a>
-                <a
-                  href="cafeteria.html"
-                  class="list-group-item list-group-item-action border-0 rounded-3 small fw-medium"
-                >
+                <a href="/student/campus-life/cafeteria.html" class="list-group-item list-group-item-action border-0 rounded-3 small fw-medium">
                   <i class="bi bi-cup-hot me-2 text-warning"></i> Today's Menu
                 </a>
-                <a
-                  href="fees.html"
-                  class="list-group-item list-group-item-action border-0 rounded-3 small fw-medium"
-                >
+                <a href="/student/wallet/fees.html" class="list-group-item list-group-item-action border-0 rounded-3 small fw-medium">
                   <i class="bi bi-wallet2 me-2 text-success"></i> Fee Payment
                 </a>
               </div>
@@ -417,36 +209,12 @@
       <div id="footerContainer"></div>
     </div>
 
-    <script src="../../assets/js/student.js"></script>
+    <script src="/utils/helpers.js"></script>
+    <script src="/assets/js/student.js"></script>
     <script>
-      // Make sure initLayout exists in your student.js before calling it
-      if (typeof initLayout === "function") {
-        initLayout("../../");
-      }
-
-      // Sidebar highlighting
-      setTimeout(() => {
-        const sidebarLinks = document.querySelectorAll(
-          ".sidebar a, #sidebarContainer a",
-        );
-        sidebarLinks.forEach((link) => {
-          if (link.innerText.trim() === "Dashboard")
-            link.classList.add("active");
-        });
-      }, 150);
-
-      // Current Date displays
-      const dateOptions = { weekday: "long", month: "long", day: "numeric" };
-      const fullDate = new Date().toLocaleDateString("en-US", {
-        ...dateOptions,
-        year: "numeric",
+      document.addEventListener("DOMContentLoaded", () => {
+        bootstrapStudentDashboard();
       });
-      const shortDate = new Date().toLocaleDateString("en-US", dateOptions);
-
-      // Update the new banner date
-      document.getElementById("bannerDateDisplay").textContent = shortDate;
-      // Update the lectures card date
-      document.getElementById("currentDateDisplay").textContent = fullDate;
     </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   </body>
