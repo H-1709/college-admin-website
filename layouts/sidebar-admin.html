@@ -1,87 +1,32 @@
-<div class="bg-dark border-right" id="sidebar-wrapper">
-  <div class="sidebar-heading text-white">
-    <i class="bi bi-shield-lock-fill me-2"></i> Super Admin
+<aside id="sidebar" class="sidebar">
+  <div class="sidebar-header d-flex align-items-center gap-3">
+    <div class="bg-primary rounded-3 d-flex align-items-center justify-content-center" style="width:44px;height:44px;font-size:22px">
+      <i class="bi bi-shield-lock"></i>
+    </div>
+    <div>
+      <div class="fw-bold">Campus</div>
+      <small class="text-light opacity-75">Admin Portal</small>
+    </div>
   </div>
-  <div class="list-group list-group-flush">
-    <a
-      href="../super-admin/dashboard.html"
-      class="list-group-item list-group-item-action bg-dark text-light"
-    >
-      <i class="bi bi-cpu me-2"></i> System Health
-    </a>
 
-    <a
-      href="#userSubmenu"
-      class="list-group-item list-group-item-action bg-dark text-light dropdown-toggle"
-      data-bs-toggle="collapse"
-    >
-      <i class="bi bi-people me-2"></i> User Management
-    </a>
-    <div class="collapse" id="userSubmenu">
-      <a
-        href="../super-admin/users/students.html"
-        class="list-group-item list-group-item-action bg-dark text-secondary ps-5"
-        >Students</a
-      >
-      <a
-        href="../super-admin/users/faculty.html"
-        class="list-group-item list-group-item-action bg-dark text-secondary ps-5"
-        >Faculty</a
-      >
-      <a
-        href="../super-admin/users/admission-staff.html"
-        class="list-group-item list-group-item-action bg-dark text-secondary ps-5"
-        >Staff</a
-      >
-    </div>
+  <nav class="sidebar-nav">
+    <small class="text-uppercase text-secondary ps-3">Main</small>
+    <a href="/super-admin/dashboard.html"><i class="bi bi-speedometer2"></i><span>Dashboard</span></a>
+    <a href="/super-admin/settings.html"><i class="bi bi-gear"></i><span>Global Settings</span></a>
 
-    <a
-      href="#instSubmenu"
-      class="list-group-item list-group-item-action bg-dark text-light dropdown-toggle"
-      data-bs-toggle="collapse"
-    >
-      <i class="bi bi-bank me-2"></i> Institution
-    </a>
-    <div class="collapse" id="instSubmenu">
-      <a
-        href="../super-admin/institution/departments.html"
-        class="list-group-item list-group-item-action bg-dark text-secondary ps-5"
-        >Departments</a
-      >
-      <a
-        href="../super-admin/institution/courses.html"
-        class="list-group-item list-group-item-action bg-dark text-secondary ps-5"
-        >Courses</a
-      >
-    </div>
+    <small class="text-uppercase text-secondary ps-3 mt-3 d-block">Users</small>
+    <a href="/super-admin/users/students.html"><i class="bi bi-mortarboard"></i><span>Students</span></a>
+    <a href="/super-admin/users/faculty.html"><i class="bi bi-person-workspace"></i><span>Faculty</span></a>
+    <a href="/super-admin/users/admission-staff.html"><i class="bi bi-person-badge"></i><span>Admission Staff</span></a>
 
-    <a
-      href="../super-admin/finance/analytics.html"
-      class="list-group-item list-group-item-action bg-dark text-light"
-    >
-      <i class="bi bi-currency-dollar me-2"></i> Finance Analytics
-    </a>
+    <small class="text-uppercase text-secondary ps-3 mt-3 d-block">Institution</small>
+    <a href="/super-admin/institution/departments.html"><i class="bi bi-diagram-3"></i><span>Departments</span></a>
+    <a href="/super-admin/institution/courses.html"><i class="bi bi-book"></i><span>Courses</span></a>
+    <a href="/super-admin/institution/semesters.html"><i class="bi bi-calendar3"></i><span>Semesters</span></a>
 
-    <a
-      href="#secSubmenu"
-      class="list-group-item list-group-item-action bg-dark text-light dropdown-toggle"
-      data-bs-toggle="collapse"
-    >
-      <i class="bi bi-safe me-2"></i> Security
-    </a>
-    <div class="collapse" id="secSubmenu">
-      <a
-        href="../super-admin/security/audit-logs.html"
-        class="list-group-item list-group-item-action bg-dark text-secondary ps-5"
-        >Audit Logs</a
-      >
-    </div>
-
-    <a
-      href="../super-admin/settings.html"
-      class="list-group-item list-group-item-action bg-dark text-light"
-    >
-      <i class="bi bi-gear me-2"></i> Global Settings
-    </a>
-  </div>
-</div>
+    <small class="text-uppercase text-secondary ps-3 mt-3 d-block">Security & Finance</small>
+    <a href="/super-admin/security/audit-logs.html"><i class="bi bi-journal-text"></i><span>Audit Logs</span></a>
+    <a href="/super-admin/security/password-resets.html"><i class="bi bi-key"></i><span>Password Resets</span></a>
+    <a href="/super-admin/finance/analytics.html"><i class="bi bi-cash-coin"></i><span>Finance Analytics</span></a>
+  </nav>
+</aside>
