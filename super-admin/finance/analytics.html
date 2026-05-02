@@ -10,9 +10,10 @@
   <link rel="stylesheet" href="../../assets/css/layout.css" />
   <link rel="stylesheet" href="../../assets/css/admin.css" />
   <style>
-    body { background:#f8fafc; }
-    .hero { background:linear-gradient(135deg,#1e293b,#334155); color:#fff; border-radius:20px; padding:28px; }
-    .glass-card { background:rgba(255,255,255,.8); border:1px solid #e2e8f0; border-radius:16px; box-shadow:0 10px 20px rgba(0,0,0,.04); }
+    body{background:#f8fafc;}
+    .hero{background:linear-gradient(135deg,#0f172a,#334155);color:#fff;border-radius:20px;padding:28px;}
+    .glass-card{background:#fff;border:1px solid #e2e8f0;border-radius:16px;box-shadow:0 8px 20px rgba(15,23,42,.04);}
+    .stat{padding:14px;border-radius:12px;background:#f8fafc;border:1px solid #e2e8f0;}
   </style>
 </head>
 <body>
@@ -20,30 +21,12 @@
   <div class="main-content">
     <div id="headerContainer"></div>
     <main class="container-fluid py-4">
-      <div class="hero mb-4"><h2 class="mb-1 fw-bold">Finance Insights</h2><p class="mb-0 opacity-75">Modern admin interface using Bootstrap only (no backend integration).</p></div>
-      <div class="row g-4">
-        <div class="col-lg-8">
-          <div class="glass-card p-4">
-            <h5 class="fw-bold mb-3">Overview</h5>
-            <div class="row g-3">
-              <div class="col-md-4"><div class="p-3 bg-light rounded-3"><small class="text-muted">Total</small><div class="fs-4 fw-bold">1,284</div></div></div>
-              <div class="col-md-4"><div class="p-3 bg-light rounded-3"><small class="text-muted">Active</small><div class="fs-4 fw-bold">1,102</div></div></div>
-              <div class="col-md-4"><div class="p-3 bg-light rounded-3"><small class="text-muted">Pending</small><div class="fs-4 fw-bold">42</div></div></div>
-            </div>
-            <div class="table-responsive mt-4"><table class="table table-hover align-middle mb-0"><thead><tr><th>Record</th><th>Owner</th><th>Status</th><th>Updated</th></tr></thead><tbody><tr><td>Sample Item A</td><td>Admin Team</td><td><span class="badge text-bg-success">Healthy</span></td><td>2h ago</td></tr><tr><td>Sample Item B</td><td>Operations</td><td><span class="badge text-bg-warning">Review</span></td><td>Today</td></tr></tbody></table></div>
-          </div>
-        </div>
-        <div class="col-lg-4">
-          <div class="glass-card p-4 mb-4"><h6 class="fw-bold">Quick Actions</h6><button class="btn btn-primary w-100 mb-2">Create New</button><button class="btn btn-outline-secondary w-100 mb-2">Export Report</button><button class="btn btn-outline-danger w-100">Archive Selected</button></div>
-          <div class="glass-card p-4"><h6 class="fw-bold">Notes</h6><p class="small text-muted mb-0">This page is static UI only for frontend preview.</p></div>
-        </div>
-      </div>
+      <div class="hero mb-4"><div class="d-flex justify-content-between align-items-start flex-wrap gap-3"><div><h2 class="fw-bold mb-1">Finance Insights</h2><p class="mb-0 opacity-75">Track fee collections, scholarships, dues, and cashflow trends.</p></div><span class="badge bg-light text-dark px-3 py-2">Updated: May 2026</span></div></div>
+<div class="row g-4"><div class="col-lg-8"><div class="glass-card p-4 mb-4"><h5 class="fw-bold mb-3">Revenue Overview (FY 2025-26)</h5><div class="row g-3"><div class="col-md-4"><div class="stat"><small>Collected Fees</small><div class="fs-4 fw-bold">₹18.2 Cr</div></div></div><div class="col-md-4"><div class="stat"><small>Pending Dues</small><div class="fs-4 fw-bold text-danger">₹2.1 Cr</div></div></div><div class="col-md-4"><div class="stat"><small>Scholarships</small><div class="fs-4 fw-bold text-info">₹1.4 Cr</div></div></div></div></div><div class="glass-card p-4"><h5 class="fw-bold mb-3">Top Defaulter Segments</h5><table class="table"><thead><tr><th>Program</th><th>Pending</th><th>Students</th><th>Recovery Plan</th></tr></thead><tbody><tr><td>BBA</td><td>₹42L</td><td>112</td><td>Installment campaign</td></tr><tr><td>B.Tech CE</td><td>₹31L</td><td>67</td><td>Parent outreach</td></tr></tbody></table></div></div><div class="col-lg-4"><div class="glass-card p-4"><h6 class="fw-bold">Finance Actions</h6><div class="d-grid gap-2"><button class="btn btn-primary">Generate Daily Collection Report</button><button class="btn btn-outline-primary">Send Due Reminder Batch</button><button class="btn btn-outline-secondary">Download Ledger Snapshot</button></div></div></div></div>
     </main>
     <div id="footerContainer"></div>
   </div>
   <script src="../../assets/js/admin.js"></script>
-  <script>
-    if (typeof initAdminLayout === 'function') initAdminLayout('../../');
-  </script>
+  <script>if(typeof initAdminLayout==='function') initAdminLayout('../../');</script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body></html>
