@@ -94,6 +94,29 @@
         vertical-align: middle;
         background: transparent;
       }
+      .results-table-responsive {
+        overflow-x: visible;
+      }
+      .marks-table {
+        width: 100%;
+        table-layout: fixed;
+      }
+      .marks-table th,
+      .marks-table td {
+        white-space: normal;
+        word-break: break-word;
+      }
+      .marks-table th:first-child,
+      .marks-table td:first-child {
+        width: 40%;
+      }
+      @media (max-width: 992px) {
+        .marks-table th,
+        .marks-table td {
+          padding: 10px 8px;
+          font-size: 0.85rem;
+        }
+      }
 
       .grade-pill {
         width: 32px;
@@ -211,7 +234,7 @@
                 <span class="badge bg-light text-dark fw-bold border">Regular Exam</span>
               </div>
 
-              <div class="table-responsive">
+              <div class="table-responsive results-table-responsive">
                 <table class="table marks-table table-borderless align-middle mb-0">
                   <thead>
                     <tr>
