@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admission Dashboard</title>
+    <title>Admission Cell Dashboard</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css" rel="stylesheet">
     <link rel="stylesheet" href="../assets/css/base.css">
@@ -15,117 +15,296 @@
     <div class="d-flex" id="wrapper">
         <div id="sidebar-container"></div>
 
-        <div id="page-content-wrapper">
+        <div id="page-content-wrapper" class="w-100 bg-light">
             <div id="header-container"></div>
 
             <div class="container-fluid px-4 py-4">
-                <h2 class="mb-4">Admission Insights</h2>
+                <div class="d-flex justify-content-between align-items-center mb-4 flex-wrap">
+                    <div>
+                        <h2 class="fw-bold mb-1">Admission Insights</h2>
+                        <p class="text-muted mb-0">Overview of active applications, inquiries, and candidate pipelines.</p>
+                    </div>
+                    <div class="mt-2 mt-md-0">
+                        <button class="btn btn-outline-primary me-2" onclick="window.print()">
+                            <i class="bi bi-printer me-2"></i>Export Report
+                        </button>
+                        <a href="inquiry-manager.html" class="btn btn-primary">
+                            <i class="bi bi-plus-lg me-2"></i>New Inquiry
+                        </a>
+                    </div>
+                </div>
 
                 <div class="row g-3 mb-4">
-                    <div class="col-md-3">
-                        <div class="card border-0 shadow-sm border-start border-4 border-primary">
-                            <div class="card-body">
-                                <h6 class="text-muted small text-uppercase">Total Inquiries</h6>
-                                <h3 class="fw-bold">1,250</h3>
-                                <span class="text-success small"><i class="bi bi-arrow-up"></i> 12% vs last month</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="card border-0 shadow-sm border-start border-4 border-warning">
-                            <div class="card-body">
-                                <h6 class="text-muted small text-uppercase">Applications</h6>
-                                <h3 class="fw-bold">480</h3>
-                                <span class="text-muted small">Conversion: 38%</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="card border-0 shadow-sm border-start border-4 border-info">
-                            <div class="card-body">
-                                <h6 class="text-muted small text-uppercase">Interviews</h6>
-                                <h3 class="fw-bold">120</h3>
-                                <span class="text-info small">24 scheduled today</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="card border-0 shadow-sm border-start border-4 border-success">
-                            <div class="card-body">
-                                <h6 class="text-muted small text-uppercase">Enrolled</h6>
-                                <h3 class="fw-bold">85</h3>
-                                <span class="text-success small">Target: 150</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row g-4">
-                    <div class="col-lg-6">
-                        <div class="card border-0 shadow-sm">
-                            <div class="card-header bg-white d-flex justify-content-between align-items-center py-3">
-                                <h5 class="mb-0">Recent Activity</h5>
-                                <button class="btn btn-sm btn-outline-primary">Refresh</button>
-                            </div>
-                            <div class="card-body p-0">
-                                <div class="list-group list-group-flush" id="admissionActivity">
-                                    </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-6">
+                    <div class="col-md-6 col-lg-3">
                         <div class="card border-0 shadow-sm h-100">
-                            <div class="card-header bg-white py-3">
-                                <h5 class="mb-0">Enrollment by Course</h5>
+                            <div class="card-body d-flex align-items-center justify-content-between">
+                                <div>
+                                    <h6 class="text-muted small text-uppercase fw-semibold mb-1">Total Inquiries</h6>
+                                    <h3 class="fw-bold text-dark mb-0">1,248</h3>
+                                    <span class="text-success small fw-medium mt-1 d-inline-block">
+                                        <i class="bi bi-arrow-up-short"></i>+12% vs last week
+                                    </span>
+                                </div>
+                                <div class="icon-shape bg-primary bg-opacity-10 text-primary">
+                                    <i class="bi bi-chat-left-dots fs-4"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 col-lg-3">
+                        <div class="card border-0 shadow-sm h-100">
+                            <div class="card-body d-flex align-items-center justify-content-between">
+                                <div>
+                                    <h6 class="text-muted small text-uppercase fw-semibold mb-1">Applications Review</h6>
+                                    <h3 class="fw-bold text-dark mb-0">412</h3>
+                                    <span class="text-warning small fw-medium mt-1 d-inline-block">
+                                        <i class="bi bi-clock"></i>85 pending verification
+                                    </span>
+                                </div>
+                                <div class="icon-shape bg-warning bg-opacity-10 text-warning">
+                                    <i class="bi bi-file-earmark-person fs-4"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 col-lg-3">
+                        <div class="card border-0 shadow-sm h-100">
+                            <div class="card-body d-flex align-items-center justify-content-between">
+                                <div>
+                                    <h6 class="text-muted small text-uppercase fw-semibold mb-1">Interviews Scheduled</h6>
+                                    <h3 class="fw-bold text-dark mb-0">94</h3>
+                                    <span class="text-info small fw-medium mt-1 d-inline-block">
+                                        <i class="bi bi-calendar-event"></i>18 scheduled for today
+                                    </span>
+                                </div>
+                                <div class="icon-shape bg-info bg-opacity-10 text-info">
+                                    <i class="bi bi-person-video3 fs-4"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 col-lg-3">
+                        <div class="card border-0 shadow-sm h-100">
+                            <div class="card-body d-flex align-items-center justify-content-between">
+                                <div>
+                                    <h6 class="text-muted small text-uppercase fw-semibold mb-1">Students Admitted</h6>
+                                    <h3 class="fw-bold text-success mb-0">328</h3>
+                                    <span class="text-success small fw-medium mt-1 d-inline-block">
+                                        <i class="bi bi-check-circle"></i>Target 65% achieved
+                                    </span>
+                                </div>
+                                <div class="icon-shape bg-success bg-opacity-10 text-success">
+                                    <i class="bi bi-person-check fs-4"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row g-4 mb-4">
+                    <div class="col-xl-8 col-lg-12">
+                        <div class="card border-0 shadow-sm h-100">
+                            <div class="card-header bg-transparent border-0 pt-4 pb-0 d-flex justify-content-between align-items-center">
+                                <h5 class="fw-bold mb-0">Recent Inquiries & Leads</h5>
+                                <a href="inquiry-manager.html" class="btn btn-sm btn-link text-decoration-none">View All <i class="bi bi-arrow-right"></i></a>
+                            </div>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table table-hover align-middle">
+                                        <thead class="table-light">
+                                            <tr>
+                                                <th class="border-0">Lead Details</th>
+                                                <th class="border-0">Course Applied</th>
+                                                <th class="border-0">Date</th>
+                                                <th class="border-0">Status</th>
+                                                <th class="border-0 text-end">Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                    <div class="d-flex align-items-center">
+                                                        <div class="avatar bg-primary text-white rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 38px; height: 38px;">
+                                                            <span class="fw-semibold">JD</span>
+                                                        </div>
+                                                        <div>
+                                                            <h6 class="mb-0 fw-bold text-dark">John Doe</h6>
+                                                            <small class="text-muted">john.doe@email.com</small>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td>B.Tech Computer Science</td>
+                                                <td>May 06, 2026</td>
+                                                <td><span class="badge bg-success-subtle text-success">Document Verified</span></td>
+                                                <td class="text-end">
+                                                    <a href="applications/pipeline.html" class="btn btn-sm btn-light border">Review</a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <div class="d-flex align-items-center">
+                                                        <div class="avatar bg-info text-white rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 38px; height: 38px;">
+                                                            <span class="fw-semibold">AS</span>
+                                                        </div>
+                                                        <div>
+                                                            <h6 class="mb-0 fw-bold text-dark">Amelia Smith</h6>
+                                                            <small class="text-muted">amelia@example.com</small>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td>MBA Finance</td>
+                                                <td>May 05, 2026</td>
+                                                <td><span class="badge bg-warning-subtle text-warning">Pending Review</span></td>
+                                                <td class="text-end">
+                                                    <a href="applications/document-verification.html" class="btn btn-sm btn-light border">Verify</a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <div class="d-flex align-items-center">
+                                                        <div class="avatar bg-secondary text-white rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 38px; height: 38px;">
+                                                            <span class="fw-semibold">RK</span>
+                                                        </div>
+                                                        <div>
+                                                            <h6 class="mb-0 fw-bold text-dark">Rajesh Kumar</h6>
+                                                            <small class="text-muted">rajesh.k@gmail.com</small>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td>B.Sc Data Science</td>
+                                                <td>May 04, 2026</td>
+                                                <td><span class="badge bg-danger-subtle text-danger">Action Needed</span></td>
+                                                <td class="text-end">
+                                                    <a href="applications/pipeline.html" class="btn btn-sm btn-light border">Review</a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <div class="d-flex align-items-center">
+                                                        <div class="avatar bg-warning text-white rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 38px; height: 38px;">
+                                                            <span class="fw-semibold">SM</span>
+                                                        </div>
+                                                        <div>
+                                                            <h6 class="mb-0 fw-bold text-dark">Sarah Miller</h6>
+                                                            <small class="text-muted">sarah.m@email.com</small>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td>B.Tech Electronics</td>
+                                                <td>May 04, 2026</td>
+                                                <td><span class="badge bg-info-subtle text-info">Interview Scheduled</span></td>
+                                                <td class="text-end">
+                                                    <a href="applications/interviews.html" class="btn btn-sm btn-light border">View</a>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-xl-4 col-lg-12">
+                        <div class="card border-0 shadow-sm mb-4">
+                            <div class="card-header bg-transparent border-0 pt-4 pb-1">
+                                <h5 class="fw-bold mb-0">Departmental Shares</h5>
                             </div>
                             <div class="card-body">
                                 <div class="mb-3">
                                     <div class="d-flex justify-content-between mb-1">
-                                        <span>Computer Science</span>
-                                        <span>75%</span>
+                                        <span class="fw-medium text-dark">Engineering (CS / IT / ECE)</span>
+                                        <span class="fw-bold">45%</span>
                                     </div>
                                     <div class="progress" style="height: 10px;">
-                                        <div class="progress-bar bg-primary" style="width: 75%"></div>
+                                        <div class="progress-bar bg-primary" role="progressbar" style="width: 45%" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100"></div>
                                     </div>
                                 </div>
+                                
                                 <div class="mb-3">
                                     <div class="d-flex justify-content-between mb-1">
-                                        <span>Business Admin</span>
-                                        <span>50%</span>
+                                        <span class="fw-medium text-dark">Business Administration (MBA / BBA)</span>
+                                        <span class="fw-bold">30%</span>
                                     </div>
                                     <div class="progress" style="height: 10px;">
-                                        <div class="progress-bar bg-success" style="width: 50%"></div>
+                                        <div class="progress-bar bg-info" role="progressbar" style="width: 30%" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100"></div>
                                     </div>
                                 </div>
+
                                 <div class="mb-3">
                                     <div class="d-flex justify-content-between mb-1">
-                                        <span>Engineering</span>
-                                        <span>30%</span>
+                                        <span class="fw-medium text-dark">Sciences & Arts (B.Sc / BA)</span>
+                                        <span class="fw-bold">15%</span>
                                     </div>
                                     <div class="progress" style="height: 10px;">
-                                        <div class="progress-bar bg-info" style="width: 30%"></div>
+                                        <div class="progress-bar bg-success" role="progressbar" style="width: 15%" aria-valuenow="15" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                </div>
+
+                                <div class="mb-1">
+                                    <div class="d-flex justify-content-between mb-1">
+                                        <span class="fw-medium text-dark">Design & Media (B.Des)</span>
+                                        <span class="fw-bold">10%</span>
+                                    </div>
+                                    <div class="progress" style="height: 10px;">
+                                        <div class="progress-bar bg-warning" role="progressbar" style="width: 10%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card border-0 shadow-sm">
+                            <div class="card-header bg-transparent border-0 pt-4 pb-1">
+                                <h5 class="fw-bold mb-0">Management Shortcuts</h5>
+                            </div>
+                            <div class="card-body">
+                                <div class="row g-2">
+                                    <div class="col-6">
+                                        <a href="applications/document-verification.html" class="btn btn-light border py-3 w-100 text-start">
+                                            <i class="bi bi-file-earmark-check text-primary fs-4 d-block mb-1"></i>
+                                            <span class="small fw-semibold">Verify Docs</span>
+                                        </a>
+                                    </div>
+                                    <div class="col-6">
+                                        <a href="applications/interviews.html" class="btn btn-light border py-3 w-100 text-start">
+                                            <i class="bi bi-telephone-outbound text-success fs-4 d-block mb-1"></i>
+                                            <span class="small fw-semibold">Interviews</span>
+                                        </a>
+                                    </div>
+                                    <div class="col-6">
+                                        <a href="onboarding.html" class="btn btn-light border py-3 w-100 text-start">
+                                            <i class="bi bi-clipboard2-check text-info fs-4 d-block mb-1"></i>
+                                            <span class="small fw-semibold">Onboarding</span>
+                                        </a>
+                                    </div>
+                                    <div class="col-6">
+                                        <a href="notice-board/admission-alerts.html" class="btn btn-light border py-3 w-100 text-start">
+                                            <i class="bi bi-bell text-warning fs-4 d-block mb-1"></i>
+                                            <span class="small fw-semibold">Post Alert</span>
+                                        </a>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-    </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+            </div> </div> </div> <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="../utils/helpers.js"></script>
-    <script src="../assets/js/admission.js"></script>
     <script>
         document.addEventListener("DOMContentLoaded", async function() {
+            // Asynchronously load custom layout headers and sidebars
             await loadComponent("sidebar-container", "../layouts/sidebar-admission.html");
             await loadComponent("header-container", "../layouts/header.html");
             
+            // Handles sidebar toggle actions dynamically
             const toggleBtn = document.getElementById("sidebarToggle");
             if(toggleBtn) {
-                toggleBtn.addEventListener('click', () => document.getElementById("wrapper").classList.toggle("toggled"));
+                toggleBtn.addEventListener('click', () => {
+                    document.getElementById("wrapper").classList.toggle("toggled");
+                });
             }
         });
     </script>
