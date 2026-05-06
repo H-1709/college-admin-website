@@ -703,3 +703,78 @@ padding-right: 20px;
 max-width: 1200px;
 margin: auto;
 }
+
+
+/* Custom Responsive Table Rules - No Scrollbars */
+.table-responsive-no-scroll {
+    overflow-x: visible !important; /* Ensure no horizontal scrollbar is forced */
+}
+
+/* Force cell text wrapping and prevent blowout */
+.table-responsive-no-scroll table {
+    table-layout: auto;
+    width: 100% !important;
+}
+
+.table-responsive-no-scroll th,
+.table-responsive-no-scroll td {
+    white-space: normal !important; /* Forces text to wrap onto new lines */
+    word-break: break-word;        /* Breaks long strings like emails/codes */
+    vertical-align: middle;
+}
+
+/* Smart Stack Mode: Transforms tables into stacked cards on mobile devices (max-width: 767px) */
+@media (max-width: 767.98px) {
+    .table-responsive-no-scroll table, 
+    .table-responsive-no-scroll thead, 
+    .table-responsive-no-scroll tbody, 
+    .table-responsive-no-scroll th, 
+    .table-responsive-no-scroll td, 
+    .table-responsive-no-scroll tr {
+        display: block;
+        width: 100%;
+    }
+    
+    /* Hide the main header row on mobile, we will map labels dynamically */
+    .table-responsive-no-scroll thead tr {
+        position: absolute;
+        top: -9999px;
+        left: -9999px;
+    }
+    
+    .table-responsive-no-scroll tr {
+        border: 1px solid #dee2e6;
+        border-radius: 8px;
+        margin-bottom: 12px;
+        padding: 8px;
+        background: #fff;
+        box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    }
+    
+    .table-responsive-no-scroll td {
+        border: none !important;
+        position: relative;
+        padding-left: 45% !important; /* Leave space on the left for pseudo headers */
+        text-align: right !important;  /* Push data content to the right */
+        border-bottom: 1px solid #f1f1f1 !important;
+    }
+    
+    .table-responsive-no-scroll td:last-child {
+        border-bottom: 0 !important;
+    }
+    
+    /* Use data-label attribute to inject headers dynamically on the left */
+    .table-responsive-no-scroll td::before {
+        content: attr(data-label);
+        position: absolute;
+        left: 12px;
+        width: 40%;
+        text-align: left;
+        font-weight: 600;
+        color: #495057;
+        font-size: 0.85rem;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+    }
+}
