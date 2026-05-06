@@ -76,6 +76,25 @@
         color: #475569;
         padding: 15px;
       }
+      .cafeteria-table-responsive {
+        overflow-x: visible;
+      }
+      .table-menu {
+        width: 100%;
+        table-layout: fixed;
+      }
+      .table-menu th,
+      .table-menu td {
+        white-space: normal;
+        word-break: break-word;
+      }
+      @media (max-width: 992px) {
+        .table-menu th,
+        .table-menu td {
+          padding: 10px 8px;
+          font-size: 0.85rem;
+        }
+      }
 
       .timing-row {
         padding: 12px 0;
@@ -168,7 +187,7 @@
                 <h6 class="fw-bold mb-0">Weekly Mess Cycle</h6>
                 <button class="btn btn-sm btn-outline-primary"><i class="bi bi-download me-1"></i>PDF Menu</button>
               </div>
-              <div class="table-responsive">
+              <div class="table-responsive cafeteria-table-responsive">
                 <table class="table table-menu mb-0">
                   <thead>
                     <tr>
