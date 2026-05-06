@@ -7,75 +7,77 @@
 
   <!-- LEFT -->
   <div class="d-flex align-items-center gap-3">
-    <!-- Hamburger -->
-
-    <button id="menuToggle" class="btn btn-light d-lg-none">
+    <button id="menuToggle" class="btn btn-light d-lg-none" aria-label="Open menu">
       <i class="bi bi-list fs-4"></i>
     </button>
+
     <button
       id="collapseSidebarBtn"
       class="btn btn-light d-none d-lg-inline-flex"
+      aria-label="Collapse sidebar"
     >
       <i class="bi bi-layout-sidebar"></i>
     </button>
 
-    <!-- Search -->
-    <div class="d-none d-md-block" style="width: 320px">
-      <input
-        type="text"
-        class="form-control"
-        placeholder="Search for anything..."
-      />
+    <div class="header-brand d-none d-sm-block">
+      <h6 class="mb-0 fw-semibold">College Admin Portal</h6>
+      <small class="text-muted">Welcome back</small>
     </div>
   </div>
 
   <!-- RIGHT -->
-  <div class="d-flex align-items-center gap-3">
-    <div class="position-relative">
+  <div class="header-actions d-flex align-items-center gap-2 gap-md-3">
+    <button
+      type="button"
+      class="btn btn-light position-relative header-icon-btn"
+      aria-label="Notifications"
+      title="Notifications"
+    >
       <i class="bi bi-bell fs-5"></i>
-      <button
-        class="btn btn-link text-decoration-none p-0"
-        data-bs-toggle="dropdown"
+      <span
+        class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
       >
-        <span
-          class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
-        >
-          7
-        </span>
-      </button>
-    </div>
+        New
+      </span>
+    </button>
 
-    <div class="position-relative">
-      <i class="bi bi-envelope fs-5"></i>
-      <button
-        class="btn btn-link text-decoration-none p-0"
-        data-bs-toggle="dropdown"
-      >
-        <span
-          class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
-        >
-          3
-        </span>
-      </button>
-    </div>
+    <a id="profileButton" class="btn btn-outline-primary header-profile-btn" href="#" aria-label="Go to profile">
+      <i class="bi bi-person-circle"></i>
+      <span class="d-none d-md-inline ms-1">Profile</span>
+    </a>
   </div>
 </header>
 
 <script>
+  function getProfilePathByRole(pathname) {
+    if (pathname.includes("/student/")) return "/student/profile.html";
+    if (pathname.includes("/faculty/")) return "/faculty/profile.html";
+    if (pathname.includes("/admission/")) return "/admission/profile.html";
+    if (pathname.includes("/super-admin/")) return "/super-admin/settings.html";
+    return "/public/login.html";
+  }
+
+  (function setProfileButtonPath() {
+    const profileButton = document.querySelector("#profileButton");
+
+    if (profileButton) {
+      profileButton.setAttribute(
+        "href",
+        getProfilePathByRole(window.location.pathname),
+      );
+    }
+  })();
+
   document.addEventListener("click", function (e) {
-    /* MOBILE SIDEBAR */
     if (e.target.closest("#menuToggle")) {
       const sidebar = document.querySelector("#sidebar");
-
       if (sidebar) {
         sidebar.classList.toggle("show");
       }
     }
 
-    /* COLLAPSE SIDEBAR */
     if (e.target.closest("#collapseSidebarBtn")) {
       const sidebar = document.querySelector("#sidebar");
-
       if (!sidebar) return;
 
       sidebar.classList.toggle("collapsed");
