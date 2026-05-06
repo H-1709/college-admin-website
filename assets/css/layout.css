@@ -206,3 +206,27 @@ body.sidebar-collapsed #page-content-wrapper {
     transform: translate(-40%, -10%) !important;
   }
 }
+/* Ensure the body and structural wrappers take up 100% of the viewport height */
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+#wrapper {
+    display: flex;
+    min-height: 100vh; /* Fallback for layout stretching */
+    width: 100%;
+}
+
+#page-content-wrapper {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column; /* Allows vertical flex distribution */
+}
+
+/* Force container-fluid to stretch and fill empty vertical space */
+#page-content-wrapper > .container-fluid {
+    flex-grow: 1; 
+}
