@@ -1,72 +1,70 @@
-<div class="bg-dark border-right" id="sidebar-wrapper">
-  <div class="sidebar-heading text-white">
-    <i class="bi bi-person-plus-fill me-2"></i> Admission Desk
-  </div>
-  <div class="list-group list-group-flush">
-    <a
-      href="../admission/dashboard.html"
-      class="list-group-item list-group-item-action bg-dark text-light"
+<aside id="admissionSidebar" class="sidebar">
+  <div class="sidebar-header d-flex align-items-center gap-3">
+    <div
+      class="rounded-3 d-flex align-items-center justify-content-center"
+      style="width: 44px; height: 44px; font-size: 22px; background: linear-gradient(135deg, #2ca58d, #1f6fb2)"
     >
-      <i class="bi bi-speedometer2 me-2"></i> Dashboard
-    </a>
-
-    <a
-      href="#noticeSubmenu"
-      class="list-group-item list-group-item-action bg-dark text-light dropdown-toggle"
-      data-bs-toggle="collapse"
-    >
-      <i class="bi bi-megaphone me-2"></i> Notice Board
-    </a>
-    <div class="collapse" id="noticeSubmenu">
-      <a
-        href="../admission/notice-board/admission-alerts.html"
-        class="list-group-item list-group-item-action bg-dark text-secondary ps-5"
-        >Public Alerts</a
-      >
-      <a
-        href="../admission/notice-board/hiring-desk.html"
-        class="list-group-item list-group-item-action bg-dark text-secondary ps-5"
-        >Hiring Desk</a
-      >
+      <i class="bi bi-mortarboard-fill"></i>
     </div>
 
-    <a
-      href="#appSubmenu"
-      class="list-group-item list-group-item-action bg-dark text-light dropdown-toggle"
-      data-bs-toggle="collapse"
-    >
-      <i class="bi bi-file-earmark-person me-2"></i> Applications
-    </a>
-    <div class="collapse" id="appSubmenu">
-      <a
-        href="../admission/applications/pipeline.html"
-        class="list-group-item list-group-item-action bg-dark text-secondary ps-5"
-        >Pipeline</a
-      >
-      <a
-        href="../admission/applications/document-verification.html"
-        class="list-group-item list-group-item-action bg-dark text-secondary ps-5"
-        >Docs Verification</a
-      >
-      <a
-        href="../admission/applications/interviews.html"
-        class="list-group-item list-group-item-action bg-dark text-secondary ps-5"
-        >Interviews</a
-      >
+    <div>
+      <div class="fw-bold">Northfield College</div>
+      <small class="text-light opacity-75">Admission Cell</small>
     </div>
-
-    <a
-      href="../admission/inquiry-manager.html"
-      class="list-group-item list-group-item-action bg-dark text-light"
-    >
-      <i class="bi bi-chat-left-dots me-2"></i> Inquiry Manager
-    </a>
-
-    <a
-      href="../admission/onboarding.html"
-      class="list-group-item list-group-item-action bg-dark text-light"
-    >
-      <i class="bi bi-person-check me-2"></i> Onboarding
-    </a>
   </div>
-</div>
+
+  <nav class="sidebar-nav">
+    <small class="text-uppercase text-secondary ps-3">Overview</small>
+
+    <a href="/admission/dashboard.html">
+      <i class="bi bi-speedometer2"></i>
+      <span>Dashboard</span>
+    </a>
+
+    <a href="/admission/inquiry-manager.html">
+      <i class="bi bi-chat-left-dots"></i>
+      <span>Inquiry Manager</span>
+    </a>
+
+    <a href="/admission/onboarding.html">
+      <i class="bi bi-person-check"></i>
+      <span>Onboarding</span>
+    </a>
+
+    <small class="text-uppercase text-secondary ps-3 mt-3 d-block">Applications</small>
+
+    <a href="/admission/applications/pipeline.html">
+      <i class="bi bi-diagram-3"></i>
+      <span>Pipeline</span>
+    </a>
+
+    <a href="/admission/applications/document-verification.html">
+      <i class="bi bi-patch-check"></i>
+      <span>Document Verification</span>
+    </a>
+
+    <a href="/admission/applications/interviews.html">
+      <i class="bi bi-camera-video"></i>
+      <span>Interviews</span>
+    </a>
+
+    <small class="text-uppercase text-secondary ps-3 mt-3 d-block">Notice Board</small>
+
+    <a href="/admission/notice-board/admission-alerts.html">
+      <i class="bi bi-megaphone"></i>
+      <span>Admission Alerts</span>
+    </a>
+
+    <a href="/admission/notice-board/hiring-desk.html">
+      <i class="bi bi-briefcase"></i>
+      <span>Hiring Desk</span>
+    </a>
+
+    <small class="text-uppercase text-secondary ps-3 mt-3 d-block">Account</small>
+
+    <a href="/admission/profile.html">
+      <i class="bi bi-person-circle"></i>
+      <span>Profile</span>
+    </a>
+  </nav>
+</aside>
