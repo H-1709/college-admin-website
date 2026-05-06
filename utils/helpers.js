@@ -2,17 +2,24 @@ async function loadComponent(id, file) {
   const el = document.getElementById(id);
   if (!el) return;
 
-  const res = await fetch(file);
-  if (!res.ok) throw new Error(`Failed to load component: ${file}`);
+  try {
+    const res = await fetch(file);
+    if (!res.ok) throw new Error(`Failed to load component: ${file}`);
 
-  el.innerHTML = await res.text();
+    el.innerHTML = await res.text();
 
-  if (id === 'sidebar-container') {
-    setActiveSidebarLink();
-  }
+    // Initialize specific controls based on what was just loaded
+    if (id === 'sidebar-container') {
+      setActiveSidebarLink();
+      initSidebarControls();
+    }
 
-  if (id === 'header-container' || id === 'sidebar-container') {
-    initSidebarControls();
+    if (id === 'header-container') {
+      initSidebarControls(); // Attach toggle events to header buttons
+      initHeaderControls();  // Dynamically set profile link
+    }
+  } catch (error) {
+    console.error("Error loading component:", error);
   }
 }
 
@@ -22,7 +29,12 @@ function setActiveSidebarLink() {
     const href = link.getAttribute('href');
     if (!href) return;
 
-    link.classList.toggle('active', href === currentPath);
+    // Use includes to match paths flexibly (handles relative paths)
+    if (currentPath.includes(href.replace('../', '').replace('./', ''))) {
+        link.classList.add('active');
+    } else {
+        link.classList.remove('active');
+    }
   });
 }
 
@@ -46,4 +58,35 @@ function initSidebarControls() {
     });
     collapseBtn.dataset.boundSidebar = 'true';
   }
+}
+
+// NEW: Function to dynamically route the profile button based on role/path
+function initHeaderControls() {
+  const profileButton = document.getElementById("profileButton");
+  if (!profileButton) return;
+
+  const currentPath = window.location.pathname;
+  let targetProfilePath = "#";
+
+  // Determine path depth to go back to root if necessary (basic fallback handling)
+  const isNested = currentPath.split('/').length > 3; 
+  const prefix = isNested ? "../../" : "../";
+
+  // Determine role based on URL structure and map to correct file
+  if (currentPath.includes("/student/")) {
+    targetProfilePath = "profile.html"; 
+    // Assuming you are in /student/dashboard.html, going to profile.html is on the same level
+  } else if (currentPath.includes("/faculty/")) {
+    targetProfilePath = "profile.html";
+  } else if (currentPath.includes("/admission/")) {
+    targetProfilePath = "profile.html";
+  } else if (currentPath.includes("/super-admin/")) {
+    targetProfilePath = "settings.html";
+  } else {
+    // Fallback if accessed outside of a role folder
+    targetProfilePath = "../public/login.html"; 
+  }
+
+  // Update the href attribute
+  profileButton.setAttribute("href", targetProfilePath);
 }

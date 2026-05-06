@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Hiring Desk - UniPortal</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hiring Desk</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css" rel="stylesheet">
     <link rel="stylesheet" href="../../assets/css/base.css">
@@ -12,48 +13,57 @@
 <body>
     <div class="d-flex" id="wrapper">
         <div id="sidebar-container"></div>
-        <div id="page-content-wrapper">
+        <div id="page-content-wrapper" class="bg-light d-flex flex-column min-vh-100">
             <div id="header-container"></div>
-            <div class="container-fluid px-4 py-4">
-                <div class="d-flex justify-content-between align-items-center mb-4">
-                    <h3>Hiring & Careers Desk</h3>
-                    <button class="btn btn-primary btn-sm">Post New Role</button>
+            
+            <div class="container-fluid px-4 py-4 flex-grow-1">
+                <div class="d-flex justify-content-between align-items-center mb-4 flex-wrap gap-2">
+                    <div>
+                        <h2 class="fw-bold mb-1">Hiring Desk</h2>
+                        <p class="text-muted mb-0">Manage admission team recruitment postings and job requests.</p>
+                    </div>
+                    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addJobModal">
+                        <i class="bi bi-plus-lg me-2"></i>Post New Job
+                    </button>
                 </div>
 
                 <div class="row g-4">
-                    <div class="col-12">
-                        <div class="card border-0 shadow-sm">
-                            <div class="table-responsive">
-                                <table class="table table-hover align-middle mb-0">
-                                    <thead class="table-light">
-                                        <tr>
-                                            <th>Position</th>
-                                            <th>Type</th>
-                                            <th>Applicants</th>
-                                            <th>Posted Date</th>
-                                            <th>Status</th>
-                                            <th>Action</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td><strong>Library Assistant</strong></td>
-                                            <td>Part-time (Student)</td>
-                                            <td>14</td>
-                                            <td>Feb 10, 2026</td>
-                                            <td><span class="badge bg-success">Active</span></td>
-                                            <td><button class="btn btn-sm btn-outline-primary">View</button></td>
-                                        </tr>
-                                        <tr>
-                                            <td><strong>Lab Technician</strong></td>
-                                            <td>Full-time</td>
-                                            <td>42</td>
-                                            <td>Feb 05, 2026</td>
-                                            <td><span class="badge bg-secondary">Closed</span></td>
-                                            <td><button class="btn btn-sm btn-outline-primary">View</button></td>
-                                        </tr>
-                                    </tbody>
-                                </table>
+                    <div class="col-md-6 col-lg-4">
+                        <div class="card h-100 border-0 shadow-sm bg-white p-4">
+                            <div class="d-flex justify-content-between align-items-start mb-3">
+                                <span class="badge bg-primary bg-opacity-10 text-primary">Full-time</span>
+                                <span class="text-muted small">Post: 2 days ago</span>
+                            </div>
+                            <h5 class="fw-bold text-dark mb-1">Senior Admissions Counselor</h5>
+                            <p class="text-muted small mb-3"><i class="bi bi-geo-alt me-1"></i>Ahmedabad Office</p>
+                            
+                            <p class="text-secondary small leading-relaxed flex-grow-1">
+                                We are looking for an experienced counselor with 3+ years of higher education counseling background to assist prospective students in their application cycles.
+                            </p>
+                            
+                            <div class="border-top pt-3 mt-3 d-flex justify-content-between align-items-center">
+                                <span class="fw-bold text-dark small">8 Applicants</span>
+                                <button class="btn btn-sm btn-outline-primary px-3">View Applications</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 col-lg-4">
+                        <div class="card h-100 border-0 shadow-sm bg-white p-4">
+                            <div class="d-flex justify-content-between align-items-start mb-3">
+                                <span class="badge bg-success bg-opacity-10 text-success">Part-time</span>
+                                <span class="text-muted small">Post: 5 days ago</span>
+                            </div>
+                            <h5 class="fw-bold text-dark mb-1">Student Ambassador</h5>
+                            <p class="text-muted small mb-3"><i class="bi bi-geo-alt me-1"></i>On-Campus</p>
+                            
+                            <p class="text-secondary small leading-relaxed flex-grow-1">
+                                Assist during open-campus orientation days and guide high-school visiting groups. Ideal for current 2nd or 3rd year undergraduate students.
+                            </p>
+                            
+                            <div class="border-top pt-3 mt-3 d-flex justify-content-between align-items-center">
+                                <span class="fw-bold text-dark small">14 Applicants</span>
+                                <button class="btn btn-sm btn-outline-primary px-3">View Applications</button>
                             </div>
                         </div>
                     </div>
@@ -61,12 +71,61 @@
             </div>
         </div>
     </div>
+
+    <div class="modal fade" id="addJobModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content border-0 shadow">
+                <div class="modal-header border-bottom-0 bg-light">
+                    <h5 class="modal-title fw-bold">Post New Opening</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body p-4">
+                    <form id="newJobForm">
+                        <div class="mb-3">
+                            <label class="form-label small fw-semibold text-muted">Job Title</label>
+                            <input type="text" class="form-control" placeholder="e.g. Graphic Designer" required>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col">
+                                <label class="form-label small fw-semibold text-muted">Job Type</label>
+                                <select class="form-select" required>
+                                    <option value="Full-time">Full-time</option>
+                                    <option value="Part-time">Part-time</option>
+                                    <option value="Contract">Contract</option>
+                                </select>
+                            </div>
+                            <div class="col">
+                                <label class="form-label small fw-semibold text-muted">Location</label>
+                                <input type="text" class="form-control" placeholder="Ahmedabad" required>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label small fw-semibold text-muted">Job Description</label>
+                            <textarea class="form-control" rows="3" required></textarea>
+                        </div>
+                        <div class="d-flex justify-content-end gap-2 mt-4">
+                            <button type="button" class="btn btn-light" data-bs-dismiss="modal">Cancel</button>
+                            <button type="submit" class="btn btn-primary px-4">Post Position</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="../../utils/helpers.js"></script>
     <script>
         document.addEventListener("DOMContentLoaded", async function() {
             await loadComponent("sidebar-container", "../../layouts/sidebar-admission.html");
             await loadComponent("header-container", "../../layouts/header.html");
+            
+            const toggleBtn = document.getElementById("sidebarToggle");
+            if(toggleBtn) {
+                toggleBtn.addEventListener('click', () => {
+                    document.getElementById("wrapper").classList.toggle("toggled");
+                });
+            }
         });
     </script>
 </body>
