@@ -60,29 +60,9 @@
 
       /* Ensure the cards don't crush into unreadable slivers on mobile */
       .class-card {
-        min-width: 0;
+        min-width: 140px; 
         padding: 12px 8px;
         margin: 0 auto;
-      }
-      .timetable-table {
-        width: 100%;
-        table-layout: fixed;
-      }
-      .timetable-table th,
-      .timetable-table td {
-        white-space: normal;
-        word-break: break-word;
-      }
-      @media (max-width: 992px) {
-        .timetable-table th,
-        .timetable-table td {
-          padding: 8px 6px;
-          font-size: 0.8rem;
-        }
-        .class-card {
-          padding: 8px 6px;
-          font-size: 0.75rem;
-        }
       }
     </style>
   </head>
