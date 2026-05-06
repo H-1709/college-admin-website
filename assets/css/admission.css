@@ -33,7 +33,18 @@ body {
   letter-spacing: 0.08em;
 }
 
+/* Keep admission sidebar visible by default on all viewports */
+#admissionSidebar {
+  left: 0;
+  transform: none;
+}
+
 @media (max-width: 992px) {
+  #admissionSidebar {
+    left: 0;
+    transform: none;
+  }
+
   #page-content-wrapper {
     margin-left: 0;
   }
