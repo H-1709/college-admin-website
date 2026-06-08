@@ -1,32 +1,312 @@
 <!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Semesters | Admin Portal</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet"/>
-  <link rel="stylesheet" href="../../assets/css/base.css" />
-  <link rel="stylesheet" href="../../assets/css/layout.css" />
-  <link rel="stylesheet" href="../../assets/css/admin.css" />
-  <style>
-    body{background:#f8fafc;}
-    .hero{background:linear-gradient(135deg,#0f172a,#334155);color:#fff;border-radius:20px;padding:28px;}
-    .glass-card{background:#fff;border:1px solid #e2e8f0;border-radius:16px;box-shadow:0 8px 20px rgba(15,23,42,.04);}
-    .stat{padding:14px;border-radius:12px;background:#f8fafc;border:1px solid #e2e8f0;}
-  </style>
-</head>
-<body>
-  <div id="sidebarContainer"></div>
-  <div class="main-content">
-    <div id="headerContainer"></div>
-    <main class="container-fluid py-4">
-      <div class="hero mb-4"><div class="d-flex justify-content-between align-items-start flex-wrap gap-3"><div><h2 class="fw-bold mb-1">Semester Planner</h2><p class="mb-0 opacity-75">Configure academic calendar, milestones, and exam windows.</p></div><span class="badge bg-light text-dark px-3 py-2">Updated: May 2026</span></div></div>
-<div class="row g-4"><div class="col-lg-8"><div class="glass-card p-4"><h5 class="fw-bold mb-3">Semester Planner</h5><p class="text-muted">Detailed module UI designed for backend handoff.</p></div></div><div class="col-lg-4"><div class="glass-card p-4"><h6 class="fw-bold">Quick Actions</h6><button class="btn btn-primary w-100 mb-2">Add New Record</button><button class="btn btn-outline-secondary w-100">Export</button></div></div></div>
-    </main>
-    <div id="footerContainer"></div>
-  </div>
-  <script src="../../assets/js/admin.js"></script>
-  <script>if(typeof initAdminLayout==='function') initAdminLayout('../../');</script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-</body></html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Semesters | Admin Portal</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../../assets/css/base.css" />
+    <link rel="stylesheet" href="../../assets/css/layout.css" />
+    <link rel="stylesheet" href="../../assets/css/admin.css" />
+    <style>
+      body {
+        background: #f8fafc;
+      }
+      .hero {
+        background: linear-gradient(135deg, #0f172a, #334155);
+        color: #fff;
+        border-radius: 20px;
+        padding: 28px;
+      }
+      .glass-card {
+        background: #fff;
+        border: 1px solid #e2e8f0;
+        border-radius: 16px;
+        box-shadow: 0 8px 20px rgba(15, 23, 42, 0.04);
+      }
+      .stat {
+        padding: 14px;
+        border-radius: 12px;
+        background: #f8fafc;
+        border: 1px solid #e2e8f0;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="sidebarContainer"></div>
+    <div class="main-content">
+      <div id="headerContainer"></div>
+      <main class="container-fluid py-4">
+        <!-- HERO -->
+        <div class="hero mb-4">
+          <div
+            class="d-flex justify-content-between align-items-center flex-wrap"
+          >
+            <div>
+              <h2 class="fw-bold mb-1">
+                <i class="bi bi-calendar3 me-2"></i>
+                Semester Management
+              </h2>
+              <p class="mb-0 opacity-75">
+                Manage academic terms, schedules, registrations and exam
+                periods.
+              </p>
+            </div>
+
+            <button class="btn btn-light">
+              <i class="bi bi-plus-circle me-2"></i>
+              Create Semester
+            </button>
+          </div>
+        </div>
+
+        <!-- STATS -->
+        <div class="row g-3 mb-4">
+          <div class="col-lg-3 col-md-6">
+            <div class="glass-card p-3">
+              <small class="text-muted">Total Semesters</small>
+              <h3 class="fw-bold">16</h3>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-6">
+            <div class="glass-card p-3">
+              <small class="text-muted">Active Semester</small>
+              <h3 class="fw-bold">1</h3>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-6">
+            <div class="glass-card p-3">
+              <small class="text-muted">Upcoming Terms</small>
+              <h3 class="fw-bold">2</h3>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-6">
+            <div class="glass-card p-3">
+              <small class="text-muted">Programs Covered</small>
+              <h3 class="fw-bold">12</h3>
+            </div>
+          </div>
+        </div>
+
+        <!-- FILTERS -->
+        <div class="glass-card p-4 mb-4">
+          <div class="row g-3">
+            <div class="col-lg-4">
+              <input
+                type="text"
+                class="form-control"
+                placeholder="Search semester..."
+              />
+            </div>
+
+            <div class="col-lg-3">
+              <select class="form-select">
+                <option>Academic Year</option>
+                <option>2025-26</option>
+                <option>2026-27</option>
+              </select>
+            </div>
+
+            <div class="col-lg-3">
+              <select class="form-select">
+                <option>Status</option>
+                <option>Active</option>
+                <option>Upcoming</option>
+                <option>Completed</option>
+              </select>
+            </div>
+
+            <div class="col-lg-2">
+              <button class="btn btn-primary w-100">Filter</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="row g-4">
+          <!-- MAIN TABLE -->
+          <div class="col-xl-9 col-lg-8">
+            <div class="glass-card p-4">
+              <div
+                class="d-flex justify-content-between align-items-center mb-3"
+              >
+                <h5 class="fw-bold mb-0">Academic Semesters</h5>
+
+                <button class="btn btn-outline-primary btn-sm">Export</button>
+              </div>
+
+              <div class="table-responsive">
+                <table class="table table-hover align-middle">
+                  <thead class="table-light">
+                    <tr>
+                      <th>Semester</th>
+                      <th>Academic Year</th>
+                      <th>Start Date</th>
+                      <th>End Date</th>
+                      <th>Registration</th>
+                      <th>Status</th>
+                      <th>Action</th>
+                    </tr>
+                  </thead>
+
+                  <tbody>
+                    <tr>
+                      <td>Semester 1</td>
+                      <td>2026-27</td>
+                      <td>01 Jul 2026</td>
+                      <td>30 Nov 2026</td>
+                      <td>Open</td>
+                      <td><span class="badge bg-success">Active</span></td>
+                      <td>
+                        <button class="btn btn-sm btn-outline-primary">
+                          Edit
+                        </button>
+                      </td>
+                    </tr>
+
+                    <tr>
+                      <td>Semester 2</td>
+                      <td>2026-27</td>
+                      <td>10 Jan 2027</td>
+                      <td>20 May 2027</td>
+                      <td>Upcoming</td>
+                      <td><span class="badge bg-info">Upcoming</span></td>
+                      <td>
+                        <button class="btn btn-sm btn-outline-primary">
+                          Edit
+                        </button>
+                      </td>
+                    </tr>
+
+                    <tr>
+                      <td>Semester 3</td>
+                      <td>2025-26</td>
+                      <td>01 Jul 2025</td>
+                      <td>30 Nov 2025</td>
+                      <td>Closed</td>
+                      <td><span class="badge bg-secondary">Completed</span></td>
+                      <td>
+                        <button class="btn btn-sm btn-outline-primary">
+                          View
+                        </button>
+                      </td>
+                    </tr>
+
+                    <tr>
+                      <td>Semester 4</td>
+                      <td>2025-26</td>
+                      <td>10 Jan 2026</td>
+                      <td>20 May 2026</td>
+                      <td>Closed</td>
+                      <td><span class="badge bg-secondary">Completed</span></td>
+                      <td>
+                        <button class="btn btn-sm btn-outline-primary">
+                          View
+                        </button>
+                      </td>
+                    </tr>
+
+                    <tr>
+                      <td>Semester 5</td>
+                      <td>2024-25</td>
+                      <td>01 Jul 2024</td>
+                      <td>30 Nov 2024</td>
+                      <td>Closed</td>
+                      <td><span class="badge bg-secondary">Completed</span></td>
+                      <td>
+                        <button class="btn btn-sm btn-outline-primary">
+                          View
+                        </button>
+                      </td>
+                    </tr>
+
+                    <tr>
+                      <td>Semester 6</td>
+                      <td>2024-25</td>
+                      <td>10 Jan 2025</td>
+                      <td>20 May 2025</td>
+                      <td>Closed</td>
+                      <td><span class="badge bg-secondary">Completed</span></td>
+                      <td>
+                        <button class="btn btn-sm btn-outline-primary">
+                          View
+                        </button>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <!-- SIDEBAR -->
+          <div class="col-xl-3 col-lg-4">
+            <div class="glass-card p-4 mb-4">
+              <h6 class="fw-bold mb-3">Quick Actions</h6>
+
+              <div class="d-grid gap-2">
+                <button class="btn btn-primary">Create Semester</button>
+
+                <button class="btn btn-outline-secondary">
+                  Academic Calendar
+                </button>
+
+                <button class="btn btn-outline-secondary">Exam Schedule</button>
+
+                <button class="btn btn-outline-secondary">Export Data</button>
+              </div>
+            </div>
+
+            <div class="glass-card p-4 mb-4">
+              <h6 class="fw-bold mb-3">Important Dates</h6>
+
+              <div class="border rounded p-3 mb-3">
+                <strong>Registration Ends</strong>
+                <br />
+                <small class="text-muted">15 July 2026</small>
+              </div>
+
+              <div class="border rounded p-3 mb-3">
+                <strong>Mid-Term Exams</strong>
+                <br />
+                <small class="text-muted">20 Aug 2026</small>
+              </div>
+
+              <div class="border rounded p-3">
+                <strong>Final Exams</strong>
+                <br />
+                <small class="text-muted">10 Nov 2026</small>
+              </div>
+            </div>
+
+            <div class="glass-card p-4">
+              <h6 class="fw-bold mb-3">Recent Updates</h6>
+
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item">Semester 1 activated</li>
+                <li class="list-group-item">Exam dates updated</li>
+                <li class="list-group-item">Registration period extended</li>
+                <li class="list-group-item">Calendar exported</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </main>
+      <div id="footerContainer"></div>
+    </div>
+    <script src="../../assets/js/admin.js"></script>
+    <script>
+      if (typeof initAdminLayout === "function") initAdminLayout("../../");
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>
