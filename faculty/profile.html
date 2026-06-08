@@ -140,9 +140,9 @@ async function loadComponent(id, file) {
     console.error("Component load error:", file);
   }
 }
-loadComponent('sidebarContainer','../../layouts/sidebar-faculty.html');
-loadComponent('headerContainer','../../layouts/header.html');
-loadComponent('footerContainer','../../layouts/footer.html');
+loadComponent('sidebarContainer','../layouts/sidebar-faculty.html');
+loadComponent('headerContainer','../layouts/header.html');
+loadComponent('footerContainer','../layouts/footer.html');
 /* ENABLE BOOTSTRAP TOOLTIPS */
 setTimeout(() => {
   const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]');
