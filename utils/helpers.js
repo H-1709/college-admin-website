@@ -60,33 +60,17 @@ function initSidebarControls() {
   }
 }
 
-// NEW: Function to dynamically route the profile button based on role/path
+function getProfilePathByRole(pathname) {
+  if (pathname.includes('/student/')) return '/student/profile.html';
+  if (pathname.includes('/faculty/')) return '/faculty/profile.html';
+  if (pathname.includes('/admission/')) return '/admission/profile.html';
+  if (pathname.includes('/super-admin/')) return '/super-admin/settings.html';
+  return '/layouts/public/login.html';
+}
+
 function initHeaderControls() {
-  const profileButton = document.getElementById("profileButton");
+  const profileButton = document.getElementById('profileButton');
   if (!profileButton) return;
 
-  const currentPath = window.location.pathname;
-  let targetProfilePath = "#";
-
-  // Determine path depth to go back to root if necessary (basic fallback handling)
-  const isNested = currentPath.split('/').length > 3; 
-  const prefix = isNested ? "../../" : "../";
-
-  // Determine role based on URL structure and map to correct file
-  if (currentPath.includes("/student/")) {
-    targetProfilePath = "profile.html"; 
-    // Assuming you are in /student/dashboard.html, going to profile.html is on the same level
-  } else if (currentPath.includes("/faculty/")) {
-    targetProfilePath = "profile.html";
-  } else if (currentPath.includes("/admission/")) {
-    targetProfilePath = "profile.html";
-  } else if (currentPath.includes("/super-admin/")) {
-    targetProfilePath = "settings.html";
-  } else {
-    // Fallback if accessed outside of a role folder
-    targetProfilePath = "../public/login.html"; 
-  }
-
-  // Update the href attribute
-  profileButton.setAttribute("href", targetProfilePath);
+  profileButton.setAttribute('href', getProfilePathByRole(window.location.pathname));
 }

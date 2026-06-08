@@ -35,7 +35,7 @@ function checkSessionAndAccess(path) {
 
     // Redirect to login if no session exists
     if (!user) {
-        window.location.href = '/public/login.html';
+        window.location.href = '/layouts/public/login.html';
         return;
     }
 
@@ -47,5 +47,5 @@ function checkSessionAndAccess(path) {
 }
 
 function redirectToUnauthorized() {
-    window.location.href = '/public/unauthorized.html';
+    window.location.href = '/layouts/public/unauthorized.html';
 }

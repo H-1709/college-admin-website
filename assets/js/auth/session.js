@@ -6,21 +6,21 @@
 
     // 1. Check if logged in
     if (!user || !user.isLoggedIn) {
-        window.location.href = '/public/login.html';
+        window.location.href = '/layouts/public/login.html';
         return;
     }
 
     // 2. Simple Role-Path Guard
     // Example: If path contains '/super-admin/' but role is 'student', block access.
     if (path.includes('/super-admin/') && user.role !== 'admin') {
-        window.location.href = '/public/unauthorized.html';
+        window.location.href = '/layouts/public/unauthorized.html';
     }
     
     if (path.includes('/faculty/') && user.role !== 'faculty') {
-        window.location.href = '/public/unauthorized.html';
+        window.location.href = '/layouts/public/unauthorized.html';
     }
 
     if (path.includes('/student/') && user.role !== 'student') {
-        window.location.href = '/public/unauthorized.html';
+        window.location.href = '/layouts/public/unauthorized.html';
     }
 })();
