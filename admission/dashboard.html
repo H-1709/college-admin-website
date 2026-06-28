@@ -298,14 +298,6 @@
             // Asynchronously load custom layout headers and sidebars
             await loadComponent("sidebar-container", "../layouts/sidebar-admission.html");
             await loadComponent("header-container", "../layouts/header.html");
-            
-            // Handles sidebar toggle actions dynamically
-            const toggleBtn = document.getElementById("sidebarToggle");
-            if(toggleBtn) {
-                toggleBtn.addEventListener('click', () => {
-                    document.getElementById("wrapper").classList.toggle("toggled");
-                });
-            }
         });
     </script>
 </body>

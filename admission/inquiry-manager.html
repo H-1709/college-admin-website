@@ -206,14 +206,6 @@
             await loadComponent("sidebar-container", "../layouts/sidebar-admission.html");
             await loadComponent("header-container", "../layouts/header.html");
 
-            // Handles sidebar toggle actions dynamically
-            const toggleBtn = document.getElementById("sidebarToggle");
-            if(toggleBtn) {
-                toggleBtn.addEventListener('click', () => {
-                    document.getElementById("wrapper").classList.toggle("toggled");
-                });
-            }
-
             // Simple demo action for registration
             const form = document.getElementById('newInquiryForm');
             form.addEventListener('submit', function(e) {

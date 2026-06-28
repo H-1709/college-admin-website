@@ -30,10 +30,18 @@ function initSidebarControls() {
   }
 }
 
+function initHeaderControls(basePath) {
+  const profileButton = document.getElementById("profileButton");
+  if (profileButton) {
+    profileButton.setAttribute("href", basePath + "super-admin/settings.html");
+  }
+}
+
 async function initAdminLayout(basePath) {
   await loadComponent('sidebarContainer', basePath + 'layouts/sidebar-admin.html');
   await loadComponent('headerContainer', basePath + 'layouts/header.html');
   await loadComponent('footerContainer', basePath + 'layouts/footer.html');
   setActiveSidebar();
   initSidebarControls();
+  initHeaderControls(basePath);
 }

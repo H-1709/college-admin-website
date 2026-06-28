@@ -1,3 +1,5 @@
+/* assets/js/faculty.js */
+
 async function loadComponent(id, file) {
   const res = await fetch(file);
   const html = await res.text();
@@ -6,19 +8,17 @@ async function loadComponent(id, file) {
 
 function setActiveSidebar() {
   const currentPage = window.location.pathname.split("/").pop();
-
   const links = document.querySelectorAll("#sidebarContainer a");
 
   links.forEach((link) => {
     const linkPage = link.getAttribute("href")?.split("/").pop();
-
     link.classList.remove("active");
-
     if (linkPage === currentPage) {
       link.classList.add("active");
     }
   });
 }
+
 function initSidebarControls() {
   const collapseBtn = document.querySelector("#collapseSidebarBtn");
   const sidebar = document.querySelector("#sidebar");
@@ -42,14 +42,14 @@ function initSidebarControls() {
 function initHeaderControls(basePath) {
   const profileButton = document.getElementById("profileButton");
   if (profileButton) {
-    profileButton.setAttribute("href", basePath + "student/profile.html");
+    profileButton.setAttribute("href", basePath + "faculty/profile.html");
   }
 }
 
 async function initLayout(basePath) {
   await loadComponent(
     "sidebarContainer",
-    basePath + "layouts/sidebar-student.html",
+    basePath + "layouts/sidebar-faculty.html",
   );
   await loadComponent("headerContainer", basePath + "layouts/header.html");
   await loadComponent("footerContainer", basePath + "layouts/footer.html");

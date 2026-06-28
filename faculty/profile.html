@@ -110,66 +110,14 @@
   </div>
 
   <!-- ================= LOAD PARTIALS ================= -->
+  <script src="../assets/js/faculty.js"></script>
   <script>
-    
-async function loadComponent(id, file) {
-  try {
-    const res = await fetch(file);
-    const html = await res.text();
-    document.getElementById(id).innerHTML = html;
-
-    // 🔹 highlight active sidebar link AFTER sidebar loads
-    if (id === "sidebarContainer") {
-
-      const currentPage = window.location.pathname.split("/").pop();
-      const links = document.querySelectorAll(".sidebar-nav a");
-
-      links.forEach(link => {
-
-        const linkPage = link.getAttribute("href").split("/").pop();
-
-        if (currentPage === linkPage) {
-          link.classList.add("active");
-        }
-
-      });
-
-    }
-
-  } catch (e) {
-    console.error("Component load error:", file);
-  }
-}
-loadComponent('sidebarContainer','../layouts/sidebar-faculty.html');
-loadComponent('headerContainer','../layouts/header.html');
-loadComponent('footerContainer','../layouts/footer.html');
-/* ENABLE BOOTSTRAP TOOLTIPS */
-setTimeout(() => {
-  const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]');
-  tooltipTriggerList.forEach(el => new bootstrap.Tooltip(el));
-}, 300);
-
-
-
-/* ✅ HAMBURGER SIDEBAR TOGGLE */
-document.addEventListener("click", function(e) {
-
-  const sidebar = document.querySelector("#sidebar");
-
-  if (!sidebar) return;
-
-  /* MOBILE MENU */
-  if (e.target.closest("#menuToggle")) {
-    sidebar.classList.toggle("show");
-  }
-
-  /* COLLAPSE SIDEBAR */
-  if (e.target.closest("#collapseSidebarBtn")) {
-    sidebar.classList.toggle("collapsed");
-    document.body.classList.toggle("sidebar-collapsed");
-  }
-
-});
+    initLayout("../");
+    /* ENABLE BOOTSTRAP TOOLTIPS */
+    setTimeout(() => {
+      const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]');
+      tooltipTriggerList.forEach(el => new bootstrap.Tooltip(el));
+    }, 300);
     /* ================= PERMISSION MOCK ================= */
     const facultyPermissions = {
       profile: { update: true }
